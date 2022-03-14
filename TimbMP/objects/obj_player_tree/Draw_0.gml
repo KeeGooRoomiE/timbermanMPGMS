@@ -15,3 +15,6 @@ for (i=0; i<arrL; i++)
 
 //draw player
 draw_sprite(playerSpr,0,playerXpos,y-6);
+
+//PLAYER ANIMATION PLACEHOLDER
+//SHIFT IMAGE BY FOR LOOP
