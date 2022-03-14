@@ -1,5 +1,20 @@
 {
   "resources": [
+    {"id":{"name":"Sprite67","path":"sprites/Sprite67/Sprite67.yy",},"order":6,},
+    {"id":{"name":"Sprite6789Sprite6789101112","path":"sprites/Sprite6789Sprite6789101112/Sprite6789Sprite6789101112.yy",},"order":11,},
+    {"id":{"name":"Sprite23","path":"sprites/Sprite23/Sprite23.yy",},"order":2,},
+    {"id":{"name":"Sprite6789Sprite6789","path":"sprites/Sprite6789Sprite6789/Sprite6789Sprite6789.yy",},"order":8,},
+    {"id":{"name":"Sprite6","path":"sprites/Sprite6/Sprite6.yy",},"order":5,},
+    {"id":{"name":"Object1","path":"objects/Object1/Object1.yy",},"order":0,},
+    {"id":{"name":"Sprite678","path":"sprites/Sprite678/Sprite678.yy",},"order":7,},
+    {"id":{"name":"bkg01","path":"sprites/bkg01/bkg01.yy",},"order":0,},
+    {"id":{"name":"Sprite6789Sprite67891011","path":"sprites/Sprite6789Sprite67891011/Sprite6789Sprite67891011.yy",},"order":10,},
+    {"id":{"name":"Object2","path":"objects/Object2/Object2.yy",},"order":1,},
+    {"id":{"name":"Sprite5","path":"sprites/Sprite5/Sprite5.yy",},"order":4,},
+    {"id":{"name":"Sprite6789Sprite678910","path":"sprites/Sprite6789Sprite678910/Sprite6789Sprite678910.yy",},"order":9,},
+    {"id":{"name":"spr_tt","path":"sprites/spr_tt/spr_tt.yy",},"order":12,},
+    {"id":{"name":"Sprite234","path":"sprites/Sprite234/Sprite234.yy",},"order":3,},
+    {"id":{"name":"Sprite2","path":"sprites/Sprite2/Sprite2.yy",},"order":1,},
     {"id":{"name":"Рум1","path":"rooms/Рум1/Рум1.yy",},"order":0,},
   ],
   "Options": [
