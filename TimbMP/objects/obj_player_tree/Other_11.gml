@@ -1,22 +1,27 @@
 /// @description Shift tree array
 
 // Choose next cell in most upper side of tree
-var nextcell=choose(0,1,2);
-show_debug_message("Next cell is"+string(nextcell));
+var nextcell = choose(0,1,2);
+show_debug_message( "Next cell is" + string(nextcell) );
+
+//random tree cell image
+var nextcellimg = irandom_range(0,5);
 
 //Shift all items in array
-for (i=0; i<arrL; i++)
+for (i = 0; i < arrL; i++)
 {
 	show_debug_message("Checking whole tree array...")
-	if (i=9)
+	if ( i = 9 )
 	{
 		//if its a most upper part
 		//change cell to suggested one
-		treearr[i]=nextcell;
-		show_debug_message("Last cell changed to nextcell");
+		treearr[i] = nextcell;
+		treecellarr[i] = nextcellimg;
+		show_debug_message( "Last cell changed to nextcell" );
 	}
 	else
 	{
-	treearr[i]=treearr[i+1];
+	treearr[i] = treearr[i+1];
+	treecellarr[i]=treecellarr[i+1];
 	}
 }

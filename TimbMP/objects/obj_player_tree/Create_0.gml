@@ -2,6 +2,7 @@
 
 // Starting vars
 treearr[0]=0;
+treecellarr[0]=0;
 arrL=0;
 
 //====================================
@@ -11,7 +12,7 @@ arrL=0;
 //1 - left
 //2 - right
 //3 - nest (win trigger in other mode)
-//4 - empty (alll after nest)
+//4 - empty (all after nest)
 //
 //====================================
 
@@ -20,6 +21,12 @@ for (i=0; i<10; i++)
 {
 	treearr[i]=0;
 	arrL++;
+}
+
+//init tree cells for images
+for (i=0; i<10; i++)
+{
+	treecellarr[i]=0;
 }
 #endregion
 
