@@ -18,4 +18,4 @@ if (spd>0.1)
 	spd-=0.1;
 }
 
-image_angle=direction;
+//image_angle=direction;

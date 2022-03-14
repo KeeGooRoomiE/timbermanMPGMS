@@ -1,9 +1,15 @@
 /// @description Init
 
 // Starting vars
-treearr[0]=0;
-treecellarr[0]=0;
-arrL=0;
+treearr[0] = 0;
+treecellarr[0] = 0;
+treebrarr[0] = 0;
+arrL=0; 
+
+treeCellImg = 0;
+treeBrImg = 0;
+treeCellSpr = spr_red_tree_cell;
+treeBrSpr = spr_red_tree_branch;
 
 //====================================
 //TREE CELLS
@@ -26,7 +32,13 @@ for (i=0; i<10; i++)
 //init tree cells for images
 for (i=0; i<10; i++)
 {
-	treecellarr[i]=0;
+	treecellarr[i]=irandom_range(0,4);
+}
+
+//init tree branches images
+for (i=0; i<10; i++)
+{
+	treebrarr[i]=4;
 }
 #endregion
 

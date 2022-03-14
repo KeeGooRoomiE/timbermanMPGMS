@@ -6,20 +6,21 @@ var yy=y-12;
 var p=instance_create_depth(xx,yy,depth-1,obj_tree_particle);
 
 //set sprtie
-p.sprite_index=spr_tt;
+p.sprite_index=treeCellSpr;
 p.image_speed=0;
+p.image_index=irandom(p.image_number-1);
 
 //set direction damping
-var ddamp=irandom_range(-20,20);
+var ddamp=irandom_range(-5,5);
 
 //set movement direction
 if (isChompingLeft)
 {
-	p.direction=irandom(0+ddamp);
+	p.direction=5;
 }
 if (isChompingRight)
 {
-	p.direction=irandom(180-ddamp);
+	p.direction=175;
 }
 
 //set proper image
