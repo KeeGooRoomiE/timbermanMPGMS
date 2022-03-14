@@ -18,3 +18,10 @@ for (i=0; i<10; i++)
 }
 
 show_debug_message("ArrL = "+string(arrL));
+
+isPlayerLive=true;
+canChomp=true;
+isChompingLeft=false;
+isChompingRight=false;
+playerXpos=x-32;
+playerSpr=spr_player;
