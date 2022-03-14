@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "Sprite67",
-    "path": "sprites/Sprite67/Sprite67.yy",
+    "name": "spr_red_tree_origin",
+    "path": "sprites/spr_red_tree_origin/spr_red_tree_origin.yy",
   },
   "solid": true,
   "visible": true,
@@ -38,7 +38,7 @@
     "path": "folders/Объекты.yy",
   },
   "resourceVersion": "1.0",
-  "name": "Object1",
+  "name": "obj_player_tree",
   "tags": [],
   "resourceType": "GMObject",
 }

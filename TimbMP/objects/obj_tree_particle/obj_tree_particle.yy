@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "Sprite678",
-    "path": "sprites/Sprite678/Sprite678.yy",
+    "name": "spr_red_tree_cell",
+    "path": "sprites/spr_red_tree_cell/spr_red_tree_cell.yy",
   },
   "solid": false,
   "visible": true,
@@ -31,7 +31,7 @@
     "path": "folders/Объекты.yy",
   },
   "resourceVersion": "1.0",
-  "name": "Object2",
+  "name": "obj_tree_particle",
   "tags": [],
   "resourceType": "GMObject",
 }
