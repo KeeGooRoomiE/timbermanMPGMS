@@ -1,21 +1,9 @@
 /// @description Live reactions to triggers
 
-#region -- player position changeand sprite depenency
+#region -- check player living
 if (isPlayerLive)
 {
 	playerSpr=spr_player;
-		
-	if (isChompingLeft)
-	{
-		playerXpos=x-34;
-		isChompingLeft=false;
-	}
-		
-	if (isChompingRight)
-	{
-		playerXpos=x+32;
-		isChompingRight=false;
-	}
 }
 else
 {
@@ -23,27 +11,24 @@ else
 }
 #endregion
 
+
 #region -- left trigger
 if (leftTrigger)
 {
 	if (canChomp)
 	{
-		if (treearr[1]!=1)
-		{
-			isChompingLeft=true;
-			event_user(0);	//inherits chomping effect
-
-			event_user(1); //shift all cells in array
-		}
-		else
+		isChompingLeft=true;
+		
+		event_user(0);	//inherits chomping effect
+		event_user(2);	//move player and check for death
+		
+		if ( treearr[1] = 1 or treearr[0] = 1 )
 		{
 			isPlayerLive=false;
 			canChomp=false;
-		
-			event_user(0);	//inherits chomping effect
-
-			event_user(1); //shift all cells in array
 		}
+		
+		event_user(1);  //shift all cells in array
 	}
 	leftTrigger = false;
 }
@@ -54,22 +39,18 @@ if (rightTrigger)
 {
 	if (canChomp)
 	{
-		if (treearr[1]!=2)
-		{
-			isChompingRight=true;
-			event_user(0);	//inherits chomping effect
-
-			event_user(1); //shift all cells in array
-		}
-		else
+		isChompingRight=true;
+		
+		event_user(0);	//inherits chomping effect
+		event_user(2);	//move player and check for death
+		
+		if ( treearr[1] = 2 or treearr[0] = 2 )
 		{
 			isPlayerLive=false;
 			canChomp=false;
-		
-			event_user(0);	//inherits chomping effect
-
-			event_user(1); //shift all cells in array
 		}
+		
+		event_user(1);  //shift all cells in array
 	}
 	rightTrigger = false;
 }

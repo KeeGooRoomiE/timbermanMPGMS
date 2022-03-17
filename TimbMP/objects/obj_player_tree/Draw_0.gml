@@ -13,6 +13,7 @@ for (i=0; i<arrL; i++)
 {
 	draw_sprite( treeBrSpr, treebrarr[i], x, y-(cellY/2)-(cellY*i) );
 	draw_sprite( treeCellSpr, treecellarr[i], x-1, y-(cellY/2)-(cellY*i) );
+	//draw_text( x-1,y-(cellY/2)-(cellY*i),"I: "+string(treearr[i]) );
 }
 #endregion
 

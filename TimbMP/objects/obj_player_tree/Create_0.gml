@@ -38,7 +38,7 @@ for (i=0; i<10; i++)
 //init tree branches images
 for (i=0; i<10; i++)
 {
-	treebrarr[i]=4;
+	treebrarr[i]=2;
 }
 #endregion
 
