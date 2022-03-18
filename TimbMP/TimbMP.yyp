@@ -14,6 +14,7 @@
     {"id":{"name":"bkg04_0","path":"sprites/bkg04_0/bkg04_0.yy",},"order":4,},
     {"id":{"name":"spr_tt","path":"sprites/spr_tt/spr_tt.yy",},"order":12,},
     {"id":{"name":"bkg05_0","path":"sprites/bkg05_0/bkg05_0.yy",},"order":3,},
+    {"id":{"name":"obj_other_tree","path":"objects/obj_other_tree/obj_other_tree.yy",},"order":3,},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"order":2,},
     {"id":{"name":"Sprite1213","path":"sprites/Sprite1213/Sprite1213.yy",},"order":16,},
     {"id":{"name":"bkg06_0","path":"sprites/bkg06_0/bkg06_0.yy",},"order":18,},
