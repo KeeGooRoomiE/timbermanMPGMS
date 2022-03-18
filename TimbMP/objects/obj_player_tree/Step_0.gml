@@ -9,8 +9,9 @@ else
 {
 	playerSpr=spr_grave;
 }
-#endregion
 
+player.sprite_index = playerSpr;
+#endregion
 
 #region -- left trigger
 if (leftTrigger)

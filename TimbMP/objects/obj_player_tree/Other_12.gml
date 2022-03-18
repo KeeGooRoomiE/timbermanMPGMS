@@ -4,13 +4,19 @@ if (isPlayerLive)
 {		
 	if (isChompingLeft)
 	{
-		playerXpos=x-34;
+		playerXpos=x-36;
+		player.x = playerXpos;
+		player.image_xscale = 1;
+		player.image_speed = 1;
 		isChompingLeft=false;
 	}
 		
 	if (isChompingRight)
 	{
-		playerXpos=x+32;
+		playerXpos=x+36;
+		player.x = playerXpos;
+		player.image_xscale = -1;
+		player.image_speed = 1;
 		isChompingRight=false;
 	}
 }

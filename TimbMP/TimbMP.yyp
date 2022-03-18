@@ -13,6 +13,8 @@
     {"id":{"name":"Sprite5","path":"sprites/Sprite5/Sprite5.yy",},"order":4,},
     {"id":{"name":"spr_tt","path":"sprites/spr_tt/spr_tt.yy",},"order":12,},
     {"id":{"name":"Sprite234","path":"sprites/Sprite234/Sprite234.yy",},"order":3,},
+    {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"order":2,},
+    {"id":{"name":"Sprite1213","path":"sprites/Sprite1213/Sprite1213.yy",},"order":16,},
     {"id":{"name":"Sprite2","path":"sprites/Sprite2/Sprite2.yy",},"order":1,},
     {"id":{"name":"Рум1","path":"rooms/Рум1/Рум1.yy",},"order":0,},
   ],

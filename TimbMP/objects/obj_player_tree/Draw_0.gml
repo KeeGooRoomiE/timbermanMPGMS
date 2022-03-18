@@ -17,8 +17,4 @@ for (i=0; i<arrL; i++)
 }
 #endregion
 
-//draw player
-draw_sprite( playerSpr, 0, playerXpos, y-6);
-
-//PLAYER ANIMATION PLACEHOLDER
-//SHIFT IMAGE BY FOR LOOP
+//draw_sprite_ext( playerSpr, playerFrame, playerXpos, y-6, playerXscale, 1, 0, c_white, 1 );

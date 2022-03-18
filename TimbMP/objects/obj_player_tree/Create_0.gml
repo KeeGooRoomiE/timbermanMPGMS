@@ -48,9 +48,11 @@ isPlayerLive = true;		//trigger for changing sprite
 canChomp = true;			//trigger for action availability
 isChompingLeft = false;		//trigger for left movement
 isChompingRight = false;	//trigger for right movement
-playerXpos = x-32;			//player X position vlaue
+
+playerXpos = x-36;			//player X position vlaue
 playerSpr = spr_player;		//player current sprite
-playerChPos = false;		//player changed position?(for animation)
+
+player = instance_create_depth(playerXpos, y-6,depth-1,obj_player);
 
 leftTrigger = false;
 rightTrigger = false;
