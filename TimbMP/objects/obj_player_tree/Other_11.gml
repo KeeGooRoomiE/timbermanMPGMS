@@ -4,8 +4,27 @@
 var nextcell = choose(0,1,2);
 show_debug_message( "Next cell is" + string(nextcell) );
 
+//Update tree length
+treeLength++;
+
 //random tree cell image
 treeCellImg = irandom_range(0,4);
+
+//Check for tree ending
+if (treeLength == 500)
+{
+	nextcell = 3;
+	show_debug_message( "Next cell is nest" );
+	treeCellImg = 5;
+}
+
+if (treeLength > 500)
+{
+	nextcell = 4;
+	show_debug_message( "Next cell is empty" );
+	treeCellImg = 5;
+}
+
 
 //random branch image
 switch (nextcell)
@@ -13,7 +32,8 @@ switch (nextcell)
 	case 0: treeBrImg = 2; break;
 	case 1: treeBrImg = choose(0,1); break;
 	case 2: treeBrImg = choose(3,4); break;
-	default: treeBrImg = 2; break;
+	case 3: treeBrImg = 5; break;
+	default: treeBrImg = 6; break;
 }
 
 //Shift all items in array

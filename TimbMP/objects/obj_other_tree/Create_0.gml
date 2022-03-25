@@ -11,6 +11,9 @@ treeBrImg = 0;
 treeCellSpr = spr_red_tree_cell;
 treeBrSpr = spr_red_tree_branch;
 
+xsc = 0.8;
+ysc = 0.8;
+
 //====================================
 //TREE CELLS
 //

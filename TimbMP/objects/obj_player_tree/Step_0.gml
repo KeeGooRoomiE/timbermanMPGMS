@@ -11,6 +11,8 @@ else
 }
 
 player.sprite_index = playerSpr;
+player.image_xscale = side * xsc;
+player.image_yscale = xsc;
 #endregion
 
 #region -- left trigger

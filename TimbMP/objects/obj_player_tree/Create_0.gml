@@ -11,6 +11,11 @@ treeBrImg = 0;
 treeCellSpr = spr_red_tree_cell;
 treeBrSpr = spr_red_tree_branch;
 
+xsc = 1.20;
+
+playerScore = 0;
+treeLength = 10;
+
 //====================================
 //TREE CELLS
 //
@@ -23,21 +28,54 @@ treeBrSpr = spr_red_tree_branch;
 //====================================
 
 #region -- init tree array
-for (i=0; i<10; i++)
+for (i=0; i<treeLength; i++)
 {
 	treearr[i]=0;
 	arrL++;
 }
 
 //init tree cells for images
-for (i=0; i<10; i++)
+for (i=0; i<treeLength; i++)
 {
+	/*switch (i)
+	{
+		case 0: treecellarr[i]=irandom_range(0,4); break;
+		case 1: treecellarr[i]=irandom_range(0,4); break;
+		case 2: treecellarr[i]=irandom_range(0,4); break;
+		case 3: treecellarr[i]=irandom_range(0,4); break;
+		case 4: treecellarr[i]=irandom_range(0,4); break;
+		case 5: treecellarr[i]=5; break;
+		case 6: treecellarr[i]=5; break;
+		case 7: treecellarr[i]=5; break;
+		case 8: treecellarr[i]=5; break;
+		case 9: treecellarr[i]=5; break;
+		case 10:treecellarr[i]=5; break;
+	}
+	*/
+	
 	treecellarr[i]=irandom_range(0,4);
 }
 
 //init tree branches images
 for (i=0; i<10; i++)
 {
+	/*
+	switch (i)
+	{
+		case 0: treebrarr[i]=2; break;
+		case 1: treebrarr[i]=2; break;
+		case 2: treebrarr[i]=2; break;
+		case 3: treebrarr[i]=2; break;
+		case 4: treebrarr[i]=2; break;
+		case 5: treebrarr[i]=5; break;
+		case 6: treebrarr[i]=6; break;
+		case 7: treebrarr[i]=6; break;
+		case 8: treebrarr[i]=6; break;
+		case 9: treebrarr[i]=6; break;
+		case 10:treebrarr[i]=6; break;
+	}
+	*/
+	
 	treebrarr[i]=2;
 }
 #endregion
@@ -49,25 +87,16 @@ canChomp = true;			//trigger for action availability
 isChompingLeft = false;		//trigger for left movement
 isChompingRight = false;	//trigger for right movement
 
-playerXpos = x-36;			//player X position vlaue
+playerXpos=x-36 * xsc;		//player X position vlaue
 playerSpr = spr_player;		//player current sprite
 
 player = instance_create_depth(playerXpos, y-6,depth-1,obj_player);
+side = 1;
 
 leftTrigger = false;
 rightTrigger = false;
 
-player1Lives = 3;
-player2Lives = 3;
+playerLives = 3;
 #endregion
 
-#region -- init state vars
-
-isTie = false;
-isPlayer1Win = false;
-isPlayer2Win = false;
-
-
-
-#endregion
 //
