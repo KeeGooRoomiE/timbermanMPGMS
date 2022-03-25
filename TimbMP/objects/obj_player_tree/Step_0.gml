@@ -1,6 +1,7 @@
 /// @description Live reactions to triggers
 
 #region -- check player living
+
 if (isPlayerLive)
 {
 	playerSpr=spr_player;
@@ -13,11 +14,30 @@ else
 player.sprite_index = playerSpr;
 player.image_xscale = side * xsc;
 player.image_yscale = xsc;
+
+#endregion
+
+#region -- check player reached nest
+
+/*if (playerReachedNest = true)
+{
+	show_debug_message("!!!PLAYER REACHED NEST!!!");
+	canChomp = false;
+}
+*/
+if ( treearr[0] = 3 or treearr[0] = 4 )
+{
+	canChomp = false;
+	playerReachedNest = true;
+	show_debug_message("!!!PLAYER REACHED NEST!!!");
+}
+	
 #endregion
 
 #region -- left trigger
+
 if (leftTrigger)
-{
+{	
 	if (canChomp)
 	{
 		isChompingLeft=true;
@@ -35,9 +55,11 @@ if (leftTrigger)
 	}
 	leftTrigger = false;
 }
+
 #endregion
 
 #region -- right trigger
+
 if (rightTrigger)
 {
 	if (canChomp)
@@ -57,6 +79,7 @@ if (rightTrigger)
 	}
 	rightTrigger = false;
 }
+
 #endregion
 
 //

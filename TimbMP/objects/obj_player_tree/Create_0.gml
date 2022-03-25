@@ -28,6 +28,7 @@ treeLength = 10;
 //====================================
 
 #region -- init tree array
+
 for (i=0; i<treeLength; i++)
 {
 	treearr[i]=0;
@@ -57,7 +58,7 @@ for (i=0; i<treeLength; i++)
 }
 
 //init tree branches images
-for (i=0; i<10; i++)
+for (i=0; i<treeLength; i++)
 {
 	/*
 	switch (i)
@@ -78,10 +79,13 @@ for (i=0; i<10; i++)
 	
 	treebrarr[i]=2;
 }
+
 #endregion
 
+treeLength=0;
 
 #region -- init player vars
+
 isPlayerLive = true;		//trigger for changing sprite
 canChomp = true;			//trigger for action availability
 isChompingLeft = false;		//trigger for left movement
@@ -96,7 +100,10 @@ side = 1;
 leftTrigger = false;
 rightTrigger = false;
 
+playerReachedNest = false;
+
 playerLives = 3;
+
 #endregion
 
 //
