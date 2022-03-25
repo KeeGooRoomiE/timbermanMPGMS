@@ -56,6 +56,18 @@ player = instance_create_depth(playerXpos, y-6,depth-1,obj_player);
 
 leftTrigger = false;
 rightTrigger = false;
+
+player1Lives = 3;
+player2Lives = 3;
 #endregion
 
+#region -- init state vars
+
+isTie = false;
+isPlayer1Win = false;
+isPlayer2Win = false;
+
+
+
+#endregion
 //
