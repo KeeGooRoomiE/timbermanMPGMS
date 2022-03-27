@@ -8,8 +8,9 @@ arrL=0;
 
 treeCellImg = 0;
 treeBrImg = 0;
-treeCellSpr = spr_red_tree_cell;
-treeBrSpr = spr_red_tree_branch;
+sprite_index = global.treeOrigin;
+treeCellSpr = global.treeCell;
+treeBrSpr = global.treeBranch;
 
 xsc = 1.20;
 
@@ -92,7 +93,8 @@ isChompingLeft = false;		//trigger for left movement
 isChompingRight = false;	//trigger for right movement
 
 playerXpos=x-36 * xsc;		//player X position vlaue
-playerSpr = spr_player;		//player current sprite
+playerSpr = global.playerOneSprite;		//player current sprite
+playerGraveSpr = global.playerGrave;
 
 player = instance_create_depth(playerXpos, y-6,depth-1,obj_player);
 side = 1;
