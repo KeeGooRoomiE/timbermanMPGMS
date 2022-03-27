@@ -14,8 +14,10 @@
   ],
   "layers": [
     {"instances":[
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_init","path":"objects/obj_init/obj_init.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":0.0,"y":80.0,"resourceVersion":"1.0","name":"inst_282C3855","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_game_manager","path":"objects/obj_game_manager/obj_game_manager.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":0.0,"y":96.0,"resourceVersion":"1.0","name":"inst_1C87ED2C","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"obj_player_tree","path":"objects/obj_player_tree/obj_player_tree.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.20192313,"scaleY":1.45192313,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":180.961548,"y":304.634583,"resourceVersion":"1.0","name":"inst_31D9CFF6","tags":[],"resourceType":"GMRInstance",},
-        {"properties":[],"isDnd":false,"objectId":{"name":"obj_other_tree","path":"objects/obj_other_tree/obj_other_tree.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":0.781851,"scaleY":0.7818508,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":312.536,"y":272.0,"resourceVersion":"1.0","name":"inst_38A0E3BE","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"obj_other_tree1","path":"objects/obj_other_tree1/obj_other_tree1.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":0.781851,"scaleY":0.7818508,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":312.536,"y":272.0,"resourceVersion":"1.0","name":"inst_38A0E3BE","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":4,"gridY":4,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Instances","tags":[],"resourceType":"GMRInstanceLayer",},
     {"spriteId":{"name":"bkg02_0","path":"sprites/bkg02_0/bkg02_0.yy",},"colour":4294967295,"x":0,"y":288,"htiled":true,"vtiled":false,"hspeed":0.0,"vspeed":0.0,"stretch":false,"animationFPS":30.0,"animationSpeedType":0,"userdefinedAnimFPS":false,"visible":true,"depth":100,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"Hill","tags":[],"resourceType":"GMRBackgroundLayer",},
     {"spriteId":{"name":"bkg03_0","path":"sprites/bkg03_0/bkg03_0.yy",},"colour":4294967295,"x":0,"y":256,"htiled":true,"vtiled":false,"hspeed":0.0,"vspeed":0.0,"stretch":false,"animationFPS":30.0,"animationSpeedType":0,"userdefinedAnimFPS":false,"visible":true,"depth":200,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":32,"gridY":32,"layers":[],"hierarchyFrozen":false,"effectEnabled":true,"effectType":null,"properties":[],"resourceVersion":"1.0","name":"TopHill","tags":[],"resourceType":"GMRBackgroundLayer",},
@@ -31,6 +33,8 @@
   "instanceCreationOrder": [
     {"name":"inst_31D9CFF6","path":"rooms/rm03_game/rm03_game.yy",},
     {"name":"inst_38A0E3BE","path":"rooms/rm03_game/rm03_game.yy",},
+    {"name":"inst_282C3855","path":"rooms/rm03_game/rm03_game.yy",},
+    {"name":"inst_1C87ED2C","path":"rooms/rm03_game/rm03_game.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

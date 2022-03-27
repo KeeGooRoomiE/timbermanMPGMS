@@ -47,8 +47,26 @@ if (leftTrigger)
 		
 		if ( treearr[1] = 1 or treearr[0] = 1 )
 		{
-			isPlayerLive=false;
-			canChomp=false;
+			if (playerLives > 0)
+			{
+				playerLives -= 1;
+				
+				with (player)
+				{
+					event_user(0);
+				}
+			}
+			else
+			{
+				isPlayerLive=false;
+				canChomp=false;
+				
+				with (player)
+				{
+					event_user(0);
+				}
+			}
+			
 		}
 		
 		event_user(1);  //shift all cells in array
@@ -71,8 +89,26 @@ if (rightTrigger)
 		
 		if ( treearr[1] = 2 or treearr[0] = 2 )
 		{
-			isPlayerLive=false;
-			canChomp=false;
+			if (playerLives > 1)
+			{
+				playerLives -= 1;
+				
+				with (player)
+				{
+					event_user(0);
+				}
+			}
+			else
+			{
+				isPlayerLive = false;
+				canChomp = false;
+				playerLives -= 1;
+				
+				with (player)
+				{
+					event_user(0);
+				}
+			}
 		}
 		
 		event_user(1);  //shift all cells in array

@@ -5,7 +5,7 @@ var nextcell = choose(0,1,2);
 show_debug_message( "Next cell is" + string(nextcell) );
 
 //Update tree length
-treeLength+=100;//+;
+treeLength++;
 
 //random tree cell image
 treeCellImg = irandom_range(0,4);

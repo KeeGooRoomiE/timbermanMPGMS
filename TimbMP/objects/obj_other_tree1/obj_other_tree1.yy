@@ -37,7 +37,7 @@
     "path": "folders/Объекты.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_other_tree",
+  "name": "obj_other_tree1",
   "tags": [],
   "resourceType": "GMObject",
 }
