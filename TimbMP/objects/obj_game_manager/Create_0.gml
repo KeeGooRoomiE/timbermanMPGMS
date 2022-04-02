@@ -11,6 +11,9 @@ global.playerOneSprite = spr_player;
 global.playerTwoSprite = spr_player;
 global.playerGrave = spr_grave;
 
+global.pl1 = noone;
+global.pl2 = noone;
+
 leftTime = 180;
 alarm[0]=1;
 
@@ -26,4 +29,4 @@ bkgBKG = 0;
 
 isPlayerOneWins = false;
 isPlayerTwoWins = false;
-
+isPlayerReachedNest = false;

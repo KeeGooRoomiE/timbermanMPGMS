@@ -5,7 +5,7 @@
 var minutes = floor(leftTime/60);
 var seconds = leftTime % 60;
 
-var time = "0" + string(minutes) + ":" + string(seconds);
+var time = string(minutes) + ":" + string(seconds);
 
 var cw = camera_get_view_width(view_camera[0]);
 var ch = camera_get_view_height(view_camera[0]);
