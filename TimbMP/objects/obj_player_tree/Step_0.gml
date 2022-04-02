@@ -4,11 +4,11 @@
 
 if (isPlayerLive)
 {
-	playerSpr=spr_player;
+	playerSpr=global.playerOneSprite;
 }
 else
 {
-	playerSpr=spr_grave;
+	playerSpr=global.playerGrave;
 }
 
 player.sprite_index = playerSpr;

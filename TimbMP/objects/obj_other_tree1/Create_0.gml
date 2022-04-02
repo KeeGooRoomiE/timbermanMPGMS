@@ -57,7 +57,7 @@ isChompingLeft = false;		//trigger for left movement
 isChompingRight = false;	//trigger for right movement
 
 playerXpos = x-36;			//player X position vlaue
-playerSpr = spr_player;		//player current sprite
+playerSpr = global.playerTwoSprite;		//player current sprite
 
 player = instance_create_depth(playerXpos, y-6,depth-1,obj_player);
 

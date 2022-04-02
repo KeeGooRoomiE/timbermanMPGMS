@@ -3,7 +3,7 @@
 #region -- check player living
 if (isPlayerLive)
 {
-	playerSpr=spr_player;
+	playerSpr=global.playerTwoSprite;
 }
 else
 {

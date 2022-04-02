@@ -6,8 +6,23 @@ global.treeOrigin = spr_red_tree_origin;
 global.treeCell = spr_red_tree_cell;
 global.treeBranch = spr_red_tree_branch;
 
-global.playerOneSprite = spr_player;
-global.playerTwoSprite = spr_player;
+//player one skin
+switch (global.p1Skin)
+{
+	case 0: global.playerOneSprite = spr_forest_chomper; break;
+	case 1: global.playerOneSprite = spr_santa_chopper; break;
+	case 2: global.playerOneSprite = spr_red_chopper; break;
+	case 3: global.playerOneSprite = spr_green_chopper; break;
+}
+//player one skin
+switch (global.p2Skin)
+{
+	case 0: global.playerTwoSprite = spr_forest_chomper; break;
+	case 1: global.playerTwoSprite = spr_santa_chopper; break;
+	case 2: global.playerTwoSprite = spr_red_chopper; break;
+	case 3: global.playerTwoSprite = spr_green_chopper; break;
+}
+
 global.playerGrave = spr_grave;
 #endregion
 
