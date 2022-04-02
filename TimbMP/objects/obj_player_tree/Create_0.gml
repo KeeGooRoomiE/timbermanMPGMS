@@ -17,6 +17,8 @@ xsc = 1.20;
 playerScore = 0;
 treeLength = 10;
 
+global.pl1 = id;
+
 //====================================
 //TREE CELLS
 //
@@ -27,6 +29,10 @@ treeLength = 10;
 //4 - empty (all after nest)
 //
 //====================================
+
+#region -- Set seed
+random_get_seed(global.seed);
+#endregion
 
 #region -- init tree array
 

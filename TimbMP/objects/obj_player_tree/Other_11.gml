@@ -7,6 +7,9 @@ show_debug_message( "Next cell is" + string(nextcell) );
 //Update tree length
 treeLength++;
 
+//Add player score
+playerScore++;
+
 //random tree cell image
 treeCellImg = irandom_range(0,4);
 

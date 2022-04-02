@@ -14,6 +14,10 @@ treeBrSpr = spr_red_tree_branch;
 xsc = 0.8;
 ysc = 0.8;
 
+global.pl2 = id;
+
+playerReachedNest = false;
+
 //====================================
 //TREE CELLS
 //

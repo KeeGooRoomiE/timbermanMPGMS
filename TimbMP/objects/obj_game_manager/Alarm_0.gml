@@ -4,5 +4,9 @@
 if (leftTime > 0)
 {
 	alarm[0] = 1 * room_speed;
-	leftTime -= 1;
+	
+	if ( playersActive )
+	{
+		leftTime -= 1;
+	}
 }

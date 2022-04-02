@@ -1,21 +1,23 @@
-/// @description Insert description here
-// You can write your code in this editor
+/// @description Check statements
 
-//check win\false statements
-
-if ( global.pl1 != noone ) and ( global.pl2 != noone )
+#region -- Win Statements
+if ( global.pl1 != noone && global.pl2 != noone )
 {
 	
 	//player one dead
 	if ( !global.pl1.isPlayerLive )
 	{
 		isPlayerTwoWins = true;
+		playersActive = false;
+		show_debug_message("PLAYER ONE DEAD, PLAYER TWO WINS");
 	}
 	
 	//player two dead
 	if ( !global.pl2.isPlayerLive )
 	{
 		isPlayerOneWins = true;
+		playersActive = false;
+		show_debug_message("PLAYER TWO DEAD, PLAYER ONE WINS");
 	}
 	
 	//player one reached nest
@@ -23,6 +25,8 @@ if ( global.pl1 != noone ) and ( global.pl2 != noone )
 	{
 		isPlayerOneWins = true;
 		isPlayerReachedNest = true;
+		playersActive = false;
+		show_debug_message("PLAYER ONE NESTED, PLAYER ONE WINS");
 	}
 	
 	//player two reached nest
@@ -30,5 +34,42 @@ if ( global.pl1 != noone ) and ( global.pl2 != noone )
 	{
 		isPlayerTwoWins = true;
 		isPlayerReachedNest = true;
+		playersActive = false;
+		show_debug_message("PLAYER TWO NESTED, PLAYER TWO WINS");
+	}
+	
+	//check time left to calculate score
+	if (leftTime < 1)
+	{
+		show_debug_message("!!!TIME LEFT!!!");
+		if ( global.pl1.playerScore > global.pl2.playerScore )
+		{
+			isPlayerOneWins = true;
+			playersActive = false;
+			show_debug_message("PLAYER ONE REACHED BIGGER SCORE, PLAYER ONE WINS");
+		}
+		
+		if ( global.pl1.playerScore < global.pl2.playerScore )
+		{
+			isPlayerTwoWins = true;
+			playersActive = false;
+			show_debug_message("PLAYER TWO REACHED BIGGER SCORE, PLAYER TWO WINS");
+		}
+		
+		if ( global.pl1.playerScore = global.pl2.playerScore )
+		{
+			isPlayerOneWins = true;
+			playersActive = false;
+			show_debug_message("PLAYERS HAVE SAME SCORE, PLAYER ONE WINS AS HOST");
+		}
 	}
 }
+#endregion
+
+#region -- Players activity
+if ( global.pl1 != noone ) and ( global.pl2 != noone )
+{
+	global.pl1.canChomp = playersActive;
+	global.pl2.canChomp = playersActive;
+}
+#endregion
