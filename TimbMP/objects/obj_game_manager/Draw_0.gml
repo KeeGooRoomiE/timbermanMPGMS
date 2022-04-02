@@ -17,5 +17,6 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_middle);
 
 //draw_text_ext_transformed_color(cx+cw/2,cy+24,time,24,128,1.1,1.1,0,c_black,c_black,c_black,c_black,1);
-draw_text_ext_transformed_color(cx+cw/2,cy+24,time,24,128,1,1,0,c_white,c_white,c_white,c_white,1);
+draw_sprite(spr_panel, 0, cx+cw/2, cy+18);
+draw_text_ext_transformed_color(cx+cw/2, cy+24, time, 24, 128, 1, 1, 0, c_white, c_white, c_white, c_white, 1);
 
