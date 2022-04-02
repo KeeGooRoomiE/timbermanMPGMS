@@ -27,6 +27,7 @@
     {"id":{"name":"obj_p1skin2","path":"objects/obj_p1skin2/obj_p1skin2.yy",},"order":2,},
     {"id":{"name":"bkg07_0","path":"sprites/bkg07_0/bkg07_0.yy",},"order":17,},
     {"id":{"name":"spr_santa_chopper","path":"sprites/spr_santa_chopper/spr_santa_chopper.yy",},"order":2,},
+    {"id":{"name":"obj_other_tree","path":"objects/obj_other_tree/obj_other_tree.yy",},"order":9,},
     {"id":{"name":"obj_tree_particle","path":"objects/obj_tree_particle/obj_tree_particle.yy",},"order":1,},
     {"id":{"name":"spr_panel","path":"sprites/spr_panel/spr_panel.yy",},"order":28,},
     {"id":{"name":"bkg04_0","path":"sprites/bkg04_0/bkg04_0.yy",},"order":4,},
