@@ -9,6 +9,7 @@ treeLength++;
 
 //Add player score
 playerScore++;
+global.curPlayerScore++;
 
 //random tree cell image
 treeCellImg = irandom_range(0,4);
