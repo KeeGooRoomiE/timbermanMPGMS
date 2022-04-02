@@ -61,4 +61,11 @@ if ( isPlayerReachedNest or isPlayerOneWins or isPlayerTwoWins or isTie )
 			draw_text(cw+cw/2, cy+136, string(global.curPlayerScore));
 		}
 	}
+	
+	if (isTie)
+	{
+			draw_text_ext_transformed(cx+cw/2, cy+96,"TIE",14,64,1.2,1.2,0);
+			draw_text(cx+cw/2, cy+128,"Score");
+			draw_text(cw+cw/2, cy+136, string(global.curPlayerScore));
+	}
 }
