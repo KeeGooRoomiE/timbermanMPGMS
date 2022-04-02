@@ -4,7 +4,9 @@
 //В этом обьекте передавай сиды, имена игроков и все нужное
 
 var battle_id = 1214498;	//only number!
-global.seed = random_set_seed(battle_id);
+global.seed = (battle_id*256)*1.3;
+
+random_set_seed(global.seed);
 
 global.playerOneName = "PLAYER1";
 global.playerTwoName = "PLAYER2";

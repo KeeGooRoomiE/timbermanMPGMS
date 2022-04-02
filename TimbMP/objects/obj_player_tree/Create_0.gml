@@ -30,9 +30,6 @@ global.pl1 = id;
 //
 //====================================
 
-#region -- Set seed
-random_get_seed(global.seed);
-#endregion
 
 #region -- init tree array
 

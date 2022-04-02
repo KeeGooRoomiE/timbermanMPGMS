@@ -3,10 +3,6 @@
 var xx=x-1;
 var yy=y-12;
 
-#region -- Set seed
-random_get_seed(global.seed);
-#endregion
-
 //create object
 var p=instance_create_depth(xx,yy,depth-1,obj_tree_particle);
 

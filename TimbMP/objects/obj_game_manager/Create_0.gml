@@ -1,9 +1,5 @@
 /// @description Scene setups
 
-#region -- Set seed
-random_get_seed(global.seed);
-#endregion
-
 
 #region -- Set skin species
 global.treeOrigin = spr_red_tree_origin;
