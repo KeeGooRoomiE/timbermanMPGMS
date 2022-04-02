@@ -58,9 +58,9 @@ if ( global.pl1 != noone && global.pl2 != noone )
 		
 		if ( global.pl1.playerScore = global.pl2.playerScore )
 		{
-			isPlayerOneWins = true;
+			isTie = true;
 			playersActive = false;
-			show_debug_message("PLAYERS HAVE SAME SCORE, PLAYER ONE WINS AS HOST");
+			show_debug_message("PLAYERS HAVE SAME SCORE,TIE");
 		}
 	}
 }

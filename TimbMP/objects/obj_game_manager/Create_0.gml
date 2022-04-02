@@ -34,6 +34,7 @@ depth = -8;
 
 isPlayerOneWins = false;
 isPlayerTwoWins = false;
+isTie = false;
 isPlayerReachedNest = false;
 
 playersActive = true;

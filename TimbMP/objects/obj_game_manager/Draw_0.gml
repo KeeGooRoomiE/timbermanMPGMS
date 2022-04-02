@@ -25,4 +25,4 @@ draw_sprite(spr_panel, 0, cx+cw/2, cy+18);
 draw_text_ext_transformed_color(cx+cw/2, cy+24, time, 24, 128, 1, 1, 0, c_white, c_white, c_white, c_white, 1);
 #endregion
 
-draw_sprite(spr_plank, 0, cx+cw/2, cy+80);
+//draw_sprite(spr_plank, 0, cx+cw/2, cy+80);
