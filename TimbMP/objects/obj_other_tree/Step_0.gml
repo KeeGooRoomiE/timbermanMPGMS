@@ -9,6 +9,7 @@ if (isPlayerLive)
 else
 {
 	playerSpr=global.playerGrave;
+	player.image_xscale = 1;
 }
 
 player.sprite_index = playerSpr;
