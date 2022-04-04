@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "spr_red_tree_cell",
-    "path": "sprites/spr_red_tree_cell/spr_red_tree_cell.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,

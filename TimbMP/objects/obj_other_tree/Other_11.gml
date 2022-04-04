@@ -25,7 +25,7 @@ switch (nextcell)
 }
 
 //Check for tree ending
-if (treeLength == 500)
+if (treeLength == global.playersMaxScore)
 {
 	nextcell = 3;
 	show_debug_message( "Next cell is nest" );
@@ -33,7 +33,7 @@ if (treeLength == 500)
 	treeBrImg = 5;
 }
 
-if (treeLength > 500)
+if (treeLength > global.playersMaxScore)
 {
 	nextcell = 4;
 	show_debug_message( "Next cell is empty" );
@@ -53,7 +53,7 @@ for (i = 0; i < arrL; i++)
 		//if its a most upper part
 		//change cell to suggested one
 		
-		if (treeLength < 500)
+		if (treeLength < global.playersMaxScore)
 		{
 			if (treearr[i-1] != 0)
 			{

@@ -69,8 +69,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Спрайты",
-    "path": "folders/Спрайты.yy",
+    "name": "UI",
+    "path": "folders/Спрайты/UI.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_heart",

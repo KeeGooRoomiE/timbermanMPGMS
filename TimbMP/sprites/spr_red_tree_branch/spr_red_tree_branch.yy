@@ -93,8 +93,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Спрайты",
-    "path": "folders/Спрайты.yy",
+    "name": "Tree0",
+    "path": "folders/Спрайты/Tree0.yy",
   },
   "resourceVersion": "1.0",
   "name": "spr_red_tree_branch",
