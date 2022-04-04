@@ -10,18 +10,19 @@ var p=instance_create_depth(xx,yy,depth-1,obj_tree_particle);
 p.sprite_index=treeCellSpr;
 p.image_speed=0;
 p.image_index=irandom(p.image_number-1);
-
-//set direction damping
-var ddamp=irandom_range(-5,5);
+p.xsc = xsc;
+p.b=treebrarr[0];
 
 //set movement direction
 if (isChompingLeft)
 {
-	p.direction=5;
+	p.direction=5+irandom(5);
+	p.sd=5;
 }
 if (isChompingRight)
 {
-	p.direction=175;
+	p.direction=175-irandom(5);
+	p.sd=185;
 }
 
 //set proper image
