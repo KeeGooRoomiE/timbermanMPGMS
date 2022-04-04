@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "spr_red_tree_origin",
-    "path": "sprites/spr_red_tree_origin/spr_red_tree_origin.yy",
+    "name": "spr_night_tree_origin",
+    "path": "sprites/spr_night_tree_origin/spr_night_tree_origin.yy",
   },
   "solid": true,
   "visible": true,

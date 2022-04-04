@@ -69,8 +69,8 @@
   ],
   "nineSlice": null,
   "parent": {
-    "name": "Спрайты",
-    "path": "folders/Спрайты.yy",
+    "name": "BKGScene2",
+    "path": "folders/Спрайты/BKGScene2.yy",
   },
   "resourceVersion": "1.0",
   "name": "bkg04_2",
