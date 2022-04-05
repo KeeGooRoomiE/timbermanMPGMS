@@ -25,6 +25,7 @@
     {"id":{"name":"bkg02_1","path":"sprites/bkg02_1/bkg02_1.yy",},"order":0,},
     {"id":{"name":"obj_scskin0","path":"objects/obj_scskin0/obj_scskin0.yy",},"order":8,},
     {"id":{"name":"rm02_start","path":"rooms/rm02_start/rm02_start.yy",},"order":1,},
+    {"id":{"name":"obj_player_particle","path":"objects/obj_player_particle/obj_player_particle.yy",},"order":10,},
     {"id":{"name":"rm01_init","path":"rooms/rm01_init/rm01_init.yy",},"order":2,},
     {"id":{"name":"bkg04_1","path":"sprites/bkg04_1/bkg04_1.yy",},"order":7,},
     {"id":{"name":"bkg03_1","path":"sprites/bkg03_1/bkg03_1.yy",},"order":1,},
