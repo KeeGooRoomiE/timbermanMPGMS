@@ -52,6 +52,7 @@ if (leftTrigger)
 			if (playerLives > 0)
 			{
 				playerLives -= 1;
+				event_user(3);
 				
 				with (player)
 				{
@@ -94,10 +95,12 @@ if (rightTrigger)
 			if (playerLives > 1)
 			{
 				playerLives -= 1;
+				event_user(3);
 				
 				with (player)
 				{
 					event_user(0);
+					
 				}
 			}
 			else
