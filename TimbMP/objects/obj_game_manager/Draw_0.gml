@@ -1,11 +1,11 @@
-/// @description Insert description here
+/// @description Draw endgame screen & counter
 // You can write your code in this editor
 
 #region -- Time setups
 var minutes = floor(leftTime/60);
 var seconds = leftTime % 60;
 
-var time = string(minutes) + ":" + string(seconds);
+var time = string(minutes) + ":" + string_replace_all(string_format(seconds, 2, 0), " ", "0");
 #endregion
 
 #region -- Camera setups
@@ -33,14 +33,14 @@ if ( isPlayerReachedNest or isPlayerOneWins or isPlayerTwoWins or isTie )
 	{
 		if (isPlayerOneWins)
 		{
-			draw_text_ext_transformed(cx+cw/2, cy+96,"PLAYER ONE WINS",14,64,1.2,1.2,0);
+			draw_text_ext_transformed(cx+cw/2, cy+96,string(global.playerOneName)+" WINS",14,64,1.2,1.2,0);
 			draw_text(cx+cw/2, cy+128,"Score");
 			draw_text(cw+cw/2, cy+136, string(global.curPlayerScore));
 		}
 		
 		if (isPlayerTwoWins)
 		{
-			draw_text_ext_transformed(cx+cw/2, cy+96,"PLAYER TWO WINS",14,64,1.2,1.2,0);
+			draw_text_ext_transformed(cx+cw/2, cy+96,string(global.playerTwoName)+" WINS",14,64,1.2,1.2,0);
 			draw_text(cx+cw/2, cy+128,"Score");
 			draw_text(cw+cw/2, cy+136, string(global.curPlayerScore));
 		}
@@ -49,14 +49,14 @@ if ( isPlayerReachedNest or isPlayerOneWins or isPlayerTwoWins or isTie )
 	{
 		if (isPlayerOneWins)
 		{
-			draw_text_ext_transformed(cx+cw/2, cy+96,"PLAYER ONE WINS",14,64,1.2,1.2,0);
+			draw_text_ext_transformed(cx+cw/2, cy+96,string(global.playerOneName)+" WINS",14,64,1.2,1.2,0);
 			draw_text(cx+cw/2, cy+128,"Score");
 			draw_text(cw+cw/2, cy+136, string(global.curPlayerScore));
 		}
 		
 		if (isPlayerTwoWins)
 		{
-			draw_text_ext_transformed(cx+cw/2, cy+96,"PLAYER TWO WINS",14,64,1.2,1.2,0);
+			draw_text_ext_transformed(cx+cw/2, cy+96,string(global.playerTwoName)+" WINS",14,64,1.2,1.2,0);
 			draw_text(cx+cw/2, cy+128,"Score");
 			draw_text(cw+cw/2, cy+136, string(global.curPlayerScore));
 		}

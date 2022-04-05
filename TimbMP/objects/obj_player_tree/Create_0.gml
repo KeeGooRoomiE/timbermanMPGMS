@@ -86,7 +86,7 @@ for (i=0; i<treeLength; i++)
 
 #endregion
 
-treeLength=0;
+//treeLength=0;
 
 #region -- init player vars
 
