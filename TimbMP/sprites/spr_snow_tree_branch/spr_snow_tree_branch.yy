@@ -83,7 +83,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_snow_tree_branch","path":"sprites/spr_snow_tree_branch/spr_snow_tree_branch.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_snow_tree_branch",
     "tags": [],
     "resourceType": "GMSequence",

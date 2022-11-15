@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_red_grave","path":"sprites/spr_red_grave/spr_red_grave.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_red_grave",
     "tags": [],
     "resourceType": "GMSequence",

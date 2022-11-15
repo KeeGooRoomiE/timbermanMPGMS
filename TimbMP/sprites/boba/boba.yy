@@ -83,7 +83,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"boba","path":"sprites/boba/boba.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "boba",
     "tags": [],
     "resourceType": "GMSequence",

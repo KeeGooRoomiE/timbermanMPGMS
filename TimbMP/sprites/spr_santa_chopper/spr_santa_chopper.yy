@@ -71,7 +71,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_santa_chopper","path":"sprites/spr_santa_chopper/spr_santa_chopper.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_santa_chopper",
     "tags": [],
     "resourceType": "GMSequence",

@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_snow_tree_origin","path":"sprites/spr_snow_tree_origin/spr_snow_tree_origin.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_snow_tree_origin",
     "tags": [],
     "resourceType": "GMSequence",

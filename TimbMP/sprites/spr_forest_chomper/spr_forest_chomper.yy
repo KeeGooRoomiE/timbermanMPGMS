@@ -71,7 +71,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_forest_chomper","path":"sprites/spr_forest_chomper/spr_forest_chomper.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_forest_chomper",
     "tags": [],
     "resourceType": "GMSequence",

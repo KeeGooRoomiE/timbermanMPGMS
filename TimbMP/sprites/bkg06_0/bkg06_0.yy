@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"bkg06_0","path":"sprites/bkg06_0/bkg06_0.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "bkg06_0",
     "tags": [],
     "resourceType": "GMSequence",

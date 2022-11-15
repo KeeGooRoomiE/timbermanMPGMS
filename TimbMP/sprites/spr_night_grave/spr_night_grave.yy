@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_night_grave","path":"sprites/spr_night_grave/spr_night_grave.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_night_grave",
     "tags": [],
     "resourceType": "GMSequence",

@@ -71,7 +71,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_red_chopper","path":"sprites/spr_red_chopper/spr_red_chopper.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_red_chopper",
     "tags": [],
     "resourceType": "GMSequence",

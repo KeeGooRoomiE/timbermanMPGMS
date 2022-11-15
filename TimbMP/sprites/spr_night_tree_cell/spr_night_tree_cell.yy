@@ -79,7 +79,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_night_tree_cell","path":"sprites/spr_night_tree_cell/spr_night_tree_cell.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_night_tree_cell",
     "tags": [],
     "resourceType": "GMSequence",

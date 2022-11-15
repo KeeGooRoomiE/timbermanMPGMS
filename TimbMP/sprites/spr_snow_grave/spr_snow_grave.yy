@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_snow_grave","path":"sprites/spr_snow_grave/spr_snow_grave.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_snow_grave",
     "tags": [],
     "resourceType": "GMSequence",

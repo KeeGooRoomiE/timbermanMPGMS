@@ -59,7 +59,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"spr_plank","path":"sprites/spr_plank/spr_plank.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "spr_plank",
     "tags": [],
     "resourceType": "GMSequence",
