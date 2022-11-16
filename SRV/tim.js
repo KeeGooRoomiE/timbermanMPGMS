@@ -204,12 +204,17 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 			if (rooms.length>0)
 			{
 				console.log(`rooms.length>0`);
+				
+				var rms = rooms[data.room_id]; // console.log(rms); // GOOD
+				var rmsdat = rms.rm_id
+				console.log(rmsdat);
+				/*
 			  for (i = 0; i < rooms.length; i++)
 			  {
 				  if (rooms[[i].rm_id] == data.room_id)
 				  {
-					  var isfdoor1 = false;
-					  var isfdoor2 = false;
+					  //var isfdoor1 = false;
+					  //var isfdoor2 = false;
 					  if (rooms[i].user1 == null)
 					  {
 						  //isfdoor1 = true;
@@ -258,6 +263,7 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 					break;
 					}
 			  }
+			  */
 			}else{
 				console.log(`2*N*овая [${data.room_id}] КОМНАТА СОЗДАНА!`);
 				//создаем комнату + пушаем игрока
