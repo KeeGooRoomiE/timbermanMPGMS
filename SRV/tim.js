@@ -204,14 +204,32 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 			if (rooms.length>0)
 			{
 				console.log(`rooms.length>0`);
-				
-				var rms = rooms[data.room_id]; // console.log(rms); // GOOD
+				/*
+				var rms = rooms[data.room_id]; // console.log(rms); // GOODok
 				var rmsdat = rms.rm_id
 				console.log(rmsdat);
 				/*
+				
+					var rm = rooms[1];
+					//var rmid = rooms[[i].rm_id]
+					
+					console.log(rm);
+				
+				*/
+				
+				  console.log('111')
+					console.log(rooms.length)
+					
+					console.log(rooms)
 			  for (i = 0; i < rooms.length; i++)
 			  {
-				  if (rooms[[i].rm_id] == data.room_id)
+				  console.log('aaaaaa')
+					console.log(rooms[i])
+					if (rooms[i] == undefined)
+					{
+						continue
+					}
+				  if (rooms[i].rm_id == data.room_id)
 				  {
 					  //var isfdoor1 = false;
 					  //var isfdoor2 = false;
@@ -219,7 +237,7 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 					  {
 						  //isfdoor1 = true;
 						
-						rooms[[i].user1].push( // дополняем игроку-победителю выйгрышный тип данных в массив (A)
+						rooms[i].user1.push( // дополняем игроку-победителю выйгрышный тип данных в массив (A)
 							{
 								pl_id: data.user_id,
 								pl_hp: 3,
@@ -233,7 +251,7 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 					  {
 						  //isfdoor2 = true;
 						  //rooms[i].user1.push(player);
-						  rooms[[i].user2].push( // дополняем игроку-победителю выйгрышный тип данных в массив (A)
+						  rooms[i].user2.push( // дополняем игроку-победителю выйгрышный тип данных в массив (A)
 							{
 								pl_id: data.user_id,
 								pl_hp: 3,
@@ -263,7 +281,7 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 					break;
 					}
 			  }
-			  */
+			  
 			}else{
 				console.log(`2*N*овая [${data.room_id}] КОМНАТА СОЗДАНА!`);
 				//создаем комнату + пушаем игрока
@@ -271,7 +289,7 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 				rooms[roomid] = [];
 				rooms[roomid].push( 
 					{
-						id: data.room_id,
+						rm_id: data.room_id,
 						user1: {"pl_id":data.user_id,"pl_hp":3,"pl_score":0},
 						user2: null,
 					},
