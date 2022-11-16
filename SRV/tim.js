@@ -9,6 +9,9 @@ server.listen(port, (err) => {
 });
 
 var players = []; //Массив всех игроков
+var rooms = []; //Массив всех игровых комнат
+var roomid = 0; // уникальный идентификатор для каждой комнаты
+
 
 class Player {
     constructor(data) {
@@ -64,112 +67,218 @@ class plives {
 io.on('connection', (client) => {
     var player;
 
-	function kickPl(player) {
-	console.log(`**Проверка игрока [${player.user_id}] на активность`);
+function kickPl(player) {
+console.log(`Проверка игрока [${player.user_id}] на валидность`);
+		
 	var isfoundst = false;
-	for (i = 0; i < players.length; i++)
-	{
-		if (players[i].user_id == player.user_id)
-		{
-			if (players[i].online == 0)
+
+	  for (i = 0; i < players.length; i++)
+	  {
+		  if (players[i].user_id == player.user_id && players[i].room_id == player.room_id)
+		  {
+		  isfoundst = true;
+		  break;
+		  }
+	  }
+	  if (isfoundst)
 			{
-				isfoundst = true;
-				console.log(`*--*Игрок ${player.user_id} офлайн!`);
-				break;
+			console.log(`Игрок ${player.user_id} найден на сервере СУЩЕСТВУЕТ!++`);
+			// Делеес
+			//SQL
+			// Дел
+			
+			//API
+			//api
+			//API
+			
+			//удаляем игрока из списка	
+			console.log(`Игрок ${players[i].user_id} Кикнут общим таймингом`);
+			//client.broadcast.emit('destroy_player', players[i].toString());
+			players.splice(players.indexOf(players[i]), 1);
 			}
-		}
-	}
-		if (isfoundst)
-			{
-				console.log(`*++*Игрок ${player.user_id} найден на сервере УДАЛЯЮ ЖИВОЙ!`);
-				//client.broadcast.emit('destroy_player', players[i].toString());	
-				players.splice(players.indexOf(players[i]), 1);
-			}
-	
-	}
-	
+}
+
+
     client.on('create_player', (data) => {
         data = JSON.parse(data);
-
-	if (players.length > 0)
-	{
-		var isfound = false;
-		for (i = 0; i < players.length; i++)
+	if (data.user_id != null)
+	{	
+		if (players.length > 0)
 		{
-		  if (players[i].user_id == data.user_id)
-		  {
-			isfound = true;
-			break;
-		  }
-		}
-		if (!isfound)
+			var isfound = false;
+			for (i = 0; i < players.length; i++)
 			{
-			console.log(`--Игрок ${data.user_id} НЕ найден создаю нового`);
-				player = new Player({
-				socket: client,
-				online: 1,
-				user_id: data.user_id,
-				room_id: data.room_id
-			});
- 
-        players.push(player);
-		
-		/*
-        client.emit('create_player', player.toString());
-        client.broadcast.emit('create_player_other', player.toString());
-        for (let i in players) {
-            if (players[i].user_id !== data.user_id) {
-					client.emit('create_player_other', players[i].toString());
-				}
+			  if (players[i].user_id == data.user_id)
+			  {
+				isfound = true;
+				break;
+			  }
 			}
-		*/
-			}else{
-				console.log(`++Игрок ${data.user_id} найден возвращаю.`);
-				///////
+			if (!isfound)
+				{
+				console.log(`--Игрок ${data.user_id} НЕ найден создаю нового`);
+					player = new Player({
+					socket: client,
+					online: 1,
+					user_id: data.user_id,
+					room_id: data.room_id
+				});
+	 
+			
+			/*
+			if (isfdoor1)
+			{
+				rooms.push(player);
+			}else if (isfdoor2)
+			{
+				rooms.push(player);
+			}
+			*/
+			
+			/*
+			client.emit('create_player', player.toString());
+			client.broadcast.emit('create_player_other', player.toString());
+			for (let i in players) {
+				if (players[i].user_id !== data.user_id) {
+						client.emit('create_player_other', players[i].toString());
+					}
+				}
+			*/
+				}else{
+					console.log(`++Игрок ${data.user_id} найден возвращаю.`);
+					///////
+					player = new Player({
+						socket: client,
+						online: 1,
+						user_id: players[i].user_id,
+						room_id: players[i].room_id
+					});
+					players[i].online=1
+					
+					/*
+					client.emit('create_player', player.toString());
+					for (let i in players) {
+					if (players[i].user_id !== data.user_id) {
+							client.emit('create_player_other', players[i].toString());
+							
+							
+						}
+					}
+					*/
+				
+				}
+		}else{
+				console.log(`--Игроков 0 создаю ${data.user_id}`);
 				player = new Player({
 					socket: client,
 					online: 1,
-					user_id: players[i].user_id,
-					room_id: players[i].room_id
-				});
-				players[i].online=1
-				
-				/*
-				client.emit('create_player', player.toString());
-				for (let i in players) {
+					user_id: data.user_id,
+					room_id: data.room_id
+			});
+			
+			players.push(player);
+			/*
+			client.emit('create_player', player.toString());
+			client.broadcast.emit('create_player_other', player.toString());
+			for (let i in players) {
 				if (players[i].user_id !== data.user_id) {
 						client.emit('create_player_other', players[i].toString());
-						
-						
 					}
 				}
-				*/
-			
+			*/
+		}
+			/* //ПРИМЕР СТРУКТУРЫ МАССИВА КОМНАТ
+			const rooms = [
+			{ 
+				"rm_id":0, //0 - room_id
+				"user1": null,
+				"user2": {"pl_id":2,"pl_hp":3,"pl_score":0}
+			},
+			{
+				"rm_id":1, //1 - room_id
+				"user1": {"pl_id":3,"pl_hp":2,"pl_score":4},
+				"user2": {"pl_id":4,"pl_hp":2,"pl_score":41}
+			}];
+			*/
+
+			if (rooms.length>0)
+			{
+				console.log(`rooms.length>0`);
+			  for (i = 0; i < rooms.length; i++)
+			  {
+				  if (rooms[[i].rm_id] == data.room_id)
+				  {
+					  var isfdoor1 = false;
+					  var isfdoor2 = false;
+					  if (rooms[i].user1 == null)
+					  {
+						  //isfdoor1 = true;
+						
+						rooms[[i].user1].push( // дополняем игроку-победителю выйгрышный тип данных в массив (A)
+							{
+								pl_id: data.user_id,
+								pl_hp: 3,
+								pl_score: 0,
+							},
+						);
+						
+						  console.log(`+1++ Вы игрокомID [${data.user_id}] заняли комнату [${data.room_id}]`);
+						  break;
+					  }else if (rooms[i].user2 == null)
+					  {
+						  //isfdoor2 = true;
+						  //rooms[i].user1.push(player);
+						  rooms[[i].user2].push( // дополняем игроку-победителю выйгрышный тип данных в массив (A)
+							{
+								pl_id: data.user_id,
+								pl_hp: 3,
+								pl_score: 0,
+							},
+						);
+						  console.log(`+2++ Вы игрокомID [${data.user_id}] заняли комнату [${data.room_id}]`);
+						  break;
+					  }else
+					  {
+						  console.log(`*!* КОМНАТА [${data.room_id}] ЗАНЯТА! (как ты сюда попал дружище?) `);
+						  break;
+					  }
+				  }else{
+						console.log(`1*N*овая [${data.room_id}] КОМНАТА СОЗДАНА!`);
+						//создаем комнату + пушаем игрока
+						roomid++;
+						rooms[roomid] = [];
+						rooms[roomid].push( 
+							{
+								rm_id: data.room_id,
+								user1: {"pl_id":data.user_id,"pl_hp":3,"pl_score":0},
+								user2: null,
+							},
+						);
+					console.log(rooms[roomid]);
+					break;
+					}
+			  }
+			}else{
+				console.log(`2*N*овая [${data.room_id}] КОМНАТА СОЗДАНА!`);
+				//создаем комнату + пушаем игрока
+				roomid++;
+				rooms[roomid] = [];
+				rooms[roomid].push( 
+					{
+						id: data.room_id,
+						user1: {"pl_id":data.user_id,"pl_hp":3,"pl_score":0},
+						user2: null,
+					},
+				);
+						console.log(rooms[roomid]);
 			}
-    }else{
-			console.log(`--Игроков 0 создаю ${data.user_id}`);
-		    player = new Player({
-				socket: client,
-				online: 1,
-				user_id: data.user_id,
-				room_id: data.room_id
-        });
-		
-        players.push(player);
-		/*
-        client.emit('create_player', player.toString());
-        client.broadcast.emit('create_player_other', player.toString());
-        for (let i in players) {
-            if (players[i].user_id !== data.user_id) {
-					client.emit('create_player_other', players[i].toString());
-				}
-			}
-		*/
 	}
     });
 
     client.on('disconnect', () => {
-	player.online=0;
-	setTimeout(kickPl, 15000,player);
+		if (player != null)
+		{
+			player.online=0;
+		}
     });
 });
