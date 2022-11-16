@@ -10,7 +10,6 @@ server.listen(port, (err) => {
 
 var players = []; //Массив всех игроков
 var rooms = []; //Массив всех игровых комнат
-var roomid = 0; // уникальный идентификатор для каждой комнаты
 
 
 class Player {
@@ -167,6 +166,7 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 					*/
 				
 				}
+				
 		}else{
 				console.log(`--Игроков 0 создаю ${data.user_id}`);
 				player = new Player({
@@ -186,22 +186,57 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 					}
 				}
 			*/
-		}
-			/* //ПРИМЕР СТРУКТУРЫ МАССИВА КОМНАТ
-			const rooms = [
-			{ 
-				"rm_id":0, //0 - room_id
-				"user1": null,
-				"user2": {"pl_id":2,"pl_hp":3,"pl_score":0}
-			},
-			{
-				"rm_id":1, //1 - room_id
-				"user1": {"pl_id":3,"pl_hp":2,"pl_score":4},
-				"user2": {"pl_id":4,"pl_hp":2,"pl_score":41}
-			}];
-			*/
 
-			if (rooms.length>0)
+		}
+
+		if (rooms.length==0)
+		{
+				console.log(`2*N*овая [${data.room_id}] КОМНАТА СОЗДАНА!`);
+				//создаем комнату + пушаем игрока
+				var roomid=0;
+				rooms.push( 
+					{
+						rm_id: data.room_id,
+						user1: {"pl_id":data.user_id,"pl_hp":3,"pl_score":0},
+						user2: null,
+					},
+				);
+				console.log(rooms);
+		}else{
+			console.log(rooms);
+			for (i = 0; i < rooms.length; i++)
+			{
+				console.log(rooms[i].rm_id, data.room_id);
+				if (rooms[i].rm_id == data.room_id)
+				{
+					console.log(`ДОБАВЛЯЕМ 2!`);
+					rooms[i].user2 = 
+						{
+							pl_id: data.user_id,
+							pl_hp: 3,
+							pl_score: 0,
+						};
+					
+					break;
+				}
+			}console.log(rooms);
+		}
+
+	}
+    });
+
+	
+
+    client.on('disconnect', () => {
+		if (player != null)
+		{
+			player.online=0;
+		}
+    });
+});
+
+/*
+if (rooms.length>0)
 			{
 				console.log(`rooms.length>0`);
 				/*
@@ -215,7 +250,7 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 					
 					console.log(rm);
 				
-				*/
+				
 				
 				  console.log('111')
 					console.log(rooms.length)
@@ -296,13 +331,4 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 				);
 						console.log(rooms[roomid]);
 			}
-	}
-    });
-
-    client.on('disconnect', () => {
-		if (player != null)
-		{
-			player.online=0;
-		}
-    });
-});
+			*/
