@@ -102,24 +102,29 @@ function re_find_rm(player) {
 	var find_rm = false;
 	for (i = 0; i < rooms.length; i++)
 			{
-				console.log(`${rooms[i].rm_id} =?= ${player.room_id}`);
+				//console.log(`${rooms[i].rm_id} =?= ${player.room_id}`);
 				if (rooms[i].rm_id == player.room_id)
 				{
 					find_rm = true;
-					console.log(`** НАШЛИ - ДОБАВЛЯЕМ 2 игрока: ${player.user_id} в комнату:   ${player.room_id}!`);
+					console.log(`** НАШЛИ - ДОБАВЛЯЕМ 2 игрока: ${player.user_id} в комнату:   ${player.room_id} ?`);
+					if (rooms[i].user2 == null)
+					{
 					rooms[i].user2 = 
 						{
 							pl_id: player.user_id,
 							pl_hp: 3,
 							pl_score: 0,
 						};
-					
+						console.log(`+ДОБАВЛЕН!`);
+					}else{
+						console.log(`*!* КОМНАТА [${data.room_id}] ЗАНЯТА! (как ты сюда попал дружище?) `);
+					}
 					console.log(rooms);
 					break;
 				}
 				if (i == rooms.length-1 && find_rm == false)
 				{
-					console.log(`*НЕ НАШЛИ - 3*N*овая [${player.room_id}] КОМНАТА СОЗДАНА!`);
+					console.log(`*НЕ НАШЛИ - *N*овАя [${player.room_id}] КОМНАТА СОЗДАНА!`);
 					//создаем комнату + пушаем игрока
 					var roomid=0;
 					rooms.push( 
@@ -230,7 +235,7 @@ function re_find_rm(player) {
 
 		if (rooms.length==0)
 		{
-				console.log(`2*N*овая [${data.room_id}] КОМНАТА СОЗДАНА!`);
+				console.log(`*N*0вая [${data.room_id}] КОМНАТА СОЗДАНА!`);
 				//создаем комнату + пушаем игрока
 				var roomid=0;
 				rooms.push( 
@@ -246,18 +251,23 @@ function re_find_rm(player) {
 			var find_rm = false;
 			for (i = 0; i < rooms.length; i++)
 			{
-				console.log(`${rooms[i].rm_id} =?= ${data.room_id}`);
+				//console.log(`${rooms[i].rm_id} =?= ${data.room_id}`);
 				if (rooms[i].rm_id == data.room_id)
 				{
 					find_rm = true;
-					console.log(`** НАШЛИ - ДОБАВЛЯЕМ 2 игрока: ${data.user_id} в комнату:   ${data.room_id}!`);
-					rooms[i].user2 = 
-						{
-							pl_id: data.user_id,
-							pl_hp: 3,
-							pl_score: 0,
-						};
-					
+					console.log(`** НАШЛИ - ДОБАВЛЯЕМ 2 игрока: ${data.user_id} в комнату: ${data.room_id} ?`);
+					if (rooms[i].user2 == null)
+					{
+						rooms[i].user2 = 
+							{
+								pl_id: data.user_id,
+								pl_hp: 3,
+								pl_score: 0,
+							};
+						console.log(`+ДОБАВЛЕН!`);
+					}else{
+						console.log(`*!* КОМНАТА [${data.room_id}] ЗАНЯТА! (как ты сюда попал дружище?) `);
+					}
 					console.log(rooms);
 					break;
 				}
@@ -284,101 +294,3 @@ function re_find_rm(player) {
 		}
     });
 });
-
-/*
-if (rooms.length>0)
-			{
-				console.log(`rooms.length>0`);
-				/*
-				var rms = rooms[data.room_id]; // console.log(rms); // GOODok
-				var rmsdat = rms.rm_id
-				console.log(rmsdat);
-				/*
-				
-					var rm = rooms[1];
-					//var rmid = rooms[[i].rm_id]
-					
-					console.log(rm);
-				
-				
-				
-				  console.log('111')
-					console.log(rooms.length)
-					
-					console.log(rooms)
-			  for (i = 0; i < rooms.length; i++)
-			  {
-				  console.log('aaaaaa')
-					console.log(rooms[i])
-					if (rooms[i] == undefined)
-					{
-						continue
-					}
-				  if (rooms[i].rm_id == data.room_id)
-				  {
-					  //var isfdoor1 = false;
-					  //var isfdoor2 = false;
-					  if (rooms[i].user1 == null)
-					  {
-						  //isfdoor1 = true;
-						
-						rooms[i].user1.push( // дополняем игроку-победителю выйгрышный тип данных в массив (A)
-							{
-								pl_id: data.user_id,
-								pl_hp: 3,
-								pl_score: 0,
-							},
-						);
-						
-						  console.log(`+1++ Вы игрокомID [${data.user_id}] заняли комнату [${data.room_id}]`);
-						  break;
-					  }else if (rooms[i].user2 == null)
-					  {
-						  //isfdoor2 = true;
-						  //rooms[i].user1.push(player);
-						  rooms[i].user2.push( // дополняем игроку-победителю выйгрышный тип данных в массив (A)
-							{
-								pl_id: data.user_id,
-								pl_hp: 3,
-								pl_score: 0,
-							},
-						);
-						  console.log(`+2++ Вы игрокомID [${data.user_id}] заняли комнату [${data.room_id}]`);
-						  break;
-					  }else
-					  {
-						  console.log(`*!* КОМНАТА [${data.room_id}] ЗАНЯТА! (как ты сюда попал дружище?) `);
-						  break;
-					  }
-				  }else{
-						console.log(`1*N*овая [${data.room_id}] КОМНАТА СОЗДАНА!`);
-						//создаем комнату + пушаем игрока
-						roomid++;
-						rooms[roomid] = [];
-						rooms[roomid].push( 
-							{
-								rm_id: data.room_id,
-								user1: {"pl_id":data.user_id,"pl_hp":3,"pl_score":0},
-								user2: null,
-							},
-						);
-					console.log(rooms[roomid]);
-					break;
-					}
-			  }
-			  
-			}else{
-				console.log(`2*N*овая [${data.room_id}] КОМНАТА СОЗДАНА!`);
-				//создаем комнату + пушаем игрока
-				roomid++;
-				rooms[roomid] = [];
-				rooms[roomid].push( 
-					{
-						rm_id: data.room_id,
-						user1: {"pl_id":data.user_id,"pl_hp":3,"pl_score":0},
-						user2: null,
-					},
-				);
-						console.log(rooms[roomid]);
-			}
-			*/
