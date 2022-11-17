@@ -270,6 +270,7 @@ function re_find_rm(player) {
 			*/
 
 		}
+		
 
 	}
     });
