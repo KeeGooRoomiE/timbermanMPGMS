@@ -117,7 +117,15 @@ function re_find_rm( room_id, user_id ) {
 						});
 						players.push(player);
 						client.emit('create_player', player.toString());
+						client.broadcast.emit('create_player_other', player.toString());
 						
+						// Создание всех остальных для себя, НЕ включая себя, потому что мы уже создали себя
+							for (let i in players) {
+								if (players[i].user_id !== data.user_id && players[i].room == data.room) {
+									client.emit('create_player_other', players[i].toString());
+								}
+							}
+							
 						rooms[i].user2 = 
 							{
 								pl_id: player.user_id,
@@ -186,14 +194,6 @@ function re_find_rm( room_id, user_id ) {
 				{
 				
 					console.log(`--Игрок ${data.user_id} НЕ найден`);
-					/*
-					client.broadcast.emit('create_player_other', player.toString());
-					for (let i in players) {
-						if (players[i].user_id !== data.user_id) {
-								client.emit('create_player_other', players[i].toString());
-							}
-						}
-					*/
 					var find_rm = false;
 					for (i = 0; i < rooms.length; i++)
 					{
@@ -219,7 +219,14 @@ function re_find_rm( room_id, user_id ) {
 						});
 						players.push(player);
 						client.emit('create_player', player.toString());
-						
+						client.broadcast.emit('create_player_other', player.toString());
+						// Создание всех остальных для себя, НЕ включая себя, потому что мы уже создали себя
+							for (let i in players) {
+								if (players[i].user_id !== data.user_id && players[i].room == data.room) {
+									client.emit('create_player_other', players[i].toString());
+								}
+							}
+							
 						console.log(`++Игрок ${data.user_id} +СОЗДАН и ДОБАВЛЕН+`);
 							}else{
 								console.log(`*!* КОМНАТА [${data.room_id}] ЗАНЯТА! (как ты сюда попал дружище?) `);
@@ -275,14 +282,6 @@ function re_find_rm( room_id, user_id ) {
 				);
 				console.log(`++Игрок ${data.user_id} +СОЗДАН и ДОБАВЛЕН в КОМНАТУ+`);
 				console.log(rooms);
-				/*
-				client.broadcast.emit('create_player_other', player.toString());
-				for (let i in players) {
-					if (players[i].user_id !== data.user_id) {
-							client.emit('create_player_other', players[i].toString());
-						}
-					}
-				*/
 		}
 		
 

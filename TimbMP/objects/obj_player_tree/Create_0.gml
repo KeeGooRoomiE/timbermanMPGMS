@@ -107,7 +107,7 @@ rightTrigger = false;
 
 playerReachedNest = false;
 
-playerLives = 2;
+playerLives = 1;
 
 #endregion
 

@@ -6,6 +6,7 @@
     {"id":{"name":"spr_red_tree_origin","path":"sprites/spr_red_tree_origin/spr_red_tree_origin.yy",},"order":1,},
     {"id":{"name":"bkg02_0","path":"sprites/bkg02_0/bkg02_0.yy",},"order":1,},
     {"id":{"name":"rm05_dc","path":"rooms/rm05_dc/rm05_dc.yy",},"order":4,},
+    {"id":{"name":"init","path":"scripts/init/init.yy",},"order":2,},
     {"id":{"name":"spr_snow_grave","path":"sprites/spr_snow_grave/spr_snow_grave.yy",},"order":3,},
     {"id":{"name":"spr_red_grave","path":"sprites/spr_red_grave/spr_red_grave.yy",},"order":7,},
     {"id":{"name":"gmcallback_sio_on_create_player_other","path":"scripts/gmcallback_sio_on_create_player_other/gmcallback_sio_on_create_player_other.yy",},"order":1,},

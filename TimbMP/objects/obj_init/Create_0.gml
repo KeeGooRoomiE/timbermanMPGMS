@@ -20,5 +20,5 @@ global.p2Skin = 0;
 global.curPlayerScore = 0;
 
 //debug
-global.p1Skin = irandom_range(0,3);
-global.p2Skin = irandom_range(0,3);
+//global.p1Skin = irandom_range(0,3);
+//global.p2Skin = irandom_range(0,3);

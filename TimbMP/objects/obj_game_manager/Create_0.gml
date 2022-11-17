@@ -1,5 +1,5 @@
 /// @description Scene setups
-
+init();
 
 #region -- Set skin species
 
@@ -93,8 +93,7 @@ global.pl2 = noone;
 
 #region -- Set things
 leftTime = 180;
-alarm[0]=1;
-
+//alarm[0]=1;
 depth = -8;
 
 isPlayerOneWins = false;
