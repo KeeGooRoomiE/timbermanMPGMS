@@ -106,7 +106,7 @@ function re_find_rm(player) {
 				if (rooms[i].rm_id == player.room_id)
 				{
 					find_rm = true;
-					console.log(`** НАШЛИ - ДОБАВЛЯЕМ 2 игрока: ${player.user_id} в комнату:   ${player.room_id} ?`);
+					console.log(`** НАШЛИ - ДОБАВЛЯЕМ 2го игрока: ${player.user_id} в комнату:   ${player.room_id} ?`);
 					if (rooms[i].user2 == null)
 					{
 					rooms[i].user2 = 
@@ -118,8 +118,10 @@ function re_find_rm(player) {
 						console.log(`+ДОБАВЛЕН!`);
 					}else{
 						console.log(`*!* КОМНАТА [${data.room_id}] ЗАНЯТА! (как ты сюда попал дружище?) `);
+						// Дисконнектед!
 					}
 					console.log(rooms);
+					console.log(rooms.length)
 					break;
 				}
 				if (i == rooms.length-1 && find_rm == false)
@@ -135,6 +137,7 @@ function re_find_rm(player) {
 						},
 					);
 					console.log(rooms);
+					console.log(rooms.length)
 					
 					break;
 				}
@@ -144,7 +147,7 @@ function re_find_rm(player) {
 
     client.on('create_player', (data) => {
         data = JSON.parse(data);
-	if (data.user_id != null)
+	if (data.user_id != null && data.room_id != null)
 	{	
 		if (players.length > 0)
 		{
@@ -166,17 +169,6 @@ function re_find_rm(player) {
 					user_id: data.user_id,
 					room_id: data.room_id
 				});
-	 
-			
-			/*
-			if (isfdoor1)
-			{
-				rooms.push(player);
-			}else if (isfdoor2)
-			{
-				rooms.push(player);
-			}
-			*/
 			
 			/*
 			client.emit('create_player', player.toString());
@@ -187,6 +179,38 @@ function re_find_rm(player) {
 					}
 				}
 			*/
+			var find_rm = false;
+			for (i = 0; i < rooms.length; i++)
+			{
+				//console.log(`${rooms[i].rm_id} =?= ${data.room_id}`);
+				if (rooms[i].rm_id == data.room_id)
+				{
+					find_rm = true;
+					console.log(`** НАШЛИ - ДОБАВЛЯЕМ 2го игрока: ${data.user_id} в комнату: ${data.room_id} ?`);
+					if (rooms[i].user2 == null)
+					{
+						rooms[i].user2 = 
+							{
+								pl_id: data.user_id,
+								pl_hp: 3,
+								pl_score: 0,
+							};
+						console.log(`+ДОБАВЛЕН!`);
+					}else{
+						console.log(`*!* КОМНАТА [${data.room_id}] ЗАНЯТА! (как ты сюда попал дружище?) `);
+						// Дисконнектед!
+					}
+					console.log(rooms);
+					break;
+				}
+				if (i == rooms.length-1 && find_rm == false)
+				{
+					console.log(`Комната ${data.room_id} не найдена - запускапем таймер (через 3 сек) на повторный поиск`);
+					setTimeout(re_find_rm, 3000,player);
+					break;
+					
+				}
+			}
 				}else{
 					console.log(`++Игрок ${data.user_id} найден возвращаю.`);
 					///////
@@ -221,21 +245,8 @@ function re_find_rm(player) {
 			});
 			
 			players.push(player);
-			/*
-			client.emit('create_player', player.toString());
-			client.broadcast.emit('create_player_other', player.toString());
-			for (let i in players) {
-				if (players[i].user_id !== data.user_id) {
-						client.emit('create_player_other', players[i].toString());
-					}
-				}
-			*/
-
-		}
-
-		if (rooms.length==0)
-		{
-				console.log(`*N*0вая [${data.room_id}] КОМНАТА СОЗДАНА!`);
+			
+			console.log(`*N*0вая [${data.room_id}] КОМНАТА СОЗДАНА!`);
 				//создаем комнату + пушаем игрока
 				var roomid=0;
 				rooms.push( 
@@ -246,40 +257,18 @@ function re_find_rm(player) {
 					},
 				);
 				console.log(rooms);
-		}else{
-			//console.log(rooms);
-			var find_rm = false;
-			for (i = 0; i < rooms.length; i++)
-			{
-				//console.log(`${rooms[i].rm_id} =?= ${data.room_id}`);
-				if (rooms[i].rm_id == data.room_id)
-				{
-					find_rm = true;
-					console.log(`** НАШЛИ - ДОБАВЛЯЕМ 2 игрока: ${data.user_id} в комнату: ${data.room_id} ?`);
-					if (rooms[i].user2 == null)
-					{
-						rooms[i].user2 = 
-							{
-								pl_id: data.user_id,
-								pl_hp: 3,
-								pl_score: 0,
-							};
-						console.log(`+ДОБАВЛЕН!`);
-					}else{
-						console.log(`*!* КОМНАТА [${data.room_id}] ЗАНЯТА! (как ты сюда попал дружище?) `);
+				console.log(rooms.length)
+			
+			/*
+			client.emit('create_player', player.toString());
+			client.broadcast.emit('create_player_other', player.toString());
+			for (let i in players) {
+				if (players[i].user_id !== data.user_id) {
+						client.emit('create_player_other', players[i].toString());
 					}
-					console.log(rooms);
-					break;
 				}
-				if (i == rooms.length-1 && find_rm == false)
-				{
-					console.log(`Комната ${data.room_id} не найдена - запускапем таймер (через 3 сек) на повторный поиск`);
-					setTimeout(re_find_rm, 3000,player);
-					break;
-					
-				}
-			}
-			//console.log(rooms);
+			*/
+
 		}
 
 	}
