@@ -97,6 +97,45 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 			}
 }
 
+function re_find_rm(player) {
+	console.log(`Таймер 0 - повторный поиск комнаты запущен`);
+	var find_rm = false;
+	for (i = 0; i < rooms.length; i++)
+			{
+				console.log(`${rooms[i].rm_id} =?= ${player.room_id}`);
+				if (rooms[i].rm_id == player.room_id)
+				{
+					find_rm = true;
+					console.log(`** НАШЛИ - ДОБАВЛЯЕМ 2 игрока: ${player.user_id} в комнату:   ${player.room_id}!`);
+					rooms[i].user2 = 
+						{
+							pl_id: player.user_id,
+							pl_hp: 3,
+							pl_score: 0,
+						};
+					
+					console.log(rooms);
+					break;
+				}
+				if (i == rooms.length-1 && find_rm == false)
+				{
+					console.log(`*НЕ НАШЛИ - 3*N*овая [${player.room_id}] КОМНАТА СОЗДАНА!`);
+					//создаем комнату + пушаем игрока
+					var roomid=0;
+					rooms.push( 
+						{
+							rm_id: player.room_id,
+							user1: {"pl_id":player.user_id,"pl_hp":3,"pl_score":0},
+							user2: null,
+						},
+					);
+					console.log(rooms);
+					
+					break;
+				}
+			}
+
+}
 
     client.on('create_player', (data) => {
         data = JSON.parse(data);
@@ -203,13 +242,15 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 				);
 				console.log(rooms);
 		}else{
-			console.log(rooms);
+			//console.log(rooms);
+			var find_rm = false;
 			for (i = 0; i < rooms.length; i++)
 			{
-				console.log(rooms[i].rm_id, data.room_id);
+				console.log(`${rooms[i].rm_id} =?= ${data.room_id}`);
 				if (rooms[i].rm_id == data.room_id)
 				{
-					console.log(`ДОБАВЛЯЕМ 2!`);
+					find_rm = true;
+					console.log(`** НАШЛИ - ДОБАВЛЯЕМ 2 игрока: ${data.user_id} в комнату:   ${data.room_id}!`);
 					rooms[i].user2 = 
 						{
 							pl_id: data.user_id,
@@ -217,9 +258,18 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 							pl_score: 0,
 						};
 					
+					console.log(rooms);
 					break;
 				}
-			}console.log(rooms);
+				if (i == rooms.length-1 && find_rm == false)
+				{
+					console.log(`Комната ${data.room_id} не найдена - запускапем таймер (через 3 сек) на повторный поиск`);
+					setTimeout(re_find_rm, 3000,player);
+					break;
+					
+				}
+			}
+			//console.log(rooms);
 		}
 
 	}
