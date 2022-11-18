@@ -3,12 +3,9 @@ function sio_emit_position_update(argument0) {
 
 #region packet
 		var data = ds_map_create();
-			if (argument0 == true)
-			{
-				data[? "rightTrigger"] = true;
-			}else{
-				data[? "rightTrigger"] = false;
-			}
+			
+			data[? "rightTrigger"] = argument0
+
 			sio_emit(eventName, json_encode(data));
 		ds_map_destroy(data);
 #endregion

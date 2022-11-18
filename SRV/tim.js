@@ -45,7 +45,7 @@ class Player {
 class Trigger {
 	constructor(data) {
         this.room_id = data.room_id;
-        this.iright = data.rightTrigger;
+		this.iright = data.iright;
     }
 	toString() {
         return JSON.stringify(this);
@@ -305,15 +305,11 @@ function re_find_rm( room_id, user_id ) {
 	//// Вещаем позицию игрока всем игрокам
     client.on('position_update', (data) => {
         data = JSON.parse(data);
-		console.log(data);
-		/*
-		var rttt = new Trigger(player.room_id,data.rightTrigger);
-		client.broadcast.emit('position_update', rttt.toString());
-		*/
 		trigeri = new Trigger({
 			room_id: player.room_id,
 			iright: data.rightTrigger
 		});
+		
 		client.broadcast.emit('position_update', trigeri.toString());				
     });
 
