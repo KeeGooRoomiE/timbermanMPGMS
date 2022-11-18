@@ -47,7 +47,7 @@ if (leftTrigger)
 		event_user(0);	//inherits chomping effect
 		event_user(2);	//move player and check for death
 		
-		if ( treearr[1] = 1 or treearr[0] = 1 )
+		if ( treearr[1] = 1 )//or treearr[0] = 1 )
 		{
 			if (playerLives > 0)
 			{
@@ -90,7 +90,7 @@ if (rightTrigger)
 		event_user(0);	//inherits chomping effect
 		event_user(2);	//move player and check for death
 		
-		if ( treearr[1] = 2 or treearr[0] = 2 )
+		if ( treearr[1] = 2 )//or treearr[0] = 2 )
 		{
 			if (playerLives > 1)
 			{

@@ -3,7 +3,6 @@ function gmcallback_sio_on_position_update() {
 	
 	var dat_rmid = real(data[? "room_id"]);
 	var dat_lt = data[? "iright"];
-	show_message(dat_lt)
 	
 	if (global.room_id = real(dat_rmid))
 	{
