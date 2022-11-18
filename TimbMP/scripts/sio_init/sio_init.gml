@@ -16,6 +16,10 @@ function sio_init() {
 		sio_addEvent("create_player_other");
 		sio_addEvent("destroy_player");
 		sio_addEvent("position_update");
+		
+		sio_addEvent("pos_send");
+		sio_addEvent("pos_get");
+		
 		sio_addEvent("tree_send");
 		sio_addEvent("tree_get");
 		sio_addEvent("score_get");

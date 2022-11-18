@@ -2,7 +2,7 @@ function gmcallback_sio_on_create_player_other()
 {
 	var data = json_decode(argument[0]);
 	var dat_rmid = real(data[? "room_id"]);
-
+	
 	if (global.room_id = dat_rmid)
 	{
 		
@@ -14,7 +14,7 @@ function gmcallback_sio_on_create_player_other()
 		//global.playerTwoName = data;
 		
 		with(obj_game_manager) {
-		leftTime = 180;
+		leftTime = 180; // TODO socketOM!
 		alarm[0]=1;
 		}
 	}

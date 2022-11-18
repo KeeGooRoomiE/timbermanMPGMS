@@ -41,6 +41,17 @@ class Player {
         else return value;
     }
 }
+
+class Trigger {
+	constructor(data) {
+        this.room_id = data.room_id;
+        //this.iright = data.rightTrigger;
+    }
+	toString() {
+        return JSON.stringify(this);
+    }
+}
+
 /*
 class score {
 	constructor(pl,score) {
@@ -246,17 +257,20 @@ function re_find_rm( room_id, user_id ) {
 					}else{
 						console.log(`++Игрок ${data.user_id} найден возвращаю.`);
 						players[i].online=1
-						//client.emit('create_player', player.toString()); // TODO
-						/*
+						
 						for (let i in players) {
-						if (players[i].user_id !== data.user_id) {
-								client.emit('create_player_other', players[i].toString());
+							if (players[i].user_id == data.user_id && players[i].room == data.room) {
+								client.emit('create_player', players[i].toString());
 								
-								
+								// Создание всех остальных для себя, НЕ включая себя, потому что мы уже создали себя
+								for (let i in players) {
+									if (players[i].user_id !== data.user_id && players[i].room == data.room) {
+										client.emit('create_player_other', players[i].toString());
+									}
+								}
+								// todo disconnect from old cl
 							}
 						}
-						*/
-					
 				}
 		}else{
 			//Игроков 0: Комнат 0: Cоздаю первого/первую
@@ -288,7 +302,20 @@ function re_find_rm( room_id, user_id ) {
 	}
     });
 
-	
+	//// Вещаем позицию игрока всем игрокам
+    client.on('position_update', (data) => {
+        data = JSON.parse(data);
+		console.log(data);
+		/*
+		var rttt = new Trigger(player.room_id,data.rightTrigger);
+		client.broadcast.emit('position_update', rttt.toString());
+		*/
+		trigeri = new Trigger({
+			room_id: player.room_id//,
+			//iright: data.rightTrigger
+		});
+		client.broadcast.emit('position_update', trigeri.toString());				
+    });
 
     client.on('disconnect', () => {
 		if (player != null)
