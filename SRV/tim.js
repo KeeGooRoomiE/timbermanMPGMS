@@ -256,7 +256,16 @@ function re_find_rm( room_id, user_id ) {
 					}
 					}else{
 						console.log(`++Игрок ${data.user_id} найден возвращаю.`);
-						players[i].online=1
+						players.splice(players.indexOf(player), 1);
+						player = new Player({
+								socket: client,
+								online: 1,
+								user_id: data.user_id,
+								room_id: data.room_id
+						});
+						
+						client.emit('create_player', player.toString());
+						players.push(player);
 						
 						for (let i in players) {
 							if (players[i].user_id == data.user_id && players[i].room == data.room) {
@@ -268,9 +277,9 @@ function re_find_rm( room_id, user_id ) {
 										client.emit('create_player_other', players[i].toString());
 									}
 								}
-								// todo disconnect from old cl
 							}
 						}
+						client.emit('start', "start".toString());
 				}
 		}else{
 			//Игроков 0: Комнат 0: Cоздаю первого/первую
@@ -316,7 +325,9 @@ function re_find_rm( room_id, user_id ) {
     client.on('disconnect', () => {
 		if (player != null)
 		{
+			console.log(`++Игрок ${player.user_id} +DISCONNECTED+`);
 			player.online=0;
+			//players.splice(players.indexOf(player), 1);
 		}
     });
 });

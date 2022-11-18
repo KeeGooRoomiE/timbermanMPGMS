@@ -8,13 +8,14 @@ function gmcallback_sio_on_create_player_other()
 		
 		with(obj_other_tree)
 		{
-			playerLives = 3
+			playerLives = 3; // TODO socketOM! //real(data[? "hp"]);
 		}
 		//global.p2Skin = data; //0 1 2 3
 		//global.playerTwoName = data;
 		
 		with(obj_game_manager) {
-		leftTime = 180; // TODO socketOM!
+		leftTime = 180; // TODO socketOM! //real(data[? "leftTime"]);
+		global.start = 1;
 		alarm[0]=1;
 		}
 	}
