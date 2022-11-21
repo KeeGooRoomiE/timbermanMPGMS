@@ -186,8 +186,6 @@ function start_time( room_id ) {
 					  {
 						  /// cenok
 						  cenok--;
-						  console.log(`splice?players = ${players[i].user_id}`);
-						  console.log(`BEFORE?players = ${players}`);
 						  setTimeout(kickPl,10,players[i])
 						  //players.splice(players.indexOf(players[i]), 1);
 						  //console.log(`AFTER?players = ${players}`);
@@ -199,10 +197,7 @@ function start_time( room_id ) {
 								{
 									if (rooms[i].rm_id == room_id)
 									{
-										console.log(`splice?rooms = ${rooms[i].rm_id}`);
-										console.log(`BEFORE?rooms = ${rooms}`);
 										rooms.splice(rooms.indexOf(rooms[i]), 1);
-										console.log(`AFTER?rooms = ${rooms}`);
 									}
 								}
 						  }	
@@ -230,6 +225,7 @@ function re_find_rm( room_id, user_id ) {
 							room_id: room_id
 						});
 						players.push(player);
+						console.log(`++Игрокov тепреь ${players}`);
 						client.emit('create_player', player.toString());
 						client.broadcast.emit('create_player_other', player.toString());
 						
@@ -269,6 +265,7 @@ function re_find_rm( room_id, user_id ) {
 						room_id: room_id
 					});
 					players.push(player);
+					console.log(`++Игрокov тепреь ${players}`);
 					client.emit('create_player', player.toString());
 					
 					rooms.push( 
@@ -333,6 +330,7 @@ function re_find_rm( room_id, user_id ) {
 							room_id: data.room_id
 						});
 						players.push(player);
+						console.log(`++Игрокov тепреь ${players}`);
 						client.emit('create_player', player.toString());
 						client.broadcast.emit('create_player_other', player.toString());
 						
@@ -372,6 +370,7 @@ function re_find_rm( room_id, user_id ) {
 						
 						client.emit('create_player', player.toString());
 						players.push(player);
+						console.log(`++Игрокov тепреь ${players}`);
 						
 						for (let i in players) {
 							if (players[i].user_id == data.user_id && players[i].room_id == data.room_id) {
@@ -399,6 +398,7 @@ function re_find_rm( room_id, user_id ) {
 			
 			client.emit('create_player', player.toString());
 			players.push(player);
+			console.log(`++Игрокov тепреь ${players}`);
 			
 			console.log(`--Комнат 0: *N*0вая [${data.room_id}] КОМНАТА СОЗДАНА!`);
 				//создаем комнату + пушаем игрока
