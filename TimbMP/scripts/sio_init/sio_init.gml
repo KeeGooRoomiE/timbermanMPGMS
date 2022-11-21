@@ -17,10 +17,11 @@ function sio_init() {
 		sio_addEvent("destroy_player");
 		sio_addEvent("position_update");
 		sio_addEvent("start");
+		sio_addEvent("win_lose_get");
 		
 		sio_addEvent("timer_get");
-		
-		sio_addEvent("win_lose_get");
+		sio_addEvent("timer_set");
+	
 		
 		sio_addEvent("score_get");
 		sio_addEvent("tree_send");

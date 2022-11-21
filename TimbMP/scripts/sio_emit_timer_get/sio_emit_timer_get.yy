@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "Custom",
-    "path": "folders/CODE247365/SocketIO/Events/Custom.yy",
+    "name": "Emit",
+    "path": "folders/CODE247365/SocketIO/Emit.yy",
   },
   "resourceVersion": "1.0",
-  "name": "gmcallback_sio_on_timer_get",
+  "name": "sio_emit_timer_get",
   "tags": [],
   "resourceType": "GMScript",
 }

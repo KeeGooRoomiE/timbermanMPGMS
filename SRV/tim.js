@@ -59,6 +59,16 @@ class Rtimer {
         return JSON.stringify(this);
     }
 }
+
+class Rtime {
+	constructor(data) {
+        this.time = data.time;
+        this.room_id = data.room_id;
+    }
+	toString() {
+        return JSON.stringify(this);
+    }
+}
 /*
 class score {
 	constructor(pl,score) {
@@ -101,24 +111,21 @@ function finish_ses_rm( room_id ) {
 		  {
 			  /// cenok
 			  cenok--;
-			  console.log(`* * * * CENOK == ${cenok}`);
-			  console.log(`* * * * CENOK == ${players}`);
 			  players.splice(players.indexOf(players[i]), 1);
-		  }
-	  }
-
-		if (cenok == 0)
+			  
+			  if (cenok == 0)
 			  {
 				for (i = 0; i < rooms.length; i++)
 					{
 						if (rooms[i].rm_id == room_id)
 						{
-							console.log(`RM_spliceOk ${rooms[i].rm_id}`);
 							rooms.splice(rooms.indexOf(rooms[i]), 1);
-							console.log(rooms);
 						}
 					}
-			  }			
+			  }	
+		  }
+	  }
+		
 }
 
 function kickPl(player) {
@@ -366,6 +373,22 @@ function re_find_rm( room_id, user_id ) {
 	}
     });
 
+ client.on('timer_get', (data) => {
+        data = JSON.parse(data);
+		
+		for (let i in rooms)
+		{
+			if (rooms[i].rm_id == player.room_id)
+				{
+					time = new Rtime({
+						time: rooms[i].rm_time,
+						room_id: player.room_id
+					});
+					client.emit('timer_set', time.toString());	
+				}
+		}	
+		
+ });
 	//// Вещаем позицию игрока всем игрокам
     client.on('position_update', (data) => {
         data = JSON.parse(data);
