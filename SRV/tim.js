@@ -87,19 +87,38 @@ io.on('connection', (client) => {
 	
 function finish_ses_rm( room_id ) {
 	
-	//for (i = 0; i < players.length; i++)
-	//  {
-	//	  if (players[i].room_id == room_id)
-		//  {
-		  /// cenok
-			timeri = new Rtimer({
-				room_id: room_id
-			});
-		  client.emit('win_lose_get', timeri.toString());
-		  client.broadcast.emit('win_lose_get', timeri.toString());
-		  console.log(`win_lose_get`);
-		//  }
-	 // }
+	timeri = new Rtimer({
+	room_id: room_id
+	});
+	client.emit('win_lose_get', timeri.toString());
+	client.broadcast.emit('win_lose_get', timeri.toString());
+
+	var cenok = 2;
+	
+	for (i = 0; i < players.length; i++)
+	  {
+		  if (players[i].room_id == room_id)
+		  {
+			  /// cenok
+			  cenok--;
+			  console.log(`* * * * CENOK == ${cenok}`);
+			  console.log(`* * * * CENOK == ${players}`);
+			  players.splice(players.indexOf(players[i]), 1);
+		  }
+	  }
+
+		if (cenok == 0)
+			  {
+				for (i = 0; i < rooms.length; i++)
+					{
+						if (rooms[i].rm_id == room_id)
+						{
+							console.log(`RM_spliceOk ${rooms[i].rm_id}`);
+							rooms.splice(rooms.indexOf(rooms[i]), 1);
+							console.log(rooms);
+						}
+					}
+			  }			
 }
 
 function kickPl(player) {
@@ -157,7 +176,7 @@ function re_find_rm( room_id, user_id ) {
 						
 						// Создание всех остальных для себя, НЕ включая себя, потому что мы уже создали себя
 							for (let i in players) {
-								if (players[i].user_id !== data.user_id && players[i].room == data.room) {
+								if (players[i].user_id !== data.user_id && players[i].room_id == data.room_id) {
 									client.emit('create_player_other', players[i].toString());
 								}
 							}
@@ -196,6 +215,7 @@ function re_find_rm( room_id, user_id ) {
 					rooms.push( 
 						{
 							rm_id: player.room_id,
+							rm_time: 15000,
 							user1: {"pl_id":player.user_id,"pl_hp":3,"pl_score":0},
 							user2: null,
 						},
@@ -261,13 +281,15 @@ function re_find_rm( room_id, user_id ) {
 						
 						// Создание всех остальных для себя, НЕ включая себя, потому что мы уже создали себя
 							for (let i in players) {
-								if (players[i].user_id !== data.user_id && players[i].room == data.room) {
+								if (players[i].user_id !== data.user_id && players[i].room_id == data.room_id) {
 									client.emit('create_player_other', players[i].toString());
 								}
 							}
 							
-						var total_timer = 4000;
-						setTimeout(finish_ses_rm, 4000 ,data.room) //180000
+						var total_timer = 15000; //180000
+						
+						
+						setTimeout(finish_ses_rm, total_timer ,data.room_id) 
 						console.log(`finish_ses_rm STARTED`);
 						
 							}else{
@@ -299,12 +321,12 @@ function re_find_rm( room_id, user_id ) {
 						players.push(player);
 						
 						for (let i in players) {
-							if (players[i].user_id == data.user_id && players[i].room == data.room) {
+							if (players[i].user_id == data.user_id && players[i].room_id == data.room_id) {
 								client.emit('create_player', players[i].toString());
 								
 								// Создание всех остальных для себя, НЕ включая себя, потому что мы уже создали себя
 								for (let i in players) {
-									if (players[i].user_id !== data.user_id && players[i].room == data.room) {
+									if (players[i].user_id !== data.user_id && players[i].room_id == data.room_id) {
 										client.emit('create_player_other', players[i].toString());
 									}
 								}
@@ -331,6 +353,7 @@ function re_find_rm( room_id, user_id ) {
 				rooms.push( 
 					{
 						rm_id: data.room_id,
+						rm_time: 15000,
 						user1: {"pl_id":data.user_id,"pl_hp":3,"pl_score":0},
 						user2: null,
 					},
