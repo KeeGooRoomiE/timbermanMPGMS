@@ -2,7 +2,7 @@
 // You can write your code in this editor
 
 
-alarm[0] = 1 * room_speed/2;
+alarm[0] = 1 * room_speed/3;
 	
 if ( playersActive )
 {

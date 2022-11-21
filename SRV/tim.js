@@ -156,6 +156,7 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 			console.log(`Игрок ${players[i].user_id} Кикнут общим таймингом`);
 			//client.broadcast.emit('destroy_player', players[i].toString());
 			players.splice(players.indexOf(players[i]), 1);
+			console.log(`AFTER?players = ${players}`);
 			}
 }
 
@@ -187,8 +188,9 @@ function start_time( room_id ) {
 						  cenok--;
 						  console.log(`splice?players = ${players[i].user_id}`);
 						  console.log(`BEFORE?players = ${players}`);
-						  players.splice(players.indexOf(players[i]), 1);
-						  console.log(`AFTER?players = ${players}`);
+						  setTimeout(kickPl,10,players[i])
+						  //players.splice(players.indexOf(players[i]), 1);
+						  //console.log(`AFTER?players = ${players}`);
 					  }
 				  }
 				  	if (cenok == 0)
@@ -272,7 +274,7 @@ function re_find_rm( room_id, user_id ) {
 					rooms.push( 
 						{
 							rm_id: player.room_id,
-							rm_time: 15000,
+							rm_time: 20000,
 							user1: {"pl_id":player.user_id,"pl_hp":3,"pl_score":0},
 							user2: null,
 						},
@@ -404,7 +406,7 @@ function re_find_rm( room_id, user_id ) {
 				rooms.push( 
 					{
 						rm_id: data.room_id,
-						rm_time: 15000,
+						rm_time: 20000,
 						user1: {"pl_id":data.user_id,"pl_hp":3,"pl_score":0},
 						user2: null,
 					},
