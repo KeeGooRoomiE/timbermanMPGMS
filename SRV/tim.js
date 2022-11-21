@@ -27,7 +27,6 @@ class Player {
 		
 		this.skin = data.skin;
         this.rmskin = data.rmskin;
-        this.pos = data.pos;
         this.hp = data.hp;
 		*/
     }
@@ -52,6 +51,14 @@ class Trigger {
     }
 }
 
+class Rtimer {
+	constructor(data) {
+        this.room_id = data.room_id;
+    }
+	toString() {
+        return JSON.stringify(this);
+    }
+}
 /*
 class score {
 	constructor(pl,score) {
@@ -74,8 +81,26 @@ class plives {
 }
 */
 
+
 io.on('connection', (client) => {
     var player;
+	
+function finish_ses_rm( room_id ) {
+	
+	//for (i = 0; i < players.length; i++)
+	//  {
+	//	  if (players[i].room_id == room_id)
+		//  {
+		  /// cenok
+			timeri = new Rtimer({
+				room_id: room_id
+			});
+		  client.emit('win_lose_get', timeri.toString());
+		  client.broadcast.emit('win_lose_get', timeri.toString());
+		  console.log(`win_lose_get`);
+		//  }
+	 // }
+}
 
 function kickPl(player) {
 console.log(`Проверка игрока [${player.user_id}] на валидность`);
@@ -231,6 +256,9 @@ function re_find_rm( room_id, user_id ) {
 						players.push(player);
 						client.emit('create_player', player.toString());
 						client.broadcast.emit('create_player_other', player.toString());
+						
+						console.log(`++Игрок ${data.user_id} +СОЗДАН и ДОБАВЛЕН+`);
+						
 						// Создание всех остальных для себя, НЕ включая себя, потому что мы уже создали себя
 							for (let i in players) {
 								if (players[i].user_id !== data.user_id && players[i].room == data.room) {
@@ -238,7 +266,10 @@ function re_find_rm( room_id, user_id ) {
 								}
 							}
 							
-						console.log(`++Игрок ${data.user_id} +СОЗДАН и ДОБАВЛЕН+`);
+						var total_timer = 4000;
+						setTimeout(finish_ses_rm, 4000 ,data.room) //180000
+						console.log(`finish_ses_rm STARTED`);
+						
 							}else{
 								console.log(`*!* КОМНАТА [${data.room_id}] ЗАНЯТА! (как ты сюда попал дружище?) `);
 								// Дисконнектед!
@@ -280,6 +311,7 @@ function re_find_rm( room_id, user_id ) {
 							}
 						}
 						client.emit('start', "start".toString());
+						
 				}
 		}else{
 			//Игроков 0: Комнат 0: Cоздаю первого/первую

@@ -16,14 +16,15 @@ function sio_init() {
 		sio_addEvent("create_player_other");
 		sio_addEvent("destroy_player");
 		sio_addEvent("position_update");
-		
 		sio_addEvent("start");
 		
+		sio_addEvent("timer_get");
+		
+		sio_addEvent("win_lose_get");
+		
+		sio_addEvent("score_get");
 		sio_addEvent("tree_send");
 		sio_addEvent("tree_get");
-		sio_addEvent("score_get");
-		sio_addEvent("timer_get");
-		sio_addEvent("win_lose_get");
 #endregion
 
 

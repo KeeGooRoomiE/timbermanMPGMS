@@ -1,3 +1,3 @@
 /// @description Left action trigger
-leftTrigger = true;
+//leftTrigger = true;
 

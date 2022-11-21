@@ -1,2 +1,2 @@
 /// @description Right action trigger
-rightTrigger = true;
+//rightTrigger = true;
