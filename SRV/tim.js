@@ -94,7 +94,7 @@ class plives {
 
 io.on('connection', (client) => {
     var player;
-	
+	/*
 function finish_ses_rm( room_id ) {
 	
 	timeri = new Rtimer({
@@ -127,7 +127,7 @@ function finish_ses_rm( room_id ) {
 	  }
 		
 }
-
+*/
 function kickPl(player) {
 console.log(`Проверка игрока [${player.user_id}] на валидность`);
 		
@@ -162,11 +162,50 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 function start_time( room_id ) {
 	for (i = 0; i < rooms.length; i++)
 		{
-			if (rooms[i].rm_id == room_id && rooms[i].rm_time !== 0)
+			if (rooms[i].rm_id == room_id)
 			{
-				rooms[i].rm_time -=1000;
-				setTimeout(start_time, 1000, room_id);
-				console.log(`rm_time = ${rooms[i].rm_time}`);
+				if (rooms[i].rm_time !== 0)
+				{
+					rooms[i].rm_time -=1000;
+					setTimeout(start_time, 1000, room_id);
+					console.log(`rm_time = ${rooms[i].rm_time}`);
+				}else{
+				////////////////
+				timeri = new Rtimer({
+				room_id: room_id
+				});
+				client.emit('win_lose_get', timeri.toString());
+				client.broadcast.emit('win_lose_get', timeri.toString());
+
+				var cenok = 2;
+				
+				for (i = 0; i < players.length; i++)
+				  {
+					  if (players[i].room_id == room_id)
+					  {
+						  /// cenok
+						  cenok--;
+						  console.log(`splice?players = ${players[i].user_id}`);
+						  console.log(`BEFORE?players = ${players}`);
+						  players.splice(players.indexOf(players[i]), 1);
+						  console.log(`AFTER?players = ${players}`);
+					  }
+				  }
+				  	if (cenok == 0)
+						  {
+							for (i = 0; i < rooms.length; i++)
+								{
+									if (rooms[i].rm_id == room_id)
+									{
+										console.log(`splice?rooms = ${rooms[i].rm_id}`);
+										console.log(`BEFORE?rooms = ${rooms}`);
+										rooms.splice(rooms.indexOf(rooms[i]), 1);
+										console.log(`AFTER?rooms = ${rooms}`);
+									}
+								}
+						  }	
+				  ////////////////////////
+				}
 			}
 		}
 }
@@ -299,18 +338,11 @@ function re_find_rm( room_id, user_id ) {
 						
 						setTimeout(start_time, 1, data.room_id);
 						// Создание всех остальных для себя, НЕ включая себя, потому что мы уже создали себя
-							for (let i in players) {
-								if (players[i].user_id !== data.user_id && players[i].room_id == data.room_id) {
-									client.emit('create_player_other', players[i].toString());
+								for (let i in players) {
+									if (players[i].user_id !== data.user_id && players[i].room_id == data.room_id) {
+										client.emit('create_player_other', players[i].toString());
+									}
 								}
-							}
-							
-						var total_timer = 15000; //180000
-						
-						
-						setTimeout(finish_ses_rm, total_timer ,data.room_id) 
-						console.log(`finish_ses_rm STARTED`);
-						
 							}else{
 								console.log(`*!* КОМНАТА [${data.room_id}] ЗАНЯТА! (как ты сюда попал дружище?) `);
 								// Дисконнектед!
