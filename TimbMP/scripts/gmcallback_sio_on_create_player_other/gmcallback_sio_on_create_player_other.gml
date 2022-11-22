@@ -3,13 +3,14 @@ function gmcallback_sio_on_create_player_other()
 	var data = json_decode(argument[0]);
 	var dat_rmid = real(data[? "room_id"]);
 	var dat_pl2id = real(data[? "user_id"]);
+	var dat_plhp = real(data[? "hp"]);
 	
 	if (global.room_id = dat_rmid)
 	{
 		
 		with(obj_other_tree)
 		{
-			playerLives = 3; // TODO socketOM! //real(data[? "hp"]);
+			playerLives = real(dat_plhp);
 		}
 		//global.p2Skin = data; //0 1 2 3
 		//global.playerTwoName = data;

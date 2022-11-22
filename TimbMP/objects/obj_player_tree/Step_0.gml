@@ -52,6 +52,8 @@ if (leftTrigger)
 			if (playerLives > 0)
 			{
 				playerLives -= 1;
+				sio_emit_hp_send(playerLives)
+				//TODO
 				event_user(3);
 				
 				with (player)
@@ -95,6 +97,7 @@ if (rightTrigger)
 			if (playerLives > 1)
 			{
 				playerLives -= 1;
+				sio_emit_hp_send(playerLives)
 				event_user(3);
 				
 				with (player)
@@ -107,6 +110,7 @@ if (rightTrigger)
 				isPlayerLive = false;
 				canChomp = false;
 				playerLives -= 1;
+				sio_emit_hp_send(playerLives)
 				
 				with (player)
 				{

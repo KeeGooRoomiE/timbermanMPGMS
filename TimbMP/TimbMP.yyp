@@ -63,6 +63,7 @@
     {"id":{"name":"gmcallback_sio_on_win_lose_get","path":"scripts/gmcallback_sio_on_win_lose_get/gmcallback_sio_on_win_lose_get.yy",},"order":7,},
     {"id":{"name":"obj_tree_particle","path":"objects/obj_tree_particle/obj_tree_particle.yy",},"order":1,},
     {"id":{"name":"spr_night_tree_cell","path":"sprites/spr_night_tree_cell/spr_night_tree_cell.yy",},"order":0,},
+    {"id":{"name":"sio_emit_hp_send","path":"scripts/sio_emit_hp_send/sio_emit_hp_send.yy",},"order":3,},
     {"id":{"name":"spr_panel","path":"sprites/spr_panel/spr_panel.yy",},"order":3,},
     {"id":{"name":"obj_scskin1","path":"objects/obj_scskin1/obj_scskin1.yy",},"order":9,},
     {"id":{"name":"bkg04_0","path":"sprites/bkg04_0/bkg04_0.yy",},"order":3,},

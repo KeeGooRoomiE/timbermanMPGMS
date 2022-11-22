@@ -18,6 +18,7 @@ class Player {
 		this.online = data.online; // На связи ли игрок
 		this.user_id = data.user_id; // MP id - у каждого игрока он свой (БД MP)
         this.room_id = data.room_id; // MP id - у каждого игрока (1 и 2) решивший посетить иговую комнату он одинакоый
+        this.hp = data.hp;
 		
 		/*
         this.battle = data.battle; // MP id - у каждого игрока он всегда разный
@@ -27,7 +28,6 @@ class Player {
 		
 		this.skin = data.skin;
         this.rmskin = data.rmskin;
-        this.hp = data.hp;
 		*/
     }
 
@@ -169,7 +169,7 @@ function start_time( room_id ) {
 				{
 					rooms[i].rm_time -=1000;
 					setTimeout(start_time, 1000, room_id);
-					console.log(`rm_time = ${rooms[i].rm_time}`);
+					console.log(`rm_time = ${rooms[i].rm_time/1000}`);
 				}else{
 				////////////////
 				timeri = new Rtimer({
@@ -222,7 +222,8 @@ function re_find_rm( room_id, user_id ) {
 							socket: client,
 							online: 1,
 							user_id: user_id,
-							room_id: room_id
+							room_id: room_id,
+							hp: 3
 						});
 						players.push(player);
 						console.log(`++Игрокov тепреь ${players}`);
@@ -262,7 +263,8 @@ function re_find_rm( room_id, user_id ) {
 						socket: client,
 						online: 1,
 						user_id: user_id,
-						room_id: room_id
+						room_id: room_id,
+						hp: 3
 					});
 					players.push(player);
 					console.log(`++Игрокov тепреь ${players}`);
@@ -271,7 +273,7 @@ function re_find_rm( room_id, user_id ) {
 					rooms.push( 
 						{
 							rm_id: player.room_id,
-							rm_time: 20000,
+							rm_time: 50000,
 							user1: {"pl_id":player.user_id,"pl_hp":3,"pl_score":0},
 							user2: null,
 						},
@@ -287,6 +289,29 @@ function re_find_rm( room_id, user_id ) {
 
 }
 
+    client.on('hp_send', (data) => {
+        data = JSON.parse(data);
+		console.log(`* * * * * * *Игрок ${player.user_id} +BEFORE_HP+ ${player.hp}`);
+		player.hp = data.hp;		
+		console.log(`* * * * * * *Игрок ${player.user_id} +AFTER+ ${player.hp}`);
+		console.log(`* * * * * * *Игрокov ${player}`);
+		/*
+		for (let i in rooms)
+		{
+			if (rooms[i].rm_id == player.room_id)
+				{
+					rooms[i].
+				}
+		}
+		*/
+	/*
+	rm_id: data.room_id,
+	rm_time: 20000,
+	user1: {"pl_id":data.user_id,"pl_hp":3,"pl_score":0},
+	user2: null,
+	*/	
+    });
+	
     client.on('create_player', (data) => {
         data = JSON.parse(data);
 	if (data.user_id != null && data.room_id != null)
@@ -301,6 +326,7 @@ function re_find_rm( room_id, user_id ) {
 			  if (players[i].user_id == data.user_id)
 			  {
 				isfound = true;
+				global.myhpp  = players[i].hp;
 				break;
 			  }
 			}
@@ -329,7 +355,8 @@ function re_find_rm( room_id, user_id ) {
 							socket: client,
 							online: 1,
 							user_id: data.user_id,
-							room_id: data.room_id
+							room_id: data.room_id,
+							hp: 3
 						});
 						players.push(player);
 						console.log(`++Игрокov тепреь ${players}`);
@@ -362,17 +389,19 @@ function re_find_rm( room_id, user_id ) {
 					}
 					}else{
 						console.log(`++Игрок ${data.user_id} найден возвращаю.`);
-						players.splice(players.indexOf(player), 1);
+						console.log(`++Игрокov Д0 найденного возвраащеного ${players}`);
+						//players.splice(players.indexOf(player), 1);
 						player = new Player({
 								socket: client,
 								online: 1,
 								user_id: data.user_id,
-								room_id: data.room_id
+								room_id: data.room_id,
+								hp: global.myhpp
 						});
 						
 						client.emit('create_player', player.toString());
-						players.push(player);
-						console.log(`++Игрокov тепреь ${players}`);
+						//players.push(player);
+						console.log(`++Игрокov тепреь ПОСЛЕ найденного возвраащеного ${players}`);
 						
 						for (let i in players) {
 							if (players[i].user_id == data.user_id && players[i].room_id == data.room_id) {
@@ -395,7 +424,8 @@ function re_find_rm( room_id, user_id ) {
 					socket: client,
 					online: 1,
 					user_id: data.user_id,
-					room_id: data.room_id
+					room_id: data.room_id,
+					hp: 3
 			});
 			
 			client.emit('create_player', player.toString());
@@ -408,7 +438,7 @@ function re_find_rm( room_id, user_id ) {
 				rooms.push( 
 					{
 						rm_id: data.room_id,
-						rm_time: 20000,
+						rm_time: 50000,
 						user1: {"pl_id":data.user_id,"pl_hp":3,"pl_score":0},
 						user2: null,
 					},
