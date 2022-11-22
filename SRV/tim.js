@@ -291,19 +291,19 @@ function re_find_rm( room_id, user_id ) {
 
     client.on('hp_send', (data) => {
         data = JSON.parse(data);
-		console.log(`* * * * * * *Игрок ${player.user_id} +BEFORE_HP+ ${player.hp}`);
-		player.hp = data.hp;		
-		console.log(`* * * * * * *Игрок ${player.user_id} +AFTER+ ${player.hp}`);
-		console.log(`* * * * * * *Игрокov ${player}`);
-		/*
-		for (let i in rooms)
+		console.log(`* * * * * * *Игрокov BEFORE_HP ${players}`);
+		console.log(`* * * * * * *Игрок ${player.user_id} +BEFORE_HP+ ${player.hp}`);	
+		
+		for (let i in players)
 		{
-			if (rooms[i].rm_id == player.room_id)
+			if (players[i].user_id == player.user_id)
 				{
-					rooms[i].
+					players[i].hp = data.hp;	
+					console.log(`* * * * * * *Игрок ${player.user_id} +AFTER+ ${player.hp}`);
+					console.log(`* * * * * * *Игрокov AFTER_HP ${players}`);
 				}
 		}
-		*/
+		
 	/*
 	rm_id: data.room_id,
 	rm_time: 20000,
