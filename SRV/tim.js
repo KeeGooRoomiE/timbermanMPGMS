@@ -176,8 +176,8 @@ function start_time( room_id ) {
 				timeri = new Rtimer({
 				room_id: room_id
 				});
-				client.emit('win_lose_get', timeri.toString());
-				client.broadcast.emit('win_lose_get', timeri.toString());
+				//client.emit('win_lose_get', timeri.toString());
+				//client.broadcast.emit('win_lose_get', timeri.toString());
 
 				var cenok = 2;
 				
@@ -298,7 +298,45 @@ function re_find_rm( room_id, user_id ) {
 		{
 			if (players[i].user_id == player.user_id)
 				{
+					if (players[i].hp !== 1)
+					{
 					players[i].hp = data.hp;
+					}else{
+					players[i].hp = 0;
+					
+					for (let i in rooms)
+						{
+							if (rooms[i].rm_id == player.room_id)
+							{
+								rooms[i].rm_time = 0;
+							}
+							/*
+							/// Timer Stop + Win_Lose
+							var cenok = 2;
+				
+							for (i = 0; i < players.length; i++)
+							  {
+								  if (players[i].room_id == player.room_id)
+								  {
+									  /// cenok
+									  cenok--;
+									  setTimeout(kickPl,10,players[i])
+								  }
+							  }
+								if (cenok == 0)
+									  {
+										for (i = 0; i < rooms.length; i++)
+											{
+												if (rooms[i].rm_id == player.room_id)
+												{
+													rooms.splice(rooms.indexOf(rooms[i]), 1);
+												}
+											}
+									  }	*/
+						}
+						
+					}
+					
 				}
 		}
     });
