@@ -293,6 +293,8 @@ function re_find_rm( room_id, user_id ) {
 	{	
 		if (players.length > 0)
 		{
+			console.log(`* * * * *Игроков всего ${players}`);
+			
 			var isfound = false;
 			for (i = 0; i < players.length; i++)
 			{
@@ -352,8 +354,8 @@ function re_find_rm( room_id, user_id ) {
 						}
 						if (i == rooms.length-1 && find_rm == false)
 							{
-								console.log(`Комната ${data.room_id} не найдена - запускапем таймер (через 3 сек) на повторный поиск`);
-								setTimeout(re_find_rm, 1000, data.room_id, data.user_id);
+								console.log(`Комната ${data.room_id} не найдена - запускапем таймер (через 2 сек) на повторный поиск`);
+								setTimeout(re_find_rm, 2000, data.room_id, data.user_id);
 								break;
 								
 							}
