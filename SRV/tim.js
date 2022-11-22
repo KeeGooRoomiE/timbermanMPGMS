@@ -19,6 +19,7 @@ class Player {
 		this.user_id = data.user_id; // MP id - у каждого игрока он свой (БД MP)
         this.room_id = data.room_id; // MP id - у каждого игрока (1 и 2) решивший посетить иговую комнату он одинакоый
         this.hp = data.hp;
+        this.score = data.score;
 		
 		/*
         this.battle = data.battle; // MP id - у каждого игрока он всегда разный
@@ -223,7 +224,8 @@ function re_find_rm( room_id, user_id ) {
 							online: 1,
 							user_id: user_id,
 							room_id: room_id,
-							hp: 3
+							hp: 3,
+							score: 0
 						});
 						players.push(player);
 						console.log(`++Игрокov тепреь ${players}`);
@@ -264,7 +266,8 @@ function re_find_rm( room_id, user_id ) {
 						online: 1,
 						user_id: user_id,
 						room_id: room_id,
-						hp: 3
+						hp: 3,
+						score: 0
 					});
 					players.push(player);
 					console.log(`++Игрокov тепреь ${players}`);
@@ -291,25 +294,24 @@ function re_find_rm( room_id, user_id ) {
 
     client.on('hp_send', (data) => {
         data = JSON.parse(data);
-		console.log(`* * * * * * *Игрокov BEFORE_HP ${players}`);
-		console.log(`* * * * * * *Игрок ${player.user_id} +BEFORE_HP+ ${player.hp}`);	
-		
 		for (let i in players)
 		{
 			if (players[i].user_id == player.user_id)
 				{
-					players[i].hp = data.hp;	
-					console.log(`* * * * * * *Игрок ${player.user_id} +AFTER+ ${player.hp}`);
-					console.log(`* * * * * * *Игрокov AFTER_HP ${players}`);
+					players[i].hp = data.hp;
 				}
 		}
-		
-	/*
-	rm_id: data.room_id,
-	rm_time: 20000,
-	user1: {"pl_id":data.user_id,"pl_hp":3,"pl_score":0},
-	user2: null,
-	*/	
+    });
+	
+	client.on('score_send', (data) => {
+        data = JSON.parse(data);
+		for (let i in players)
+		{
+			if (players[i].user_id == player.user_id)
+				{
+					players[i].score = data.score;
+				}
+		}
     });
 	
     client.on('create_player', (data) => {
@@ -327,6 +329,7 @@ function re_find_rm( room_id, user_id ) {
 			  {
 				isfound = true;
 				global.myhpp  = players[i].hp;
+				global.myscore = players[i].score;
 				break;
 			  }
 			}
@@ -356,7 +359,8 @@ function re_find_rm( room_id, user_id ) {
 							online: 1,
 							user_id: data.user_id,
 							room_id: data.room_id,
-							hp: 3
+							hp: 3,
+							score: 0
 						});
 						players.push(player);
 						console.log(`++Игрокov тепреь ${players}`);
@@ -396,7 +400,8 @@ function re_find_rm( room_id, user_id ) {
 								online: 1,
 								user_id: data.user_id,
 								room_id: data.room_id,
-								hp: global.myhpp
+								hp: global.myhpp, // ? global???
+								score: global.myscore
 						});
 						
 						client.emit('create_player', player.toString());
@@ -425,7 +430,8 @@ function re_find_rm( room_id, user_id ) {
 					online: 1,
 					user_id: data.user_id,
 					room_id: data.room_id,
-					hp: 3
+					hp: 3,
+					score: 0
 			});
 			
 			client.emit('create_player', player.toString());

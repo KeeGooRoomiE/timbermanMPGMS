@@ -9,6 +9,7 @@ treeLength++;
 
 //Add player score
 playerScore++;
+sio_emit_score_send(playerScore)
 global.curPlayerScore++;
 
 //random tree cell image

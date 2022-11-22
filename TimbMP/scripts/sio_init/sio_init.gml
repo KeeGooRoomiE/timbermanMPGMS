@@ -20,12 +20,13 @@ function sio_init() {
 		sio_addEvent("win_lose_get");
 		sio_addEvent("timer_get");
 		sio_addEvent("timer_set");
-		
 		sio_addEvent("hp_send");
-		sio_addEvent("hp_get");
-	
 		
-		sio_addEvent("score_get");
+		sio_addEvent("score_send");
+		
+		//sio_addEvent("hp_get");
+		//sio_addEvent("score_get");
+	
 		sio_addEvent("tree_send");
 		sio_addEvent("tree_get");
 #endregion

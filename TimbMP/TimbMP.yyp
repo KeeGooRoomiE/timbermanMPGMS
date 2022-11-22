@@ -43,6 +43,7 @@
     {"id":{"name":"obj_p2skin2","path":"objects/obj_p2skin2/obj_p2skin2.yy",},"order":6,},
     {"id":{"name":"bkg01_0","path":"sprites/bkg01_0/bkg01_0.yy",},"order":0,},
     {"id":{"name":"spr_forest_chomper","path":"sprites/spr_forest_chomper/spr_forest_chomper.yy",},"order":3,},
+    {"id":{"name":"sio_emit_score_send","path":"scripts/sio_emit_score_send/sio_emit_score_send.yy",},"order":4,},
     {"id":{"name":"spr_green_chopper","path":"sprites/spr_green_chopper/spr_green_chopper.yy",},"order":0,},
     {"id":{"name":"bkg01_2","path":"sprites/bkg01_2/bkg01_2.yy",},"order":3,},
     {"id":{"name":"fnt_main","path":"fonts/fnt_main/fnt_main.yy",},"order":0,},
