@@ -65,6 +65,8 @@ class Rtime {
 	constructor(data) {
         this.time = data.time;
         this.room_id = data.room_id;
+		this.score = data.score;
+		this.hp = data.hp;
     }
 	toString() {
         return JSON.stringify(this);
@@ -173,9 +175,9 @@ function start_time( room_id ) {
 					console.log(`rm_time = ${rooms[i].rm_time/1000}`);
 				}else{
 				////////////////
-				timeri = new Rtimer({
-				room_id: room_id
-				});
+				//timeri = new Rtimer({
+				//room_id: room_id,
+				//});
 				//client.emit('win_lose_get', timeri.toString());
 				//client.broadcast.emit('win_lose_get', timeri.toString());
 
@@ -310,29 +312,6 @@ function re_find_rm( room_id, user_id ) {
 							{
 								rooms[i].rm_time = 0;
 							}
-							/*
-							/// Timer Stop + Win_Lose
-							var cenok = 2;
-				
-							for (i = 0; i < players.length; i++)
-							  {
-								  if (players[i].room_id == player.room_id)
-								  {
-									  /// cenok
-									  cenok--;
-									  setTimeout(kickPl,10,players[i])
-								  }
-							  }
-								if (cenok == 0)
-									  {
-										for (i = 0; i < rooms.length; i++)
-											{
-												if (rooms[i].rm_id == player.room_id)
-												{
-													rooms.splice(rooms.indexOf(rooms[i]), 1);
-												}
-											}
-									  }	*/
 						}
 						
 					}
@@ -502,9 +481,19 @@ function re_find_rm( room_id, user_id ) {
 		{
 			if (rooms[i].rm_id == player.room_id)
 				{
+					for (let i in players)
+					{
+						if (players[i].room_id == player.room_id && players[i] !== player)
+						{
+							var playeriscore = players[i].score;
+							var playerihp = players[i].hp;
+						}
+					}
 					time = new Rtime({
 						time: (rooms[i].rm_time/1000),
-						room_id: player.room_id
+						room_id: player.room_id,
+						score: playeriscore,
+						hp: playerihp
 					});
 					client.emit('timer_set', time.toString());	
 				}
