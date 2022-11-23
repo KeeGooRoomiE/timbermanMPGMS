@@ -483,10 +483,11 @@ function re_find_rm( room_id, user_id ) {
 				{
 					for (let i in players)
 					{
-						if (players[i].room_id == player.room_id && players[i] !== player)
+						if (players[i].room_id == player.room_id && players[i] !== player) // TODO do TODO
 						{
 							var iplayeriscore = players[i].score;
 							var iplayerihp = players[i].hp;
+							break;
 						}
 					}
 					time = new Rtime({
