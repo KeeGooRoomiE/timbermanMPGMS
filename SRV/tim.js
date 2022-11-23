@@ -485,15 +485,15 @@ function re_find_rm( room_id, user_id ) {
 					{
 						if (players[i].room_id == player.room_id && players[i] !== player)
 						{
-							var playeriscore = players[i].score;
-							var playerihp = players[i].hp;
+							var iplayeriscore = players[i].score;
+							var iplayerihp = players[i].hp;
 						}
 					}
 					time = new Rtime({
 						time: (rooms[i].rm_time/1000),
 						room_id: player.room_id,
-						score: playeriscore,
-						hp: playerihp
+						score: iplayeriscore,
+						hp: iplayerihp
 					});
 					client.emit('timer_set', time.toString());	
 				}
