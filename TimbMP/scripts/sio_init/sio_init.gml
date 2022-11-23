@@ -21,11 +21,10 @@ function sio_init() {
 		sio_addEvent("timer_get");
 		sio_addEvent("timer_set");
 		sio_addEvent("hp_send");
-		
 		sio_addEvent("score_send");
 		
-		//sio_addEvent("hp_get");
-		//sio_addEvent("score_get");
+		sio_addEvent("datax_set");
+		sio_addEvent("datax_get");
 	
 		sio_addEvent("tree_send");
 		sio_addEvent("tree_get");

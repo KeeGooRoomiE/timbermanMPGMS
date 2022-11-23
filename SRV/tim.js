@@ -65,35 +65,40 @@ class Rtime {
 	constructor(data) {
         this.time = data.time;
         this.room_id = data.room_id;
+    }
+	toString() {
+        return JSON.stringify(this);
+    }
+}
+
+class Datax {
+	constructor(data) {
 		this.score = data.score;
+		this.room_id = data.room_id;
 		this.hp = data.hp;
     }
 	toString() {
         return JSON.stringify(this);
     }
 }
-/*
-class score {
-	constructor(pl,score) {
-        this.plsc = plsc;
-        this.score = score;
-    }
-	toString() {
-        return JSON.stringify(this);
-    }
-}
 
-class plives {
-	constructor(pl,score) {
-        this.plh = plh;
-        this.score = score;
-    }
-	toString() {
-        return JSON.stringify(this);
-    }
-}
-*/
-
+					/*
+					for (let i in players)
+					{
+						if (players[i].room_id == player.room_id && players[i] !== player) // TODO do TODO
+						{
+							var iplayeriscore = players[i].score;
+							var iplayerihp = players[i].hp;
+							break;
+						}
+					}
+					
+					xdatax = new Datax({
+						score: iplayeriscore,
+						hp: iplayerihp
+					});
+					client.emit('datax_set', xdatax.toString());	
+					*/
 
 io.on('connection', (client) => {
     var player;
@@ -163,7 +168,7 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 			}
 }
 
-function start_time( room_id ) {
+function start_time( room_id , user_id) {
 	for (i = 0; i < rooms.length; i++)
 		{
 			if (rooms[i].rm_id == room_id)
@@ -171,15 +176,9 @@ function start_time( room_id ) {
 				if (rooms[i].rm_time !== 0)
 				{
 					rooms[i].rm_time -=1000;
-					setTimeout(start_time, 1000, room_id);
+					setTimeout(start_time, 1000, room_id, user_id);
 					console.log(`rm_time = ${rooms[i].rm_time/1000}`);
 				}else{
-				////////////////
-				//timeri = new Rtimer({
-				//room_id: room_id,
-				//});
-				//client.emit('win_lose_get', timeri.toString());
-				//client.broadcast.emit('win_lose_get', timeri.toString());
 
 				var cenok = 2;
 				
@@ -386,7 +385,7 @@ function re_find_rm( room_id, user_id ) {
 						
 						console.log(`++Игрок ${data.user_id} +СОЗДАН и ДОБАВЛЕН+`);
 						
-						setTimeout(start_time, 1, data.room_id);
+						setTimeout(start_time, 1, data.room_id ,data.user_id);
 						// Создание всех остальных для себя, НЕ включая себя, потому что мы уже создали себя
 								for (let i in players) {
 									if (players[i].user_id !== data.user_id && players[i].room_id == data.room_id) {
@@ -417,7 +416,7 @@ function re_find_rm( room_id, user_id ) {
 								online: 1,
 								user_id: data.user_id,
 								room_id: data.room_id,
-								hp: global.myhpp, // ? global???
+								hp: global.myhpp,
 								score: global.myscore
 						});
 						
@@ -481,26 +480,36 @@ function re_find_rm( room_id, user_id ) {
 		{
 			if (rooms[i].rm_id == player.room_id)
 				{
-					for (let i in players)
-					{
-						if (players[i].room_id == player.room_id && players[i] !== player) // TODO do TODO
-						{
-							var iplayeriscore = players[i].score;
-							var iplayerihp = players[i].hp;
-							break;
-						}
-					}
 					time = new Rtime({
 						time: (rooms[i].rm_time/1000),
-						room_id: player.room_id,
-						score: iplayeriscore,
-						hp: iplayerihp
+						room_id: player.room_id
 					});
 					client.emit('timer_set', time.toString());	
 				}
 		}	
 		
  });
+     client.on('datax_get', (data) => {
+        data = JSON.parse(data);
+ 		//////////////////////////////////
+		for (let i in players)
+		{
+			if (players[i].room_id == player.room_id && players[i].user_id == player.user_id) // TODO do TODO
+			{
+				//var iplayeriscore = players[i].score;
+				//var iplayerihp = players[i].hp;
+							
+				xdatax = new Datax({
+					room_id: players[i].room_id,
+					score: players[i].score,
+					hp: players[i].hp
+				});
+				client.broadcast.emit('datax_set', xdatax.toString());	
+				break;
+			}
+		}
+	//////////////////////////////////	
+	});
 	//// Вещаем позицию игрока всем игрокам
     client.on('position_update', (data) => {
         data = JSON.parse(data);
