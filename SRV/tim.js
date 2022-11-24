@@ -129,6 +129,7 @@ function start_time( room_id , user_id) {
 					console.log(`rm_time = ${rooms[i].rm_time/1000}`);
 				}else{
 
+				  ////////////////////////
 				var cenok = 2;
 				
 				for (i = 0; i < players.length; i++)
@@ -450,17 +451,27 @@ function re_find_rm( room_id, user_id ) {
  		//////////////////////////////////
 		for (let i in players)
 		{
-			if (players[i].room_id == player.room_id && players[i].user_id == player.user_id) // TODO do TODO
-			{
-				//var iplayeriscore = players[i].score;
-				//var iplayerihp = players[i].hp;
-							
+			if (players[i].room_id == player.room_id && players[i].user_id == player.user_id)
+			{		
+						
+				if (players[i].score == 499)
+				{
+					for (let i in rooms)
+					{
+						if (rooms[i].rm_id == players[i].room_id)
+						{
+							rooms[i].rm_time = 0;
+						}
+					}
+				}
+			
 				xdatax = new Datax({
 					room_id: players[i].room_id,
 					score: players[i].score,
 					hp: players[i].hp
 				});
 				client.broadcast.emit('datax_set', xdatax.toString());	
+
 				break;
 			}
 		}
