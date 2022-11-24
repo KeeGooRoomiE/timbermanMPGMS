@@ -26,6 +26,7 @@
     {"id":{"name":"Sprite21","path":"sprites/Sprite21/Sprite21.yy",},"order":1,},
     {"id":{"name":"obj_init","path":"objects/obj_init/obj_init.yy",},"order":4,},
     {"id":{"name":"bkg01_1","path":"sprites/bkg01_1/bkg01_1.yy",},"order":4,},
+    {"id":{"name":"gmcallback_sio_on_disconnect_player","path":"scripts/gmcallback_sio_on_disconnect_player/gmcallback_sio_on_disconnect_player.yy",},"order":9,},
     {"id":{"name":"Sprite18","path":"sprites/Sprite18/Sprite18.yy",},"order":0,},
     {"id":{"name":"obj_p2skin1","path":"objects/obj_p2skin1/obj_p2skin1.yy",},"order":5,},
     {"id":{"name":"spr_snow_tree_cell","path":"sprites/spr_snow_tree_cell/spr_snow_tree_cell.yy",},"order":1,},

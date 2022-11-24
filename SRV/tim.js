@@ -82,60 +82,9 @@ class Datax {
     }
 }
 
-					/*
-					for (let i in players)
-					{
-						if (players[i].room_id == player.room_id && players[i] !== player) // TODO do TODO
-						{
-							var iplayeriscore = players[i].score;
-							var iplayerihp = players[i].hp;
-							break;
-						}
-					}
-					
-					xdatax = new Datax({
-						score: iplayeriscore,
-						hp: iplayerihp
-					});
-					client.emit('datax_set', xdatax.toString());	
-					*/
-
 io.on('connection', (client) => {
     var player;
-	/*
-function finish_ses_rm( room_id ) {
-	
-	timeri = new Rtimer({
-	room_id: room_id
-	});
-	client.emit('win_lose_get', timeri.toString());
-	client.broadcast.emit('win_lose_get', timeri.toString());
 
-	var cenok = 2;
-	
-	for (i = 0; i < players.length; i++)
-	  {
-		  if (players[i].room_id == room_id)
-		  {
-			  /// cenok
-			  cenok--;
-			  players.splice(players.indexOf(players[i]), 1);
-			  
-			  if (cenok == 0)
-			  {
-				for (i = 0; i < rooms.length; i++)
-					{
-						if (rooms[i].rm_id == room_id)
-						{
-							rooms.splice(rooms.indexOf(rooms[i]), 1);
-						}
-					}
-			  }	
-		  }
-	  }
-		
-}
-*/
 function kickPl(player) {
 console.log(`Проверка игрока [${player.user_id}] на валидность`);
 		
@@ -277,7 +226,7 @@ function re_find_rm( room_id, user_id ) {
 					rooms.push( 
 						{
 							rm_id: player.room_id,
-							rm_time: 50000,
+							rm_time: 380000, //180000
 							user1: {"pl_id":player.user_id,"pl_hp":3,"pl_score":0},
 							user2: null,
 						},
@@ -409,7 +358,15 @@ function re_find_rm( room_id, user_id ) {
 					}
 					}else{
 						console.log(`++Игрок ${data.user_id} найден возвращаю.`);
-						console.log(`++Игрокov Д0 найденного возвраащеного ${players}`);
+						
+						for (let i in players)
+						{
+							//global.myroom
+							if (players[i].user_id == data.user_id && players[i].room_id == data.room_id)
+							{
+								client.broadcast.emit('disconnect_player', players[i].toString());
+							}
+						}
 						//players.splice(players.indexOf(player), 1);
 						player = new Player({
 								socket: client,
@@ -422,7 +379,6 @@ function re_find_rm( room_id, user_id ) {
 						
 						client.emit('create_player', player.toString());
 						//players.push(player);
-						console.log(`++Игрокov тепреь ПОСЛЕ найденного возвраащеного ${players}`);
 						
 						for (let i in players) {
 							if (players[i].user_id == data.user_id && players[i].room_id == data.room_id) {
@@ -460,7 +416,7 @@ function re_find_rm( room_id, user_id ) {
 				rooms.push( 
 					{
 						rm_id: data.room_id,
-						rm_time: 50000,
+						rm_time: 380000, //180000
 						user1: {"pl_id":data.user_id,"pl_hp":3,"pl_score":0},
 						user2: null,
 					},

@@ -22,10 +22,11 @@ function sio_init() {
 		sio_addEvent("timer_set");
 		sio_addEvent("hp_send");
 		sio_addEvent("score_send");
-		
 		sio_addEvent("datax_set");
 		sio_addEvent("datax_get");
 	
+		sio_addEvent("disconnect_player");
+		
 		sio_addEvent("tree_send");
 		sio_addEvent("tree_get");
 #endregion
