@@ -81,6 +81,15 @@ class Datax {
         return JSON.stringify(this);
     }
 }
+class Dataarrtree {
+	constructor(data) {
+		this.treearr = data.treearr;
+		this.room_id = data.room_id;
+    }
+	toString() {
+        return JSON.stringify(this);
+    }
+}
 
 io.on('connection', (client) => {
     var player;
@@ -445,10 +454,22 @@ function re_find_rm( room_id, user_id ) {
 				}
 		}	
 		
+ }); 
+ 
+ client.on('tree_send', (data) => {
+        data = JSON.parse(data);
+						
+		console.log(`* * * * [treearr]: ${data.treearr}`);
+		xdatarrtree = new Dataarrtree({
+		room_id: player.room_id,
+		treearr: data.treearr
+		});
+		client.broadcast.emit('tree_set', xdatarrtree.toString());
  });
+ 
      client.on('datax_get', (data) => {
         data = JSON.parse(data);
- 		//////////////////////////////////
+
 		for (let i in players)
 		{
 			if (players[i].room_id == player.room_id && players[i].user_id == player.user_id)
@@ -475,7 +496,6 @@ function re_find_rm( room_id, user_id ) {
 				break;
 			}
 		}
-	//////////////////////////////////	
 	});
 	//// Вещаем позицию игрока всем игрокам
     client.on('position_update', (data) => {

@@ -1,5 +1,7 @@
 /// @description Live reactions to triggers
+//treearr[0]
 
+	//show_debug_message(treearr);
 #region -- check player living
 
 if (isPlayerLive)
@@ -119,6 +121,8 @@ if (rightTrigger)
 			}
 		}
 		
+		
+		sio_emit_treearr_update(treearr);
 		event_user(1);  //shift all cells in array
 	}
 	rightTrigger = false;
