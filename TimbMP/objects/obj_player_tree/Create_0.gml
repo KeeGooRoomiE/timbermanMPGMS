@@ -1,5 +1,17 @@
 /// @description Init
 
+var casetree0 = 0;
+var casetree1 = 0;
+var casetree2 = 2;
+var casetree3 = 2;
+var casetree4 = 1;
+var casetree5 = 1;
+var casetree6 = 2;
+var casetree7 = 2;
+var casetree8 = 2;
+var casetree9 = 2;
+var casetree10 = 2;
+
 // Starting vars
 treearr[0] = 0;
 treecellarr[0] = 0;
@@ -32,13 +44,29 @@ global.pl1 = id;
 
 
 #region -- init tree array
-
 for (i=0; i<treeLength; i++)
 {
-	treearr[i]= irandom_range(0,3) //0;
-	arrL++; // Забиваем первые 10 значением 0
+		switch (i)
+	{	
+		case 0: treearr[i]=real(casetree0); arrL++; break;
+		case 1: treearr[i]=real(casetree1); arrL++; break;
+		case 2: treearr[i]=real(casetree2); arrL++; break;
+		case 3: treearr[i]=real(casetree3); arrL++; break;
+		case 4: treearr[i]=real(casetree4); arrL++; break;
+		case 5: treearr[i]=real(casetree5); arrL++; break;
+		case 6: treearr[i]=real(casetree6); arrL++; break;
+		case 7: treearr[i]=real(casetree7); arrL++; break;
+		case 8: treearr[i]=real(casetree8); arrL++; break;
+		case 9: treearr[i]=real(casetree9); arrL++; break;
+		case 10:treearr[i]=real(casetree10); arrL++; break;
+	}
+		
+		
+	//treearr[i]= irandom_range(0,3) //0; //2; // Забиваем первые 10 значением 0
+	//arrL++; 
 	
 }
+
 
 //init tree cells for images
 for (i=0; i<treeLength; i++)

@@ -2,6 +2,7 @@ function gmcallback_sio_on_create_player()
 {
 	if !(room == rm04_end)
 	{
+		instance_create_depth(184,304,0,obj_player_tree)
 		var data = json_decode(argument[0]);	
 		var dat_rmid = real(data[? "room_id"]);
 		var dat_plid = real(data[? "user_id"]);
