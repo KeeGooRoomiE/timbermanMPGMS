@@ -153,7 +153,6 @@
     {"folderPath":"folders/Спрайты/BKGScene2.yy","order":13,"resourceVersion":"1.0","name":"BKGScene2","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Extensions.yy","order":15,"resourceVersion":"1.0","name":"Extensions","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/Fonts.yy","order":16,"resourceVersion":"1.0","name":"Fonts","tags":[],"resourceType":"GMFolder",},
-    {"folderPath":"folders/Objects.yy","order":17,"resourceVersion":"1.0","name":"Objects","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/CODE247365.yy","order":18,"resourceVersion":"1.0","name":"CODE247365","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/CODE247365/SocketIO.yy","order":1,"resourceVersion":"1.0","name":"SocketIO","tags":[],"resourceType":"GMFolder",},
     {"folderPath":"folders/CODE247365/SocketIO/Emit.yy","order":1,"resourceVersion":"1.0","name":"Emit","tags":[],"resourceType":"GMFolder",},

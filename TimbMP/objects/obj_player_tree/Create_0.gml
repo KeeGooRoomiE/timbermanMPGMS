@@ -35,14 +35,17 @@ global.pl1 = id;
 
 for (i=0; i<treeLength; i++)
 {
-	treearr[i]=0;
-	arrL++;
+	treearr[i]= irandom_range(0,3) //0;
+	arrL++; // Забиваем первые 10 значением 0
+	
 }
 
 //init tree cells for images
 for (i=0; i<treeLength; i++)
 {
-	/*switch (i)
+	
+	/*
+	switch (i)
 	{
 		case 0: treecellarr[i]=irandom_range(0,4); break;
 		case 1: treecellarr[i]=irandom_range(0,4); break;
@@ -64,6 +67,15 @@ for (i=0; i<treeLength; i++)
 //init tree branches images
 for (i=0; i<treeLength; i++)
 {
+			switch (treearr[i])
+		{
+			case 0: treebrarr[i] = 2; break;
+			case 1: treebrarr[i] = choose(0,1); break;
+			case 2: treebrarr[i] = choose(3,4); break;
+			case 3: treebrarr[i] = 2; break;
+			case 4: treebrarr[i] = 2; break;
+			default: treebrarr[i] = 2; break;
+		}
 	/*
 	switch (i)
 	{
@@ -78,10 +90,10 @@ for (i=0; i<treeLength; i++)
 		case 8: treebrarr[i]=6; break;
 		case 9: treebrarr[i]=6; break;
 		case 10:treebrarr[i]=6; break;
-	}
-	*/
+	}*/
 	
-	treebrarr[i]=2;
+	
+	//treebrarr[i]=2;
 }
 
 #endregion
