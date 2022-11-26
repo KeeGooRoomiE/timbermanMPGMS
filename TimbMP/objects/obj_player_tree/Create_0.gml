@@ -1,16 +1,16 @@
 /// @description Init
 
-var casetree0 = 0;
-var casetree1 = 0;
-var casetree2 = 2;
-var casetree3 = 2;
-var casetree4 = 1;
-var casetree5 = 1;
-var casetree6 = 2;
-var casetree7 = 2;
-var casetree8 = 2;
-var casetree9 = 2;
-var casetree10 = 2;
+casetree0 = 0;
+casetree1 = 0;
+casetree2 = 1;
+casetree3 = 1;
+casetree4 = 0;
+casetree5 = 0;
+casetree6 = 0;
+casetree7 = 0;
+casetree8 = 0;
+casetree9 = 1;
+casetree10 = 0;
 
 // Starting vars
 treearr[0] = 0;
