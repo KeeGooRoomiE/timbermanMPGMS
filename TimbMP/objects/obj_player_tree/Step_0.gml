@@ -75,7 +75,7 @@ if (leftTrigger)
 			}
 			
 		}
-		
+		sio_emit_treearr_update(treearr);
 		event_user(1);  //shift all cells in array
 	}
 	leftTrigger = false;
@@ -120,8 +120,6 @@ if (rightTrigger)
 				}
 			}
 		}
-		
-		
 		sio_emit_treearr_update(treearr);
 		event_user(1);  //shift all cells in array
 	}
