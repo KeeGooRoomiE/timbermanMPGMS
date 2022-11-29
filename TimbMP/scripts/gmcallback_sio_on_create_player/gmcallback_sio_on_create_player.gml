@@ -11,11 +11,12 @@ function gmcallback_sio_on_create_player()
 		var dat_plsc = real(data[? "score"]);
 		
 		var dat_treearr = string(data[? "tree"]);
-		show_message(dat_treearr)
+		//show_message(dat_treearr)
+		show_message("IN COMIN!")
 		show_debug_message(dat_treearr)
 		
 		//array_get()
-		with (instance_create_depth(184,304,0,obj_player_tree))
+		with (obj_player_tree)
 		{
 			playerLives = real(dat_plhp);
 			playerScore = real(dat_plsc);
@@ -32,13 +33,6 @@ function gmcallback_sio_on_create_player()
 			 casetree9 = 1;
 			 casetree10 = 0;
 		}
-		/*
-		with(obj_player_tree)
-		{
-			playerLives = real(dat_plhp);
-			playerScore = real(dat_plsc);
-		}
-		*/
 		var dat_rmid = real(data[? "room_id"]);
 		global.room_id = dat_rmid
 		//global.p1Skin = data; //0 1 2 3
