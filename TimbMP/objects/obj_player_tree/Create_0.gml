@@ -3,7 +3,7 @@
 casetree0 = 0;
 casetree1 = 0;
 casetree2 = 1;
-casetree3 = 1;
+casetree3 = 0;
 casetree4 = 0;
 casetree5 = 0;
 casetree6 = 0;
@@ -11,6 +11,7 @@ casetree7 = 0;
 casetree8 = 0;
 casetree9 = 1;
 casetree10 = 0;
+
 
 // Starting vars
 treearr[0] = 0;
@@ -46,7 +47,7 @@ global.pl1 = id;
 #region -- init tree array
 for (i=0; i<treeLength; i++)
 {
-		switch (i)
+	switch (i)
 	{	
 		case 0: treearr[i]=real(casetree0); arrL++; break;
 		case 1: treearr[i]=real(casetree1); arrL++; break;
@@ -62,7 +63,7 @@ for (i=0; i<treeLength; i++)
 	}
 		
 		
-	//treearr[i]= irandom_range(0,3) //0; //2; // Забиваем первые 10 значением 0
+	//treearr[i]= irandom_range(0,3) //0; // Забиваем первые 10 значением 0 (пусто)
 	//arrL++; 
 	
 }
