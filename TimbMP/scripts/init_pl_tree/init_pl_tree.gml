@@ -1,5 +1,6 @@
-/// @description Init//init_pl_tree()
-
+// Ресурсы скриптов были изменены для версии 2.3.0, подробности см. по адресу
+// https://help.yoyogames.com/hc/en-us/articles/360005277377
+function init_pl_tree(){
 /// @description Init
 
 casetree0 = 0;
@@ -155,3 +156,4 @@ playerLives = 1;
 #endregion
 
 //
+}
