@@ -1,4 +1,5 @@
 /// @description Initcasetree0 = global.gcasetree0;
+casetree0 =  global.gcasetree0;
 casetree1 =  global.gcasetree1;
 casetree2 =  global.gcasetree2;
 casetree3 =  global.gcasetree3;
@@ -9,6 +10,10 @@ casetree7 =  global.gcasetree7;
 casetree8 =  global.gcasetree8;
 casetree9 =  global.gcasetree9;
 casetree10 = global.gcasetree10;
+
+/// @description Init
+
+
 
 
 // Starting vars
