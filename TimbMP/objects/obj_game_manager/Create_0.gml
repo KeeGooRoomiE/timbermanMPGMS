@@ -1,5 +1,5 @@
 /// @description Scene setups
-init();
+
 
 #region -- Set skin species
 

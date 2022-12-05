@@ -17,6 +17,9 @@ function sio_init() {
 		sio_addEvent("destroy_player");
 		sio_addEvent("position_update");
 		sio_addEvent("start");
+		
+		sio_addEvent("go_room"); // init tree
+		
 		sio_addEvent("win_lose_get");
 		sio_addEvent("timer_get");
 		sio_addEvent("timer_set");

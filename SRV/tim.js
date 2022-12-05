@@ -20,6 +20,7 @@ class Player {
         this.room_id = data.room_id; // MP id - у каждого игрока (1 и 2) решивший посетить иговую комнату он одинакоый
         this.hp = data.hp;
         this.score = data.score;
+        this.tree = data.tree;
 		
 		/*
         this.battle = data.battle; // MP id - у каждого игрока он всегда разный
@@ -185,8 +186,10 @@ function re_find_rm( room_id, user_id ) {
 							user_id: user_id,
 							room_id: room_id,
 							hp: 3,
-							score: 0
+							score: 0,
+							tree: []
 						});
+						client.emit('go_room', "ok".toString());
 						players.push(player);
 						console.log(`++Игрокov тепреь ${players}`);
 						client.emit('create_player', player.toString());
@@ -227,8 +230,10 @@ function re_find_rm( room_id, user_id ) {
 						user_id: user_id,
 						room_id: room_id,
 						hp: 3,
-						score: 0
+						score: 0,
+						tree: []
 					});
+					client.emit('go_room', "ok".toString());
 					players.push(player);
 					console.log(`++Игрокov тепреь ${players}`);
 					client.emit('create_player', player.toString());
@@ -305,6 +310,7 @@ function re_find_rm( room_id, user_id ) {
 				isfound = true;
 				global.myhpp  = players[i].hp;
 				global.myscore = players[i].score;
+				global.tree = players[i].tree;
 				break;
 			  }
 			}
@@ -335,8 +341,11 @@ function re_find_rm( room_id, user_id ) {
 							user_id: data.user_id,
 							room_id: data.room_id,
 							hp: 3,
-							score: 0
+							score: 0,
+							tree: []
 						});
+						
+						client.emit('go_room', "ok".toString());
 						players.push(player);
 						console.log(`++Игрокov тепреь ${players}`);
 						client.emit('create_player', player.toString());
@@ -384,24 +393,22 @@ function re_find_rm( room_id, user_id ) {
 								user_id: data.user_id,
 								room_id: data.room_id,
 								hp: global.myhpp,
-								score: global.myscore
+								score: global.myscore,
+								tree: global.tree
 						});
-						
+						client.emit('go_room', "ok".toString());
 						client.emit('create_player', player.toString());
 						//players.push(player);
 						
-						for (let i in players) {
-							if (players[i].user_id == data.user_id && players[i].room_id == data.room_id) {
-								client.emit('create_player', players[i].toString());
-								
+						
+						
 								// Создание всех остальных для себя, НЕ включая себя, потому что мы уже создали себя
 								for (let i in players) {
 									if (players[i].user_id !== data.user_id && players[i].room_id == data.room_id) {
 										client.emit('create_player_other', players[i].toString());
 									}
 								}
-							}
-						}
+							
 						client.emit('start', "start".toString());
 						
 				}
@@ -412,10 +419,11 @@ function re_find_rm( room_id, user_id ) {
 					online: 1,
 					user_id: data.user_id,
 					room_id: data.room_id,
-					hp: 3,
-					score: 0
+					hp: 3000,
+					score: 0,
+					tree: [0, 0, 1, 1, 1, 0, 0, 0, 0, 1] // TODO
 			});
-			
+			client.emit('go_room', "ok".toString());
 			client.emit('create_player', player.toString());
 			players.push(player);
 			console.log(`++Игрокov тепреь ${players}`);
@@ -460,11 +468,12 @@ function re_find_rm( room_id, user_id ) {
         data = JSON.parse(data);
 						
 		console.log(`* * * * [treearr]: ${data.treearr}`);
+		
 		xdatarrtree = new Dataarrtree({
 		room_id: player.room_id,
 		treearr: data.treearr
 		});
-		client.broadcast.emit('tree_set', xdatarrtree.toString());
+		//client.broadcast.emit('tree_set', xdatarrtree.toString()); // никому не отправляем а ПОЛУЧАЕМ когда реконнектились или другой игрок получает когда зашел
  });
  
      client.on('datax_get', (data) => {

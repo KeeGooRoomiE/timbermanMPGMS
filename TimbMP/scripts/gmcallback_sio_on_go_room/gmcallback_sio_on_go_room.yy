@@ -2,11 +2,11 @@
   "isDnD": false,
   "isCompatibility": false,
   "parent": {
-    "name": "CODE247365",
-    "path": "folders/CODE247365.yy",
+    "name": "Custom",
+    "path": "folders/CODE247365/SocketIO/Events/Custom.yy",
   },
   "resourceVersion": "1.0",
-  "name": "init_pl_tree",
+  "name": "gmcallback_sio_on_go_room",
   "tags": [],
   "resourceType": "GMScript",
 }

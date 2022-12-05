@@ -12,7 +12,7 @@ function gmcallback_sio_on_create_player()
 		
 		var dat_treearr = string(data[? "tree"]);
 		//show_message(dat_treearr)
-		show_message("IN COMIN!")
+		//show_message("IN COMIN!")
 		show_debug_message(dat_treearr)
 		
 		////////////////////////
@@ -25,28 +25,30 @@ function gmcallback_sio_on_create_player()
 			playerScore = real(dat_plsc);
 			
 			 casetree0 = 0;
-			 casetree1 = 0;
-			 casetree2 = 1;
-			 casetree3 = 1;
+			 casetree1 = 2;
+			 casetree2 = 0;
+			 casetree3 = 0;
 			 casetree4 = 0;
 			 casetree5 = 0;
 			 casetree6 = 0;
 			 casetree7 = 0;
 			 casetree8 = 0;
-			 casetree9 = 1;
+			 casetree9 = 0;
 			 casetree10 = 0;
+			 
+			 global.gcasetree0 = 1;
+			global.gcasetree1 = 0;
+			global.gcasetree2 = 0;
+			global.gcasetree3 = 0;
+			global.gcasetree4 = 0;
+			global.gcasetree5 = 0;
+			global.gcasetree6 = 0;
+			global.gcasetree7 = 0;
+			global.gcasetree8 = 0;
+			global.gcasetree9 = 0;
+			global.gcasetree10 = 0;
 		}
-		////////////////////////
-
-		/*
-		var inst = instance_create_depth(x, y, -100, obj_bullet,
-		{
-		    speed : shoot_speed,
-		    direction : image_angle
-		});
-		*/
-
-		 
+		////////////////////////		 
 		/*
 		var inst = instance_create_depth(184,304,0,obj_player_tree,
 		{

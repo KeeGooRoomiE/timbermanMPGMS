@@ -1,8 +1,4 @@
-/// @description Insert description here
-// You can write your code in this editor
-
-//В этом обьекте передавай сиды, имена игроков и все нужное
-
+init();
 var battle_id = 1214498;	//only number!
 global.seed = (battle_id*256)*1.3;
 
@@ -19,6 +15,7 @@ global.p2Skin = 0;
 
 global.curPlayerScore = 0;
 
+room_goto_next();
 //debug
 //global.p1Skin = irandom_range(0,3);
 //global.p2Skin = irandom_range(0,3);

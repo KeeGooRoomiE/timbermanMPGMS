@@ -1,18 +1,14 @@
-/// @description Init//init_pl_tree()
-
-/// @description Init
-
-casetree0 = 0;
-casetree1 = 0;
-casetree2 = 1;
-casetree3 = 0;
-casetree4 = 0;
-casetree5 = 0;
-casetree6 = 0;
-casetree7 = 0;
-casetree8 = 0;
-casetree9 = 1;
-casetree10 = 0;
+/// @description Initcasetree0 = global.gcasetree0;
+casetree1 =  global.gcasetree1;
+casetree2 =  global.gcasetree2;
+casetree3 =  global.gcasetree3;
+casetree4 =  global.gcasetree4;
+casetree5 =  global.gcasetree5;
+casetree6 =  global.gcasetree6;
+casetree7 =  global.gcasetree7;
+casetree8 =  global.gcasetree8;
+casetree9 =  global.gcasetree9;
+casetree10 = global.gcasetree10;
 
 
 // Starting vars
