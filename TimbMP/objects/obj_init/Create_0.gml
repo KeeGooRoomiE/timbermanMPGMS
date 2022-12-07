@@ -1,6 +1,6 @@
 init();
 var battle_id = 1214498;	//only number!
-global.seed = (battle_id*256)*1.3;
+global.seed = battle_id;
 
 random_set_seed(global.seed);
 

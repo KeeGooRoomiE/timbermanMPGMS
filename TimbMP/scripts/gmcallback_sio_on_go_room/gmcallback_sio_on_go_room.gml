@@ -1,9 +1,9 @@
 /// @return ping in ms
 function gmcallback_sio_on_go_room(argument0) {
 	//show_message("go_room")
-global.gcasetree0 = 1;
+global.gcasetree0 = 0;
 global.gcasetree1 = 1;
-global.gcasetree2 = 0;
+global.gcasetree2 = 1;
 global.gcasetree3 = 0;
 global.gcasetree4 = 0;
 global.gcasetree5 = 0;

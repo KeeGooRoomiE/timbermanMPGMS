@@ -9,7 +9,7 @@ function gmcallback_sio_on_create_player()
 		var dat_plid = real(data[? "user_id"]);
 		var dat_plhp = real(data[? "hp"]);
 		var dat_plsc = real(data[? "score"]);
-		
+		global.curPlayerScore = real(dat_plsc);
 		var dat_treearr = string(data[? "tree"]);
 		//show_message(dat_treearr)
 		//show_message("IN COMIN!")
@@ -24,6 +24,7 @@ function gmcallback_sio_on_create_player()
 			playerLives = real(dat_plhp);
 			playerScore = real(dat_plsc);
 			
+			/*
 			 casetree0 = 0;
 			 casetree1 = 2;
 			 casetree2 = 0;
@@ -35,7 +36,7 @@ function gmcallback_sio_on_create_player()
 			 casetree8 = 0;
 			 casetree9 = 0;
 			 casetree10 = 0;
-			 
+			 */
 			 global.gcasetree0 = 1;
 			global.gcasetree1 = 0;
 			global.gcasetree2 = 0;
