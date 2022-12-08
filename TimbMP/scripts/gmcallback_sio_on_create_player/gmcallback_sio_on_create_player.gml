@@ -10,6 +10,7 @@ function gmcallback_sio_on_create_player()
 		var dat_plhp = real(data[? "hp"]);
 		var dat_plsc = real(data[? "score"]);
 		global.curPlayerScore = real(dat_plsc);
+		global.playersMaxScore = 50 - global.curPlayerScore;
 		var dat_treearr = string(data[? "tree"]);
 		//show_message(dat_treearr)
 		//show_message("IN COMIN!")

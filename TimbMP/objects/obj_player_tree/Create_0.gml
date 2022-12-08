@@ -32,7 +32,15 @@ xsc = 1.20;
 
 playerScore = 0;
 treeLength = 10;
-
+/*
+tgdgs = (50 - global.curPlayerScore)
+if (11 > tgdgs)
+{
+treeLength = 10;
+}else{
+	treeLength = tgdgs;
+}
+*/
 global.pl1 = id;
 
 //====================================
