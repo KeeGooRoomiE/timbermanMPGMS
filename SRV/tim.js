@@ -84,7 +84,17 @@ class Datax {
 }
 class Dataarrtree {
 	constructor(data) {
-		this.treearr = data.treearr;
+		this.treearr0 = data.treearr0;
+		this.treearr1 = data.treearr1;
+		this.treearr2 = data.treearr2;
+		this.treearr3 = data.treearr3;
+		this.treearr4 = data.treearr4;
+		this.treearr5 = data.treearr5;
+		this.treearr6 = data.treearr6;
+		this.treearr7 = data.treearr7;
+		this.treearr8 = data.treearr8;
+		this.treearr9 = data.treearr9;
+		this.treearr10 = data.treearr10;
 		this.room_id = data.room_id;
     }
 	toString() {
@@ -189,7 +199,21 @@ function re_find_rm( room_id, user_id ) {
 							score: 0,
 							tree: []
 						});
-						client.emit('go_room', "ok".toString());
+						xdatarrtree = new Dataarrtree({
+						room_id: room_id,
+						treearr0: 0,
+						treearr1: 1,
+						treearr2: 1,
+						treearr3: 1,
+						treearr4: 1,
+						treearr5: 1,
+						treearr6: 1,
+						treearr7: 1,
+						treearr8: 1,
+						treearr9: 1,
+						treearr10: 0
+						});
+						client.emit('go_room', xdatarrtree.toString());
 						players.push(player);
 						console.log(`++Игрокov тепреь ${players}`);
 						client.emit('create_player', player.toString());
@@ -233,7 +257,21 @@ function re_find_rm( room_id, user_id ) {
 						score: 0,
 						tree: []
 					});
-					client.emit('go_room', "ok".toString());
+					xdatarrtree = new Dataarrtree({
+					room_id: room_id,
+					treearr0: 0,
+					treearr1: 1,
+					treearr2: 1,
+					treearr3: 1,
+					treearr4: 1,
+					treearr5: 1,
+					treearr6: 1,
+					treearr7: 1,
+					treearr8: 1,
+					treearr9: 1,
+					treearr10: 0
+					});
+					client.emit('go_room', xdatarrtree.toString());
 					players.push(player);
 					console.log(`++Игрокov тепреь ${players}`);
 					client.emit('create_player', player.toString());
@@ -345,7 +383,21 @@ function re_find_rm( room_id, user_id ) {
 							tree: []
 						});
 						
-						client.emit('go_room', "ok".toString());
+						xdatarrtree = new Dataarrtree({
+						room_id: data.room_id,
+						treearr0: 0,
+						treearr1: 1,
+						treearr2: 1,
+						treearr3: 1,
+						treearr4: 1,
+						treearr5: 1,
+						treearr6: 1,
+						treearr7: 1,
+						treearr8: 1,
+						treearr9: 1,
+						treearr10: 0
+						});
+						client.emit('go_room', xdatarrtree.toString());
 						players.push(player);
 						console.log(`++Игрокov тепреь ${players}`);
 						client.emit('create_player', player.toString());
@@ -396,19 +448,30 @@ function re_find_rm( room_id, user_id ) {
 								score: global.myscore,
 								tree: global.tree
 						});
-						client.emit('go_room', "ok".toString());
+						xdatarrtree = new Dataarrtree({
+						room_id: data.room_id,
+						treearr0: 0,
+						treearr1: 1,
+						treearr2: 1,
+						treearr3: 1,
+						treearr4: 1,
+						treearr5: 1,
+						treearr6: 1,
+						treearr7: 1,
+						treearr8: 1,
+						treearr9: 1,
+						treearr10: 0
+						});
+						client.emit('go_room', xdatarrtree.toString());
 						client.emit('create_player', player.toString());
 						//players.push(player);
-						
-						
-						
+
 								// Создание всех остальных для себя, НЕ включая себя, потому что мы уже создали себя
 								for (let i in players) {
 									if (players[i].user_id !== data.user_id && players[i].room_id == data.room_id) {
 										client.emit('create_player_other', players[i].toString());
 									}
 								}
-							
 						client.emit('start', "start".toString());
 						
 				}
@@ -423,7 +486,22 @@ function re_find_rm( room_id, user_id ) {
 					score: 0,
 					tree: [0, 0, 1, 1, 1, 0, 0, 0, 0, 1] // TODO
 			});
-			client.emit('go_room', "ok".toString());
+			
+			xdatarrtree = new Dataarrtree({
+			room_id: data.room_id,
+			treearr0: 0,
+			treearr1: 1,
+			treearr2: 1,
+			treearr3: 1,
+			treearr4: 1,
+			treearr5: 1,
+			treearr6: 1,
+			treearr7: 1,
+			treearr8: 1,
+			treearr9: 1,
+			treearr10: 0
+			});
+			client.emit('go_room', xdatarrtree.toString());
 			client.emit('create_player', player.toString());
 			players.push(player);
 			console.log(`++Игрокov тепреь ${players}`);
@@ -467,12 +545,21 @@ function re_find_rm( room_id, user_id ) {
  client.on('tree_send', (data) => {
         data = JSON.parse(data);
 						
-		console.log(`* * * * [treearr]: ${data.treearr}`);
-		
-		xdatarrtree = new Dataarrtree({
-		room_id: player.room_id,
-		treearr: data.treearr
-		});
+		console.log(`* * * * [treearr]: ${data.treearr}`);		
+			xdatarrtree = new Dataarrtree({
+			room_id: player.room_id,
+			treearr0: data.treearr[1],
+			treearr1: data.treearr[4],
+			treearr2: data.treearr[7],
+			treearr3: data.treearr[10],
+			treearr4: data.treearr[13],
+			treearr5: data.treearr[16],
+			treearr6: data.treearr[19],
+			treearr7: data.treearr[22],
+			treearr8: data.treearr[25],
+			treearr9: data.treearr[28]
+			});
+			client.broadcast.emit('tree_set', xdatarrtree.toString());
 		//client.broadcast.emit('tree_set', xdatarrtree.toString()); // никому не отправляем а ПОЛУЧАЕМ когда реконнектились или другой игрок получает когда зашел
  });
  
