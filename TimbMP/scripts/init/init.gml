@@ -3,6 +3,8 @@ global.user_id = get_string("Enter your user_id", "");
 global.room_id = get_string("Enter your room_id", "");
 global.start = 0
 
+
+//2.1) При реконнекте выдавать правильные ПЕРВИЧНЫЕ значения дерева
 global.gcasetree0 = 0;
 global.gcasetree1 = 0;
 global.gcasetree2 = 1;
@@ -15,6 +17,8 @@ global.gcasetree8 = 0;
 global.gcasetree9 = 0;
 global.gcasetree10 = 0;
 
+
+//2.1) При реконнекте выдавать правильные ПЕРВИЧНЫЕ значения дерева
 global.gcase2tree0 = 0;
 global.gcase2tree1 = 1;
 global.gcase2tree2 = 1;
