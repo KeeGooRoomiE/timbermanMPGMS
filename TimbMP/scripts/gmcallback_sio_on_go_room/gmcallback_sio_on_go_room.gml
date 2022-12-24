@@ -14,7 +14,6 @@ function gmcallback_sio_on_go_room(argument0) {
 		var tarr7 = string(data[? "treearr7"]);
 		var tarr8 = string(data[? "treearr8"]);
 		var tarr9 = string(data[? "treearr9"]);
-		var tarr10 = string(data[? "treearr10"]);
 
 		global.gcasetree0 = string(tarr0);
 		global.gcasetree1 = string(tarr1);
@@ -26,5 +25,4 @@ function gmcallback_sio_on_go_room(argument0) {
 		global.gcasetree7 = string(tarr7);
 		global.gcasetree8 = string(tarr8);
 		global.gcasetree9 = string(tarr9);
-		global.gcasetree10 = string(tarr10);
 }

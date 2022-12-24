@@ -94,7 +94,6 @@ class Dataarrtree {
 		this.treearr7 = data.treearr7;
 		this.treearr8 = data.treearr8;
 		this.treearr9 = data.treearr9;
-		this.treearr10 = data.treearr10;
 		this.room_id = data.room_id;
     }
 	toString() {
@@ -197,21 +196,20 @@ function re_find_rm( room_id, user_id ) {
 							room_id: room_id,
 							hp: 3,
 							score: 0,
-							tree: []
+							tree: [0, 0, 0, 0, 1, 0, 0, 1, 1, 1]
 						});
 						xdatarrtree = new Dataarrtree({
 						room_id: room_id,
 						treearr0: 0,
-						treearr1: 1,
-						treearr2: 1,
-						treearr3: 1,
+						treearr1: 0,
+						treearr2: 0,
+						treearr3: 0,
 						treearr4: 1,
-						treearr5: 1,
-						treearr6: 1,
+						treearr5: 0,
+						treearr6: 0,
 						treearr7: 1,
 						treearr8: 1,
-						treearr9: 1,
-						treearr10: 0
+						treearr9: 1
 						});
 						client.emit('go_room', xdatarrtree.toString());
 						players.push(player);
@@ -255,21 +253,20 @@ function re_find_rm( room_id, user_id ) {
 						room_id: room_id,
 						hp: 3,
 						score: 0,
-						tree: []
+						tree: [0, 0, 0, 0, 1, 0, 0, 1, 1, 1]
 					});
 					xdatarrtree = new Dataarrtree({
 					room_id: room_id,
 					treearr0: 0,
-					treearr1: 1,
-					treearr2: 1,
-					treearr3: 1,
+					treearr1: 0,
+					treearr2: 0,
+					treearr3: 0,
 					treearr4: 1,
-					treearr5: 1,
-					treearr6: 1,
+					treearr5: 0,
+					treearr6: 0,
 					treearr7: 1,
 					treearr8: 1,
-					treearr9: 1,
-					treearr10: 0
+					treearr9: 1
 					});
 					client.emit('go_room', xdatarrtree.toString());
 					players.push(player);
@@ -345,10 +342,19 @@ function re_find_rm( room_id, user_id ) {
 			{
 			  if (players[i].user_id == data.user_id)
 			  {
-				isfound = true;
+				  
+				console.log(`:: :: :: :: players[i].tree ${players[i].tree}`); //0,0,0,0,1,0,0,1,1,1
 				global.myhpp  = players[i].hp;
 				global.myscore = players[i].score;
-				global.tree = players[i].tree;
+				//global.tree = "[0, 0, 2, 0, 1, 0, 0, 1, 1, 1]"
+				global.tree = "["+players[i].tree[0]+", "+players[i].tree[1]+", "+players[i].tree[2]+", "+players[i].tree[3]+", "+players[i].tree[4]+", "+players[i].tree[5]+", "+players[i].tree[6]+", "+players[i].tree[7]+", "+players[i].tree[8]+", "+players[i].tree[9]+"]";
+				
+				players[i].tree =  "["+players[i].tree[0]+", "+players[i].tree[1]+", "+players[i].tree[2]+", "+players[i].tree[3]+", "+players[i].tree[4]+", "+players[i].tree[5]+", "+players[i].tree[6]+", "+players[i].tree[7]+", "+players[i].tree[8]+", "+players[i].tree[9]+"]";
+				
+						
+				console.log(`* * * * * players.tree ${players[i].tree}`);
+				console.log(`* * * * * global.tree ${global.tree}`);
+				isfound = true;
 				break;
 			  }
 			}
@@ -380,22 +386,21 @@ function re_find_rm( room_id, user_id ) {
 							room_id: data.room_id,
 							hp: 3,
 							score: 0,
-							tree: []
+							tree: [0, 0, 0, 0, 1, 0, 0, 1, 1, 1]
 						});
 						
 						xdatarrtree = new Dataarrtree({
 						room_id: data.room_id,
 						treearr0: 0,
-						treearr1: 1,
-						treearr2: 1,
-						treearr3: 1,
+						treearr1: 0,
+						treearr2: 0,
+						treearr3: 0,
 						treearr4: 1,
-						treearr5: 1,
-						treearr6: 1,
+						treearr5: 0,
+						treearr6: 0,
 						treearr7: 1,
 						treearr8: 1,
-						treearr9: 1,
-						treearr10: 0
+						treearr9: 1
 						});
 						client.emit('go_room', xdatarrtree.toString());
 						players.push(player);
@@ -432,13 +437,13 @@ function re_find_rm( room_id, user_id ) {
 						
 						for (let i in players)
 						{
-							//global.myroom
 							if (players[i].user_id == data.user_id && players[i].room_id == data.room_id)
 							{
 								client.broadcast.emit('disconnect_player', players[i].toString());
 							}
 						}
 						//players.splice(players.indexOf(player), 1);
+						console.log(`* * * * [PLPL_3_treearr]: ${global.tree}`);
 						player = new Player({
 								socket: client,
 								online: 1,
@@ -450,17 +455,30 @@ function re_find_rm( room_id, user_id ) {
 						});
 						xdatarrtree = new Dataarrtree({
 						room_id: data.room_id,
+						/*
+						treearr0: global.tree[1],
+						treearr1: global.tree[4],
+						treearr2: global.tree[7],
+						treearr3: global.tree[10],
+						treearr4: global.tree[13],
+						treearr5: global.tree[16],
+						treearr6: global.tree[19],
+						treearr7: global.tree[22],
+						treearr8: global.tree[25],
+						treearr9: global.tree[28]
+						*/
+						
 						treearr0: 0,
-						treearr1: 1,
-						treearr2: 1,
-						treearr3: 1,
-						treearr4: 1,
-						treearr5: 1,
-						treearr6: 1,
-						treearr7: 1,
-						treearr8: 1,
-						treearr9: 1,
-						treearr10: 0
+						treearr1: 0,
+						treearr2: 0,
+						treearr3: 2,
+						treearr4: 2,
+						treearr5: 0,
+						treearr6: 0,
+						treearr7: 0,
+						treearr8: 2,
+						treearr9: 2
+						
 						});
 						client.emit('go_room', xdatarrtree.toString());
 						client.emit('create_player', player.toString());
@@ -484,22 +502,21 @@ function re_find_rm( room_id, user_id ) {
 					room_id: data.room_id,
 					hp: 3000,
 					score: 0,
-					tree: [0, 0, 1, 1, 1, 0, 0, 0, 0, 1] // TODO
+					tree: [0, 0, 0, 0, 1, 0, 0, 1, 1, 1] // TODO получаю реконектом - назанчить сохранение массива при изменении
 			});
 			
 			xdatarrtree = new Dataarrtree({
 			room_id: data.room_id,
 			treearr0: 0,
-			treearr1: 1,
-			treearr2: 1,
+			treearr1: 0,
+			treearr2: 0,
 			treearr3: 1,
 			treearr4: 1,
-			treearr5: 1,
-			treearr6: 1,
+			treearr5: 0,
+			treearr6: 0,
 			treearr7: 1,
 			treearr8: 1,
-			treearr9: 1,
-			treearr10: 0
+			treearr9: 1
 			});
 			client.emit('go_room', xdatarrtree.toString());
 			client.emit('create_player', player.toString());
@@ -544,8 +561,10 @@ function re_find_rm( room_id, user_id ) {
  
  client.on('tree_send', (data) => {
         data = JSON.parse(data);
-						
-		console.log(`* * * * [treearr]: ${data.treearr}`);		
+		//ПОЛУЧАЕМ массив дерева 2-го игрока
+			console.log(`* * * * *2 Игроков всего ${players}`);
+			console.log(`* * * * *42 treearrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr ${data.treearr}`);
+		player.tree = data.treearr; // Назначаем массив дерева в массив игрока чтобы после реконекта у него были правильные данные для продолжения игры после реконекта.
 			xdatarrtree = new Dataarrtree({
 			room_id: player.room_id,
 			treearr0: data.treearr[1],
@@ -559,8 +578,18 @@ function re_find_rm( room_id, user_id ) {
 			treearr8: data.treearr[25],
 			treearr9: data.treearr[28]
 			});
-			client.broadcast.emit('tree_set', xdatarrtree.toString());
-		//client.broadcast.emit('tree_set', xdatarrtree.toString()); // никому не отправляем а ПОЛУЧАЕМ когда реконнектились или другой игрок получает когда зашел
+			//player.tree = data.treearr; // TODO Bug - не сохраняеться 
+			for (let i in players)
+			{
+				if (players[i].user_id == player.user_id && players[i].room_id == player.room_id)
+				{
+					//players[i].tree = data.treearr;
+					players[i].tree = "["+data.treearr[1]+", "+data.treearr[4]+", "+data.treearr[7]+", "+data.treearr[10]+", "+data.treearr[13]+", "+data.treearr[16]+", "+data.treearr[19]+", "+data.treearr[22]+", "+data.treearr[25]+", "+data.treearr[28]+"]";
+					console.log(`* * * * [tree_send_2_PL tree]: ${player.tree}`);	
+				}
+			}
+			console.log(`* * * * [tree_send_2_PL tree]: ${player.tree}`);	
+			client.broadcast.emit('tree_set', xdatarrtree.toString()); //Отправляем массив дерева 2-го игрока
  });
  
      client.on('datax_get', (data) => {

@@ -9,7 +9,6 @@ casetree6 =  global.gcasetree6;
 casetree7 =  global.gcasetree7;
 casetree8 =  global.gcasetree8;
 casetree9 =  global.gcasetree9;
-casetree10 = global.gcasetree10;
 
 /// @description Init
 
@@ -70,7 +69,6 @@ for (i=0; i<treeLength; i++)
 		case 7: treearr[i]=real(casetree7); arrL++; break;
 		case 8: treearr[i]=real(casetree8); arrL++; break;
 		case 9: treearr[i]=real(casetree9); arrL++; break;
-		case 10:treearr[i]=real(casetree10); arrL++; break;
 	}
 		
 		

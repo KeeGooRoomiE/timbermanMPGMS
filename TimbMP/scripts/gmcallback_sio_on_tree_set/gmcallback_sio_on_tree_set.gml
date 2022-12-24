@@ -18,7 +18,6 @@ function gmcallback_sio_on_tree_set(argument0) {
 			var tarr7 = string(data[? "treearr7"]);
 			var tarr8 = string(data[? "treearr8"]);
 			var tarr9 = string(data[? "treearr9"]);
-			var tarr10 = string(data[? "treearr10"]);
 			
 		if (global.room_id = dat_rmid)
 		{
@@ -32,7 +31,6 @@ function gmcallback_sio_on_tree_set(argument0) {
 			global.gcase2tree7 = string(tarr7);
 			global.gcase2tree8 = string(tarr8);
 			global.gcase2tree9 = string(tarr9);
-			global.gcase2tree10 = string(tarr10);
 			with(obj_other_tree){
 				event_user(4);
 				}
