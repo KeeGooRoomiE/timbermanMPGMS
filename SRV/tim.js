@@ -130,7 +130,6 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 			
 			//удаляем игрока из списка	
 			console.log(`Игрок ${players[i].user_id} Кикнут общим таймингом`);
-			//client.broadcast.emit('destroy_player', players[i].toString());
 			players.splice(players.indexOf(players[i]), 1);
 			console.log(`AFTER?players = ${players}`);
 			}
@@ -158,8 +157,6 @@ function start_time( room_id , user_id) {
 						  /// cenok
 						  cenok--;
 						  setTimeout(kickPl,10,players[i])
-						  //players.splice(players.indexOf(players[i]), 1);
-						  //console.log(`AFTER?players = ${players}`);
 					  }
 				  }
 				  	if (cenok == 0)
@@ -244,7 +241,6 @@ function re_find_rm( room_id, user_id ) {
 				{
 					console.log(`*НЕ НАШЛИ комнату - *N*овАя [${room_id}] КОМНАТА СОЗДАНА!`);
 					//создаем комнату + пушаем игрока
-					//var roomid=0;
 					
 					player = new Player({
 						socket: client,
@@ -343,7 +339,7 @@ function re_find_rm( room_id, user_id ) {
 			  if (players[i].user_id == data.user_id)
 			  {
 				  
-				console.log(`:: :: :: :: players[i].tree ${players[i].tree}`); //0,0,0,0,1,0,0,1,1,1 after [0, 1, 0, 1, 0, 2, 0, 1, 0, 2]
+				console.log(`:: :: :: :: players[i].tree ${players[i].tree}`); //[0, 1, 0, 1, 0, 2, 0, 1, 0, 2]
 				global.myhpp  = players[i].hp;
 				global.myscore = players[i].score;
 				
@@ -366,7 +362,6 @@ function re_find_rm( room_id, user_id ) {
 					var find_rm = false;
 					for (i = 0; i < rooms.length; i++)
 					{
-						//console.log(`${rooms[i].rm_id} =?= ${data.room_id}`);
 						if (rooms[i].rm_id == data.room_id)
 						{
 							find_rm = true;
@@ -443,7 +438,6 @@ function re_find_rm( room_id, user_id ) {
 								client.broadcast.emit('disconnect_player', players[i].toString());
 							}
 						}
-						//players.splice(players.indexOf(player), 1);
 						console.log(`* * * * [PLPL_3_treearr]: ${global.tree}`);
 						player = new Player({
 								socket: client,
@@ -468,22 +462,9 @@ function re_find_rm( room_id, user_id ) {
 						treearr8: global.tree[25],
 						treearr9: global.tree[28]
 						
-						/*
-						treearr0: 0,
-						treearr1: 0,
-						treearr2: 0,
-						treearr3: 2,
-						treearr4: 2,
-						treearr5: 0,
-						treearr6: 0,
-						treearr7: 0,
-						treearr8: 2,
-						treearr9: 2
-						*/
 						});
 						client.emit('go_room', xdatarrtree.toString());
 						client.emit('create_player', player.toString());
-						//players.push(player);
 
 								// Создание всех остальных для себя, НЕ включая себя, потому что мы уже создали себя
 								for (let i in players) {
@@ -503,7 +484,7 @@ function re_find_rm( room_id, user_id ) {
 					room_id: data.room_id,
 					hp: 3000,
 					score: 0,
-					tree: "[0, 0, 0, 0, 1, 0, 0, 1, 1, 1]" // TODO получаю реконектом - назанчить сохранение массива при изменении
+					tree: "[0, 0, 0, 0, 1, 0, 0, 1, 1, 1]"
 			});
 			
 			xdatarrtree = new Dataarrtree({
@@ -563,8 +544,6 @@ function re_find_rm( room_id, user_id ) {
  client.on('tree_send', (data) => {
         data = JSON.parse(data);
 		//ПОЛУЧАЕМ массив дерева 2-го игрока
-			console.log(`* * * * *2 Игроков всего ${players}`);
-			console.log(`// // // //: tree_send ${data.treearr}`);
 		player.tree = data.treearr; // Назначаем массив дерева в массив игрока чтобы после реконекта у него были правильные данные для продолжения игры после реконекта.
 			xdatarrtree = new Dataarrtree({
 			room_id: player.room_id,
@@ -579,12 +558,10 @@ function re_find_rm( room_id, user_id ) {
 			treearr8: data.treearr[25],
 			treearr9: data.treearr[28]
 			});
-			//player.tree = data.treearr; // TODO Bug - не сохраняеться 
 			for (let i in players)
 			{
 				if (players[i].user_id == player.user_id && players[i].room_id == player.room_id)
 				{
-					//players[i].tree = data.treearr;
 					players[i].tree = "["+data.treearr[1]+", "+data.treearr[4]+", "+data.treearr[7]+", "+data.treearr[10]+", "+data.treearr[13]+", "+data.treearr[16]+", "+data.treearr[19]+", "+data.treearr[22]+", "+data.treearr[25]+", "+data.treearr[28]+"]";
 					console.log(`* * * * [tree_send_2_PL tree]: ${player.tree}`);	
 				}
@@ -639,7 +616,6 @@ function re_find_rm( room_id, user_id ) {
 		{
 			console.log(`++Игрок ${player.user_id} +DISCONNECTED+`);
 			player.online=0;
-			//players.splice(players.indexOf(player), 1);
 		}
     });
 });
