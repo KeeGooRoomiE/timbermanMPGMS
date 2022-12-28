@@ -343,13 +343,14 @@ function re_find_rm( room_id, user_id ) {
 			  if (players[i].user_id == data.user_id)
 			  {
 				  
-				console.log(`:: :: :: :: players[i].tree ${players[i].tree}`); //0,0,0,0,1,0,0,1,1,1
+				console.log(`:: :: :: :: players[i].tree ${players[i].tree}`); //0,0,0,0,1,0,0,1,1,1 after [0, 1, 0, 1, 0, 2, 0, 1, 0, 2]
 				global.myhpp  = players[i].hp;
 				global.myscore = players[i].score;
-				//global.tree = "[0, 0, 2, 0, 1, 0, 0, 1, 1, 1]"
-				global.tree = "["+players[i].tree[0]+", "+players[i].tree[1]+", "+players[i].tree[2]+", "+players[i].tree[3]+", "+players[i].tree[4]+", "+players[i].tree[5]+", "+players[i].tree[6]+", "+players[i].tree[7]+", "+players[i].tree[8]+", "+players[i].tree[9]+"]";
 				
-				players[i].tree =  "["+players[i].tree[0]+", "+players[i].tree[1]+", "+players[i].tree[2]+", "+players[i].tree[3]+", "+players[i].tree[4]+", "+players[i].tree[5]+", "+players[i].tree[6]+", "+players[i].tree[7]+", "+players[i].tree[8]+", "+players[i].tree[9]+"]";
+				//global.tree = "[0, 0, 2, 0, 1, 0, 0, 1, 1, 1]"
+				global.tree = "["+players[i].tree[1]+", "+players[i].tree[4]+", "+players[i].tree[7]+", "+players[i].tree[10]+", "+players[i].tree[13]+", "+players[i].tree[16]+", "+players[i].tree[19]+", "+players[i].tree[22]+", "+players[i].tree[25]+", "+players[i].tree[28]+"]";
+				
+				players[i].tree =  "["+players[i].tree[1]+", "+players[i].tree[4]+", "+players[i].tree[7]+", "+players[i].tree[10]+", "+players[i].tree[13]+", "+players[i].tree[16]+", "+players[i].tree[19]+", "+players[i].tree[22]+", "+players[i].tree[25]+", "+players[i].tree[28]+"]";
 				
 						
 				console.log(`* * * * * players.tree ${players[i].tree}`);
@@ -455,7 +456,7 @@ function re_find_rm( room_id, user_id ) {
 						});
 						xdatarrtree = new Dataarrtree({
 						room_id: data.room_id,
-						/*
+						
 						treearr0: global.tree[1],
 						treearr1: global.tree[4],
 						treearr2: global.tree[7],
@@ -466,8 +467,8 @@ function re_find_rm( room_id, user_id ) {
 						treearr7: global.tree[22],
 						treearr8: global.tree[25],
 						treearr9: global.tree[28]
-						*/
 						
+						/*
 						treearr0: 0,
 						treearr1: 0,
 						treearr2: 0,
@@ -478,7 +479,7 @@ function re_find_rm( room_id, user_id ) {
 						treearr7: 0,
 						treearr8: 2,
 						treearr9: 2
-						
+						*/
 						});
 						client.emit('go_room', xdatarrtree.toString());
 						client.emit('create_player', player.toString());
@@ -502,7 +503,7 @@ function re_find_rm( room_id, user_id ) {
 					room_id: data.room_id,
 					hp: 3000,
 					score: 0,
-					tree: [0, 0, 0, 0, 1, 0, 0, 1, 1, 1] // TODO получаю реконектом - назанчить сохранение массива при изменении
+					tree: "[0, 0, 0, 0, 1, 0, 0, 1, 1, 1]" // TODO получаю реконектом - назанчить сохранение массива при изменении
 			});
 			
 			xdatarrtree = new Dataarrtree({
@@ -563,7 +564,7 @@ function re_find_rm( room_id, user_id ) {
         data = JSON.parse(data);
 		//ПОЛУЧАЕМ массив дерева 2-го игрока
 			console.log(`* * * * *2 Игроков всего ${players}`);
-			console.log(`* * * * *42 treearrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr ${data.treearr}`);
+			console.log(`// // // //: tree_send ${data.treearr}`);
 		player.tree = data.treearr; // Назначаем массив дерева в массив игрока чтобы после реконекта у него были правильные данные для продолжения игры после реконекта.
 			xdatarrtree = new Dataarrtree({
 			room_id: player.room_id,
