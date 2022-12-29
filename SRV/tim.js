@@ -193,7 +193,7 @@ function re_find_rm( room_id, user_id ) {
 							room_id: room_id,
 							hp: 3,
 							score: 0,
-							tree: "[0, 0, 0, 0, 1, 0, 0, 1, 1, 1]" // ???? 2 TODO GET OTHER TREE AFTER CERONNECT
+							tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]" // ???? 2 TODO GET OTHER TREE AFTER CERONNECT
 						});
 						xdatarrtree = new Dataarrtree({
 						room_id: room_id,
@@ -201,12 +201,12 @@ function re_find_rm( room_id, user_id ) {
 						treearr1: 0,
 						treearr2: 0,
 						treearr3: 0,
-						treearr4: 1,
+						treearr4: 0,
 						treearr5: 0,
 						treearr6: 0,
-						treearr7: 1,
-						treearr8: 1,
-						treearr9: 1
+						treearr7: 0,
+						treearr8: 0,
+						treearr9: 0
 						});
 						client.emit('go_room', xdatarrtree.toString());
 						players.push(player);
@@ -249,7 +249,7 @@ function re_find_rm( room_id, user_id ) {
 						room_id: room_id,
 						hp: 3,
 						score: 0,
-						tree: "[0, 0, 0, 0, 1, 0, 0, 1, 1, 1]" // ????
+						tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]" // ????
 					});
 					xdatarrtree = new Dataarrtree({
 					room_id: room_id,
@@ -257,12 +257,12 @@ function re_find_rm( room_id, user_id ) {
 					treearr1: 0,
 					treearr2: 0,
 					treearr3: 0,
-					treearr4: 1,
+					treearr4: 0,
 					treearr5: 0,
 					treearr6: 0,
-					treearr7: 1,
-					treearr8: 1,
-					treearr9: 1
+					treearr7: 0,
+					treearr8: 0,
+					treearr9: 0
 					});
 					client.emit('go_room', xdatarrtree.toString());
 					players.push(player);
@@ -382,7 +382,7 @@ function re_find_rm( room_id, user_id ) {
 							room_id: data.room_id,
 							hp: 3,
 							score: 0,
-							tree: "[0, 0, 0, 0, 1, 0, 0, 1, 1, 1]" // ????
+							tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]" // ????
 						});
 						
 						xdatarrtree = new Dataarrtree({
@@ -391,12 +391,12 @@ function re_find_rm( room_id, user_id ) {
 						treearr1: 0,
 						treearr2: 0,
 						treearr3: 0,
-						treearr4: 1,
+						treearr4: 0,
 						treearr5: 0,
 						treearr6: 0,
-						treearr7: 1,
-						treearr8: 1,
-						treearr9: 1
+						treearr7: 0,
+						treearr8: 0,
+						treearr9: 0
 						});
 						client.emit('go_room', xdatarrtree.toString());
 						players.push(player);
@@ -484,7 +484,7 @@ function re_find_rm( room_id, user_id ) {
 					room_id: data.room_id,
 					hp: 3000,
 					score: 0,
-					tree: "[0, 0, 0, 0, 1, 0, 0, 1, 1, 1]"
+					tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
 			});
 			
 			xdatarrtree = new Dataarrtree({
@@ -492,13 +492,13 @@ function re_find_rm( room_id, user_id ) {
 			treearr0: 0,
 			treearr1: 0,
 			treearr2: 0,
-			treearr3: 1,
-			treearr4: 1,
+			treearr3: 0,
+			treearr4: 0,
 			treearr5: 0,
 			treearr6: 0,
-			treearr7: 1,
-			treearr8: 1,
-			treearr9: 1
+			treearr7: 0,
+			treearr8: 0,
+			treearr9: 0
 			});
 			client.emit('go_room', xdatarrtree.toString());
 			client.emit('create_player', player.toString());
