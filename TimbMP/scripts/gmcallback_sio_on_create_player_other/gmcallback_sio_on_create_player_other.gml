@@ -36,8 +36,8 @@ function gmcallback_sio_on_create_player_other()
 			*/
 			global.gcase2tree0 = 0;
 			global.gcase2tree1 = 0;
-			global.gcase2tree2 = 1;
-			global.gcase2tree3 = 2;
+			global.gcase2tree2 = 0;
+			global.gcase2tree3 = 0;
 			global.gcase2tree4 = 0;
 			global.gcase2tree5 = 0;
 			global.gcase2tree6 = 0;
