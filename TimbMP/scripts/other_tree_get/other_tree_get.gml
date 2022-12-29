@@ -13,7 +13,6 @@ casetree6 =  global.gcase2tree6;
 casetree7 =  global.gcase2tree7;
 casetree8 =  global.gcase2tree8;
 casetree9 =  global.gcase2tree9;
-casetree10 = global.gcase2tree10;
 
 
 // Starting vars
@@ -65,7 +64,6 @@ for (i=0; i<treeLength; i++)
 		case 7: treearr[i]=casetree7; arrL++ break;
 		case 8: treearr[i]=casetree8; arrL++ break;
 		case 9: treearr[i]=casetree9; arrL++ break;
-		case 10:treearr[i]=casetree10; arrL++ break;
 	}
 }
 
@@ -84,7 +82,6 @@ for (i=0; i<treeLength; i++)
 		case 7: treecellarr[i]=5; break;
 		case 8: treecellarr[i]=5; break;
 		case 9: treecellarr[i]=5; break;
-		case 10:treecellarr[i]=5; break;
 	}
 	
 	

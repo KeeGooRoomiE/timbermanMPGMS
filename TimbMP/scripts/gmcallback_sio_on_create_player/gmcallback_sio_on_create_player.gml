@@ -16,7 +16,6 @@ function gmcallback_sio_on_create_player()
 		//show_message("IN COMIN!")
 		show_debug_message(dat_treearr)
 		
-		////////////////////////
 		var icrt = instance_create_depth(184,304,0,obj_player_tree)
 		with (icrt)
 		{
@@ -24,21 +23,8 @@ function gmcallback_sio_on_create_player()
 			image_yscale = 1.451923
 			playerLives = real(dat_plhp);
 			playerScore = real(dat_plsc);
-			
-			/*
-			 casetree0 = 0;
-			 casetree1 = 2;
-			 casetree2 = 0;
-			 casetree3 = 0;
-			 casetree4 = 0;
-			 casetree5 = 0;
-			 casetree6 = 0;
-			 casetree7 = 0;
-			 casetree8 = 0;
-			 casetree9 = 0;
-			 casetree10 = 0;
-			 */
-			 global.gcasetree0 = 1;
+
+			global.gcasetree0 = 0;
 			global.gcasetree1 = 0;
 			global.gcasetree2 = 0;
 			global.gcasetree3 = 0;
@@ -48,29 +34,8 @@ function gmcallback_sio_on_create_player()
 			global.gcasetree7 = 0;
 			global.gcasetree8 = 0;
 			global.gcasetree9 = 0;
-			global.gcasetree10 = 0;
 		}
-		////////////////////////		 
-		/*
-		var inst = instance_create_depth(184,304,0,obj_player_tree,
-		{
-			image_xscale : 1.201923,
-			image_yscale : 1.451923,
-			playerLives : real(dat_plhp),
-			playerScore : real(dat_plsc),
-			 casetree0 : 0,
-			 casetree1 : 0,
-			 casetree2 : 1,
-			 casetree3 : 1,
-			 casetree4 : 0,
-			 casetree5 : 0,
-			 casetree6 : 0,
-			 casetree7 : 0,
-			 casetree8 : 0,
-			 casetree9 : 1,
-			 casetree10 : 0
-		});
-		*/
+
 
 		var dat_rmid = real(data[? "room_id"]);
 		global.room_id = dat_rmid

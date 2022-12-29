@@ -193,7 +193,7 @@ function re_find_rm( room_id, user_id ) {
 							room_id: room_id,
 							hp: 3,
 							score: 0,
-							tree: [0, 0, 0, 0, 1, 0, 0, 1, 1, 1]
+							tree: "[0, 0, 0, 0, 1, 0, 0, 1, 1, 1]" // ???? 2 TODO GET OTHER TREE AFTER CERONNECT
 						});
 						xdatarrtree = new Dataarrtree({
 						room_id: room_id,
@@ -249,7 +249,7 @@ function re_find_rm( room_id, user_id ) {
 						room_id: room_id,
 						hp: 3,
 						score: 0,
-						tree: [0, 0, 0, 0, 1, 0, 0, 1, 1, 1]
+						tree: "[0, 0, 0, 0, 1, 0, 0, 1, 1, 1]" // ????
 					});
 					xdatarrtree = new Dataarrtree({
 					room_id: room_id,
@@ -382,7 +382,7 @@ function re_find_rm( room_id, user_id ) {
 							room_id: data.room_id,
 							hp: 3,
 							score: 0,
-							tree: [0, 0, 0, 0, 1, 0, 0, 1, 1, 1]
+							tree: "[0, 0, 0, 0, 1, 0, 0, 1, 1, 1]" // ????
 						});
 						
 						xdatarrtree = new Dataarrtree({
@@ -541,10 +541,11 @@ function re_find_rm( room_id, user_id ) {
 		
  }); 
  
- client.on('tree_send', (data) => {
+	client.on('tree_send', (data) => {
         data = JSON.parse(data);
+		console.log(`+ + + + [ts_1_PL tree]: ${data.treearr}`);	
 		//ПОЛУЧАЕМ массив дерева 2-го игрока
-		player.tree = data.treearr; // Назначаем массив дерева в массив игрока чтобы после реконекта у него были правильные данные для продолжения игры после реконекта.
+		player.tree = data.treearr; // Назначаем массив дерева в массив игрока чтобы после реконекта у него были правильные данные для продолжения игры.
 			xdatarrtree = new Dataarrtree({
 			room_id: player.room_id,
 			treearr0: data.treearr[1],
@@ -563,12 +564,12 @@ function re_find_rm( room_id, user_id ) {
 				if (players[i].user_id == player.user_id && players[i].room_id == player.room_id)
 				{
 					players[i].tree = "["+data.treearr[1]+", "+data.treearr[4]+", "+data.treearr[7]+", "+data.treearr[10]+", "+data.treearr[13]+", "+data.treearr[16]+", "+data.treearr[19]+", "+data.treearr[22]+", "+data.treearr[25]+", "+data.treearr[28]+"]";
-					console.log(`* * * * [tree_send_2_PL tree]: ${player.tree}`);	
+					console.log(`* * * * [ts_2_PL tree]: ${player.tree}`);	
 				}
 			}
-			console.log(`* * * * [tree_send_2_PL tree]: ${player.tree}`);	
+			console.log(`* * * * [ts_3_PL tree]: ${player.tree}`);	
 			client.broadcast.emit('tree_set', xdatarrtree.toString()); //Отправляем массив дерева 2-го игрока
- });
+	});
  
      client.on('datax_get', (data) => {
         data = JSON.parse(data);

@@ -6,8 +6,6 @@ function gmcallback_sio_on_tree_set(argument0) {
 		var data = json_decode(argument[0]);
 		var dat_rmid = real(data[? "room_id"]);
 		
-		show_debug_message(dat_treearr)
-		
 			var tarr0 = string(data[? "treearr0"]);
 			var tarr1 = string(data[? "treearr1"]);
 			var tarr2 = string(data[? "treearr2"]);

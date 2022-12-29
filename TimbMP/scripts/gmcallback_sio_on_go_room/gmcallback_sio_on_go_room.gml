@@ -2,7 +2,7 @@
 function gmcallback_sio_on_go_room(argument0) {
 	
 		var data = json_decode(argument[0]);
-		var dat_rmid = string(data[? "room_id"]);
+		//var dat_rmid = string(data[? "room_id"]);
 
 		var tarr0 = string(data[? "treearr0"]);
 		var tarr1 = string(data[? "treearr1"]);
