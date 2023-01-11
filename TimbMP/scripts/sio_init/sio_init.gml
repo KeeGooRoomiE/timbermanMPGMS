@@ -7,7 +7,7 @@ function sio_init() {
 	
 	//#macro URL "95.163.242.141:3004" // CZ
 	
-	#macro URL "127.0.0.1:3003"
+	#macro URL "127.0.0.1:3004"
 #endregion
 
 #region SocketIO
