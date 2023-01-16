@@ -1,3 +1,4 @@
+/*
 /// @description Init
 casetree0 =  global.gcase2tree0;
 casetree1 =  global.gcase2tree1;
@@ -9,6 +10,18 @@ casetree6 =  global.gcase2tree6;
 casetree7 =  global.gcase2tree7;
 casetree8 =  global.gcase2tree8;
 casetree9 =  global.gcase2tree9;
+*/
+/// @description Init
+casetree0 =  0;
+casetree1 =  0;
+casetree2 =  1;
+casetree3 =  1;
+casetree4 =  2;
+casetree5 =  3;
+casetree6 =  4;
+casetree7 =  4;
+casetree8 =  4;
+casetree9 =  4;
 // Starting vars
 treearr[0] = 0;
 treecellarr[0] = 0;
