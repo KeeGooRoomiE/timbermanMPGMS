@@ -108,11 +108,12 @@ for (i=0; i<treeLength; i++)
 			default: treebrarr[i] = 2; break;
 		}
 	
-	treecellarr[i]=irandom_range(0,4);
+	//treecellarr[i]=irandom_range(0,4);
 	//treebrarr[i]=2;
 }
 
 #endregion
+
 
 
 }
