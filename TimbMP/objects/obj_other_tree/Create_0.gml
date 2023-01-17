@@ -79,18 +79,24 @@ for (i=0; i<treeLength; i++)
 //init tree cells for images
 for (i=0; i<treeLength; i++)
 {
-	switch (i)
+	switch (treearr[i])
 	{
-		case 0: treecellarr[i]=irandom_range(0,4); break;
-		case 1: treecellarr[i]=irandom_range(0,4); break;
-		case 2: treecellarr[i]=irandom_range(0,4); break;
-		case 3: treecellarr[i]=irandom_range(0,4); break;
-		case 4: treecellarr[i]=irandom_range(0,4); break;
-		case 5: treecellarr[i]=5; break;
-		case 6: treecellarr[i]=5; break;
-		case 7: treecellarr[i]=5; break;
-		case 8: treecellarr[i]=5; break;
-		case 9: treecellarr[i]=5; break;
+		//case 0: treecellarr[i]=irandom_range(0,4); break;
+		//case 1: treecellarr[i]=irandom_range(0,4); break;
+		//case 2: treecellarr[i]=irandom_range(0,4); break;
+		//case 3: treecellarr[i]=irandom_range(0,4); break;
+		//case 4: treecellarr[i]=irandom_range(0,4); break;
+		//case 5: treecellarr[i]=5; break;
+		//case 6: treecellarr[i]=5; break;
+		//case 7: treecellarr[i]=5; break;
+		//case 8: treecellarr[i]=5; break;
+		//case 9: treecellarr[i]=5; break;
+		case 0: treecellarr[i] = choose(0,4);; break;
+		case 1: treecellarr[i] = choose(0,4); break;
+		case 2: treecellarr[i] = choose(0,4); break;
+		case 3: treecellarr[i] = 5; break;
+		case 4: treecellarr[i] = 5; break;
+		default: treebrarr[i] = choose(0,4); break;
 	}
 	
 	
@@ -106,12 +112,12 @@ for (i=0; i<treeLength; i++)
 			case 0: treebrarr[i] = 2; break;
 			case 1: treebrarr[i] = choose(0,1); break;
 			case 2: treebrarr[i] = choose(3,4); break;
-			case 3: treebrarr[i] = 2; break;
-			case 4: treebrarr[i] = 2; break;
+			case 3: treebrarr[i] = 5; break;
+			case 4: treebrarr[i] = 6; break;
 			default: treebrarr[i] = 2; break;
 		}
 	
-	treecellarr[i]=irandom_range(0,4);
+	//treecellarr[i]=irandom_range(0,4);
 	//treebrarr[i]=2;
 }
 
