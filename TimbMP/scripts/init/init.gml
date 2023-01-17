@@ -14,7 +14,6 @@ global.gcasetree7 = 0;
 global.gcasetree8 = 0;
 global.gcasetree9 = 0;
 
-/*
 global.gcase2tree0 = 0;
 global.gcase2tree1 = 0;
 global.gcase2tree2 = 1;
@@ -25,5 +24,5 @@ global.gcase2tree6 = 0;
 global.gcase2tree7 = 0;
 global.gcase2tree8 = 0;
 global.gcase2tree9 = 0;
-*/
+
 }
