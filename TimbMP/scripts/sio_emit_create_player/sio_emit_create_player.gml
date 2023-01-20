@@ -9,6 +9,7 @@ function sio_emit_create_player() {
 				var data = ds_map_create();
 					data[? "user_id"] = global.user_id;
 					data[? "room_id"] = global.room_id;
+					data[? "battle_id"] = global.battle_id;
 					sio_emit(eventName, json_encode(data));
 				ds_map_destroy(data);
 		#endregion

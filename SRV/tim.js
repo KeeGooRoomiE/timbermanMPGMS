@@ -1,12 +1,28 @@
-const server = require('http').createServer()
+// Import builtin NodeJS modules to instantiate the service
+const openssl = require('openssl-nodejs')
+const fs = require("fs");
+
+// Import the express modulej
+const express = require("express");
+
+// Instantiate an Express application
+const app = express();
+
+//////////
+const server = require('https').createServer(
+		// Provide the private and public key to the server by reading each
+		// file's content with the readFileSync() method.
+    {
+      key: fs.readFileSync("./key.pem"),
+      cert: fs.readFileSync("./cert.pem"),
+    },
+    app
+)
+  .listen(3004, () => {
+    console.log("serever is runing at port 3004");
+  });
 const io = require('socket.io')(server, { cors: { origin: '*' } });
-
-const port = 3003;
-
-server.listen(port, (err) => {
-    if (err) throw err
-    console.log(`Listening on port ${port}`);
-});
+//////////
 
 var players = []; //Массив всех игроков
 var rooms = []; //Массив всех игровых комнат
@@ -327,8 +343,8 @@ function re_find_rm( room_id, user_id ) {
 	
     client.on('create_player', (data) => {
         data = JSON.parse(data);
-	if (data.user_id != null && data.room_id != null)
-	{	
+	if (data.user_id != null && data.room_id != null && data.battle_id != null)
+	{
 		if (players.length > 0)
 		{
 			console.log(`* * * * *Игроков всего ${players}`);

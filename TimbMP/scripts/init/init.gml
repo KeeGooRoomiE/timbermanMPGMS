@@ -1,6 +1,7 @@
-function init(){
-global.user_id = get_string("Enter your user_id", "");
-global.room_id = get_string("Enter your room_id", "");
+function init(){global.user_id = "$user_id"; //  id MP
+global.room_id = "$room_id"; //  id MP
+global.battle_id = "$battle_id"; //  id MP
+
 global.start = 0
 
 global.gcasetree0 = 0;
