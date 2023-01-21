@@ -23,6 +23,9 @@ const server = require('https').createServer(
   });
 const io = require('socket.io')(server, { cors: { origin: '*' } });
 //////////
+const game_id = 622014;
+var timestamp = Number(Math.round(Date.now()/(1000))); //Number(new Date());
+var secret = "GpFKF7rWnfagdnMs5CEzaP6Y0pJkE6";
 
 var players = []; //Массив всех игроков
 var rooms = []; //Массив всех игровых комнат
@@ -345,17 +348,88 @@ function re_find_rm( room_id, user_id ) {
         data = JSON.parse(data);
 	if (data.user_id != null && data.room_id != null && data.battle_id != null)
 	{
+////////////////////// *** POST *** ////////////////////// 
+					
+					var crypto = require('crypto');
+					var domd5 = game_id+":"+data.user_id+":"+data.room_id+":"+data.battle_id+":"+timestamp+":"+secret;
+					//hash md5($game_id.':'.$user_id.':'.$room_id.':'.$battle_id.':'.$timestamp.':'. $secret)
+					var hash3 = crypto.createHash('md5').update(domd5).digest('hex'); 
+
+					const https = require('https')
+					
+/*
+  "game_id": 1,
+  "user_id": '1',
+  "room_id": '1804403095',
+  "battle_id": '1611161955',
+  "hash": 'e566a5dde72bbc7b6d50ae2cdc2ad0eb',
+  "timestamp": '1645098696
+  */
+					
+
+					const dataxjq = JSON.stringify({
+						  game_id: game_id,
+						  user_id: data.user_id,
+						  room_id: data.room_id,
+						  battle_id: data.battle_id,
+						  hash: hash3,
+						  timestamp: timestamp,
+					})
+					
+					const options = {
+					  hostname: 'mindplays.com',
+					  port: 443,
+					  path: '/api/v1/info_game',
+					  method: 'POST',
+					  headers: {
+						'Content-Type': 'application/json',
+						'Content-Length': dataxjq.length
+					  }
+					}
+
+					const req = https.request(options, res => {
+					  console.log(`statusCode: ${res.statusCode}`)
+
+					  res.on('data', d => {
+					//process.stdout.write(d)
+					var dataxjqx = JSON.parse(d);
+					//console.log(d);
+////////////////////
+					
+					var aa = dataxjqx["data"];
+					var bb = aa["amount"];
+					//var cc = bb["pro"];
+					console.log(`amount: ${bb}`)
+					/*
+					console.log(dataxjqx);
+					var clientxqqw = new Clientxqqw({
+					pro: cc
+					});
+					
+					client.emit('info_user', clientxqqw.toString());
+					*/
+////////////////////
+					  })
+					})
+
+					req.on('error', error => {
+					  console.error(error)
+					})
+
+					req.write(dataxjq)
+					req.end()
+////////////////////// *** POST *** //////////////////////
+
+
 		if (players.length > 0)
 		{
-			console.log(`* * * * *Игроков всего ${players}`);
+			//console.log(`* * * * *Игроков всего ${players}`);
 			
 			var isfound = false;
 			for (i = 0; i < players.length; i++)
 			{
 			  if (players[i].user_id == data.user_id)
 			  {
-				  
-				console.log(`:: :: :: :: players[i].tree ${players[i].tree}`); //[0, 1, 0, 1, 0, 2, 0, 1, 0, 2]
 				global.myhpp  = players[i].hp;
 				global.myscore = players[i].score;
 				
@@ -365,8 +439,7 @@ function re_find_rm( room_id, user_id ) {
 				players[i].tree =  "["+players[i].tree[1]+", "+players[i].tree[4]+", "+players[i].tree[7]+", "+players[i].tree[10]+", "+players[i].tree[13]+", "+players[i].tree[16]+", "+players[i].tree[19]+", "+players[i].tree[22]+", "+players[i].tree[25]+", "+players[i].tree[28]+"]";
 				
 						
-				console.log(`* * * * * players.tree ${players[i].tree}`);
-				console.log(`* * * * * global.tree ${global.tree}`);
+				//console.log(`* * * * * players.tree ${players[i].tree}`);
 				isfound = true;
 				break;
 			  }
@@ -374,14 +447,14 @@ function re_find_rm( room_id, user_id ) {
 			if (!isfound)
 				{
 				
-					console.log(`--Игрок ${data.user_id} НЕ найден`);
+					//console.log(`--Игрок ${data.user_id} НЕ найден`);
 					var find_rm = false;
 					for (i = 0; i < rooms.length; i++)
 					{
 						if (rooms[i].rm_id == data.room_id)
 						{
 							find_rm = true;
-							console.log(`** НАШЛИ комнату - ДОБАВЛЯЕМ 2го игрока: ${data.user_id} в комнату: ${data.room_id} ?`);
+							//console.log(`** НАШЛИ комнату - ДОБАВЛЯЕМ 2го игрока: ${data.user_id} в комнату: ${data.room_id} ?`);
 							if (rooms[i].user2 == null)
 							{
 								rooms[i].user2 = 
@@ -398,7 +471,7 @@ function re_find_rm( room_id, user_id ) {
 							room_id: data.room_id,
 							hp: 3,
 							score: 0,
-							tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]" // ????
+							tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
 						});
 						
 						xdatarrtree = new Dataarrtree({
@@ -416,11 +489,11 @@ function re_find_rm( room_id, user_id ) {
 						});
 						client.emit('go_room', xdatarrtree.toString());
 						players.push(player);
-						console.log(`++Игрокov тепреь ${players}`);
+						//console.log(`++Игрокov тепреь ${players}`);
 						client.emit('create_player', player.toString());
 						client.broadcast.emit('create_player_other', player.toString());
 						
-						console.log(`++Игрок ${data.user_id} +СОЗДАН и ДОБАВЛЕН+`);
+						//console.log(`++Игрок ${data.user_id} +СОЗДАН и ДОБАВЛЕН+`);
 						
 						setTimeout(start_time, 1, data.room_id ,data.user_id);
 						// Создание всех остальных для себя, НЕ включая себя, потому что мы уже создали себя
@@ -438,14 +511,14 @@ function re_find_rm( room_id, user_id ) {
 						}
 						if (i == rooms.length-1 && find_rm == false)
 							{
-								console.log(`Комната ${data.room_id} не найдена - запускапем таймер (через 2 сек) на повторный поиск`);
+								//console.log(`Комната ${data.room_id} не найдена - запускапем таймер (через 2 сек) на повторный поиск`);
 								setTimeout(re_find_rm, 2000, data.room_id, data.user_id);
 								break;
 								
 							}
 					}
 					}else{
-						console.log(`++Игрок ${data.user_id} найден возвращаю.`);
+						//console.log(`++Игрок ${data.user_id} найден возвращаю.`);
 						
 						for (let i in players)
 						{
@@ -454,7 +527,7 @@ function re_find_rm( room_id, user_id ) {
 								client.broadcast.emit('disconnect_player', players[i].toString());
 							}
 						}
-						console.log(`* * * * [PLPL_3_treearr]: ${global.tree}`);
+						//console.log(`* * * * [PLPL_3_treearr]: ${global.tree}`);
 						player = new Player({
 								socket: client,
 								online: 1,
@@ -519,9 +592,9 @@ function re_find_rm( room_id, user_id ) {
 			client.emit('go_room', xdatarrtree.toString());
 			client.emit('create_player', player.toString());
 			players.push(player);
-			console.log(`++Игрокov тепреь ${players}`);
+			//console.log(`++Игрокov тепреь ${players}`);
 			
-			console.log(`--Комнат 0: *N*0вая [${data.room_id}] КОМНАТА СОЗДАНА!`);
+			//console.log(`--Комнат 0: *N*0вая [${data.room_id}] КОМНАТА СОЗДАНА!`);
 				//создаем комнату + пушаем игрока
 				//var roomid=0;
 				rooms.push( 
@@ -532,8 +605,8 @@ function re_find_rm( room_id, user_id ) {
 						user2: null,
 					},
 				);
-				console.log(`++Игрок ${data.user_id} +СОЗДАН и ДОБАВЛЕН в КОМНАТУ+`);
-				console.log(rooms);
+				//console.log(`++Игрок ${data.user_id} +СОЗДАН и ДОБАВЛЕН в КОМНАТУ+`);
+				//console.log(rooms);
 		}
 		
 
@@ -559,7 +632,7 @@ function re_find_rm( room_id, user_id ) {
  
 	client.on('tree_send', (data) => {
         data = JSON.parse(data);
-		console.log(`+ + + + [ts_1_PL tree]: ${data.treearr}`);	
+		//console.log(`+ + + + [ts_1_PL tree]: ${data.treearr}`);	
 		//ПОЛУЧАЕМ массив дерева 2-го игрока
 		player.tree = data.treearr; // Назначаем массив дерева в массив игрока чтобы после реконекта у него были правильные данные для продолжения игры.
 			xdatarrtree = new Dataarrtree({
@@ -580,10 +653,10 @@ function re_find_rm( room_id, user_id ) {
 				if (players[i].user_id == player.user_id && players[i].room_id == player.room_id)
 				{
 					players[i].tree = "["+data.treearr[1]+", "+data.treearr[4]+", "+data.treearr[7]+", "+data.treearr[10]+", "+data.treearr[13]+", "+data.treearr[16]+", "+data.treearr[19]+", "+data.treearr[22]+", "+data.treearr[25]+", "+data.treearr[28]+"]";
-					console.log(`* * * * [ts_2_PL tree]: ${player.tree}`);	
+					//console.log(`* * * * [ts_2_PL tree]: ${player.tree}`);	
 				}
 			}
-			console.log(`* * * * [ts_3_PL tree]: ${player.tree}`);	
+			//console.log(`* * * * [ts_3_PL tree]: ${player.tree}`);	
 			client.broadcast.emit('tree_set', xdatarrtree.toString()); //Отправляем массив дерева 2-го игрока
 	});
  
@@ -631,7 +704,7 @@ function re_find_rm( room_id, user_id ) {
     client.on('disconnect', () => {
 		if (player != null)
 		{
-			console.log(`++Игрок ${player.user_id} +DISCONNECTED+`);
+			//console.log(`++Игрок ${player.user_id} +DISCONNECTED+`);
 			player.online=0;
 		}
     });
