@@ -169,18 +169,22 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 */							
 							if (players[i].hp==0)
 							{
+								
+								var ram = Number(Number(players[i].amount)+Number(players[i].amount));
 								datax[players[i].user_id].push(
 									{
-										operation_type: 2,
+										operation_type: 1,
 										amount: Number(players[i].amount),
 										opponent_id: Number(splayer.user_id),
 										comment: "loser_exit",
 									},
 								);
 							}else{
+								
+								var ram = Number(Number(players[i].amount)-Number(players[i].amount));
 								datax[players[i].user_id].push(
 									{
-										operation_type: 1,
+										operation_type: 2,
 										amount: Number(players[i].amount),
 										opponent_id: Number(splayer.user_id),
 										comment: "winner_exit",
@@ -189,20 +193,21 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 							}
 							
 			//API
-			var ram = Number((Number(players[i].amount)*Number(datax[players[i].user_id].length))+Number(players[i].amount));
+						//var ram = Number(Number(players[i].amount)-Number(players[i].amount));
 ////////////////////// *** POST *** //////////////////////
 						var crypto = require('crypto');
-						var domd5 = game_id+":"+players[i].user_id+":"+players[i].room_id+":"+players[i].battle_id+":"+timestamp+":"+secret;
+						//var domd5 = game_id+":"+players[i].user_id+":"+players[i].room_id+":"+players[i].battle_id+":"+timestamp+":"+secret;
+						var domd5 = game_id+":"+player.user_id+":"+player.room_id+":"+player.battle_id+":"+timestamp+":"+secret;
 						var hash3 = crypto.createHash('md5').update(domd5).digest('hex'); 
 							
 						const https = require('https')
 						const data = JSON.stringify({
 						  game_id: game_id,
-						  room_id: players[i].room_id,
-						  battle_id: players[i].battle_id,
+						  room_id: player.room_id,
+						  battle_id: player.battle_id,
 						  timestamp: timestamp,
 						  timestamp: timestamp,
-						  start_timestamp:  Number(Math.round(Date.now()/(1000))-5000),
+						  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
 						  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
 						  hash: hash3,
 						  user_id: player.user_id,
@@ -508,7 +513,7 @@ function re_find_rm( room_id, user_id ) {
 					  res.on('data', d => {
 					//process.stdout.write(d)
 					var dataxjqx = JSON.parse(d);
-					console.log(d);
+					//console.log(d);
 					
 					var aa = dataxjqx["data"];
 					var bb = aa["user"];
@@ -810,20 +815,22 @@ function re_find_rm( room_id, user_id ) {
 						},
 					);
 					*/
-						var ram = Number((Number(players[i].amount)*Number(datax[players[i].user_id].length))+Number(players[i].amount));
+					/*
+						var ram = Number(Number(players[i].amount)-Number(players[i].amount));
 ////////////////////// *** POST *** //////////////////////
 						var crypto = require('crypto');
-						var domd5 = game_id+":"+players[i].user_id+":"+players[i].room_id+":"+players[i].battle_id+":"+timestamp+":"+secret;
+						//var domd5 = game_id+":"+players[i].user_id+":"+players[i].room_id+":"+players[i].battle_id+":"+timestamp+":"+secret;
+						var domd5 = game_id+":"+player.user_id+":"+player.room_id+":"+player.battle_id+":"+timestamp+":"+secret;
 						var hash3 = crypto.createHash('md5').update(domd5).digest('hex'); 
 
 						const https = require('https')
 						const data = JSON.stringify({
 						  game_id: game_id,
-						  room_id: players[i].room_id,
-						  battle_id: players[i].battle_id,
+						  room_id: player.room_id,
+						  battle_id: player.battle_id,
 						  timestamp: timestamp,
 						  timestamp: timestamp,
-						  start_timestamp:  Number(players[i].start_timestamp),
+						  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
 						  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
 						  hash: hash3,
 						  user_id: player.user_id,
@@ -858,9 +865,8 @@ function re_find_rm( room_id, user_id ) {
 						req.end()
 ////////////////////// *** POST *** //////////////////////
 			//API
-			
 			datax[players[i].user_id] = []; // очищаем
-			
+			*/
 					for (let i in rooms)
 					{
 						if (rooms[i].rm_id == players[i].room_id)
