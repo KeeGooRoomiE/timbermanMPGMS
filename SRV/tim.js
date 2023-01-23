@@ -173,7 +173,7 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 									{
 										operation_type: 2,
 										amount: Number(players[i].amount),
-										opponent_id: splayer.user_id,
+										opponent_id: Number(splayer.user_id),
 										comment: "loser_exit",
 									},
 								);
@@ -182,7 +182,7 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 									{
 										operation_type: 1,
 										amount: Number(players[i].amount),
-										opponent_id: splayer.user_id,
+										opponent_id: Number(splayer.user_id),
 										comment: "winner_exit",
 									},
 								);	
@@ -205,7 +205,7 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 						  start_timestamp:  Number(Math.round(Date.now()/(1000))-5000),
 						  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
 						  hash: hash3,
-						  user_id: players[i].user_id,
+						  user_id: player.user_id,
 						  data: datax[players[i].user_id],
 						  result_amount: ram,
 						})
@@ -420,6 +420,7 @@ function re_find_rm( room_id, user_id ) {
   "comment": 'win',
 }
 */
+
 				for (i = 0; i < players.length; i++)
 				  {
 					  if (players[i].user_id !== player.user_id && players[i].room_id == player.room_id)
@@ -433,7 +434,7 @@ function re_find_rm( room_id, user_id ) {
 						{
 							operation_type: 2,
 							amount: Number(players[i].amount),
-							opponent_id: splayer.user_id,
+							opponent_id: Number(splayer.user_id),
 							comment: "loser_exit",
 						},
 					);
@@ -507,7 +508,7 @@ function re_find_rm( room_id, user_id ) {
 					  res.on('data', d => {
 					//process.stdout.write(d)
 					var dataxjqx = JSON.parse(d);
-					//console.log(d);
+					console.log(d);
 					
 					var aa = dataxjqx["data"];
 					var bb = aa["user"];
@@ -790,7 +791,8 @@ function re_find_rm( room_id, user_id ) {
 						
 				if (players[i].score == 499)
 				{
-									for (i = 0; i < players.length; i++)
+				
+				for (i = 0; i < players.length; i++)
 				  {
 					  if (players[i].user_id !== player.user_id && players[i].room_id == player.room_id)
 					  {
@@ -798,16 +800,16 @@ function re_find_rm( room_id, user_id ) {
 					  break;
 					  }
 				  }
-				  
+				  /*
 					datax[players[i].user_id].push( // дополняем игроку-победителю выйгрышный тип данных в массив (A)
 						{
 							operation_type: 1,
 							amount: Number(players[i].amount),
-							opponent_id: splayer.user_id,
+							opponent_id: Number(splayer.user_id),
 							comment: "winner_exit",
 						},
 					);
-					
+					*/
 						var ram = Number((Number(players[i].amount)*Number(datax[players[i].user_id].length))+Number(players[i].amount));
 ////////////////////// *** POST *** //////////////////////
 						var crypto = require('crypto');
@@ -824,7 +826,7 @@ function re_find_rm( room_id, user_id ) {
 						  start_timestamp:  Number(players[i].start_timestamp),
 						  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
 						  hash: hash3,
-						  user_id: players[i].user_id,
+						  user_id: player.user_id,
 						  data: datax[players[i].user_id],
 						  result_amount: ram,
 						})
