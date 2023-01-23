@@ -192,6 +192,8 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 								);	
 							}
 							
+
+							
 			//API
 						//var ram = Number(Number(players[i].amount)-Number(players[i].amount));
 ////////////////////// *** POST *** //////////////////////
@@ -245,7 +247,7 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 			
 			datax[players[i].user_id] = []; // очищаем
 			//удаляем игрока из списка	
-			console.log(`Игрок ${players[i].user_id} Кикнут общим таймингом`);
+			console.log(`(-) Игрок ${players[i].user_id} Кикнут общим таймингом`);
 			players.splice(players.indexOf(players[i]), 1);
 			//console.log(`AFTER?players = ${players}`);
 			}
@@ -425,7 +427,7 @@ function re_find_rm( room_id, user_id ) {
   "comment": 'win',
 }
 */
-
+/*
 				for (i = 0; i < players.length; i++)
 				  {
 					  if (players[i].user_id !== player.user_id && players[i].room_id == player.room_id)
@@ -443,7 +445,7 @@ function re_find_rm( room_id, user_id ) {
 							comment: "loser_exit",
 						},
 					);
-					
+					*/
 					for (let i in rooms)
 						{
 							if (rooms[i].rm_id == player.room_id)
