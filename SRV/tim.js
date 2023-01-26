@@ -127,31 +127,32 @@ io.on('connection', (client) => {
     var player;
 
 function kickPl(player) {
-console.log(`Проверка игрока [${player.user_id}] на валидность`);
-		
-	var isfoundst = false;
+console.log(`kickPl игрока [${player.username}] `);
+//if (players[i].user_id == player.user_id && players[i].room_id == player.room_id)
+/*
 
-	  for (i = 0; i < players.length; i++)
-	  {
-		  if (players[i].user_id == player.user_id && players[i].room_id == player.room_id)
-		  {
-		  isfoundst = true;
-		  break;
-		  }
-	  }
-	  if (isfoundst)
-			{
-				for (i = 0; i < players.length; i++)
-				  {
-					  if (players[i].user_id !== player.user_id && players[i].room_id == player.room_id)
-					  {
-					  var splayer = players[i]; // массив врага 
-					  break;
-					  }
-				  }
-			 
-			//var splayer = players[i]; // массив врага 
-			console.log(`Игрок ${players[i].user_id} найден на сервере СУЩЕСТВУЕТ!++`);
+	for (i = 0; i < players.length; i++)
+	{
+		if (players[i].user_id == player.user_id && players[i].room_id == player.room_id)
+		{
+			isfoundst = true;
+			break;
+		}
+	}
+	  
+*/
+
+
+	for (i = 0; i < players.length; i++)
+	{
+		if (players[i].user_id !== player.user_id && players[i].room_id == player.room_id)
+		{
+			global.splayer = players[i]; // массив врага 
+			console.log(`(:: :: ::) массив игрока: ${player.username} [${player.hp}] / массив врага: ${splayer.username} [${splayer.hp}] `);	
+			break;
+		}
+	}				  
+
 			
 			// Делеес
 			//SQL
@@ -166,35 +167,24 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
   "opponent_id": '1770728449',
   "comment": 'win',
 }
-*/							
-							if (players[i].hp==0)
+*/
+
+							
+							if (player.hp==0)
 							{
 								
-								var ram = Number(Number(players[i].amount)+Number(players[i].amount));
-								datax[players[i].user_id].push(
+								console.log(`(** *-) Игрок ${player.username} Loser_exit ==> ${splayer.username}`);	
+								var ram = Number(Number(player.amount)+Number(player.amount));
+								datax[player.user_id].push(
 									{
 										operation_type: 1,
-										amount: Number(players[i].amount),
+										amount: Number(player.amount),
 										opponent_id: Number(splayer.user_id),
 										comment: "loser_exit",
 									},
 								);
-							}else{
-								
-								var ram = Number(Number(players[i].amount)-Number(players[i].amount));
-								datax[players[i].user_id].push(
-									{
-										operation_type: 2,
-										amount: Number(players[i].amount),
-										opponent_id: Number(splayer.user_id),
-										comment: "winner_exit",
-									},
-								);	
-							}
-							
-
-							
-			//API
+								/*
+											//API
 						//var ram = Number(Number(players[i].amount)-Number(players[i].amount));
 ////////////////////// *** POST *** //////////////////////
 						var crypto = require('crypto');
@@ -244,13 +234,83 @@ console.log(`Проверка игрока [${player.user_id}] на валидн
 						req.end()
 ////////////////////// *** POST *** //////////////////////
 			//API
+			*/
+							}else{
+								
+								console.log(`(** *+) Игрок ${player.username} Winner_exit ==> ${splayer.username}`);	
+								var ram = Number(Number(player.amount)-Number(player.amount));
+								datax[player.user_id].push(
+									{
+										operation_type: 2,
+										amount: Number(player.amount),
+										opponent_id: Number(splayer.user_id),
+										comment: "winner_exit",
+									},
+								);	
+
+								/*
+											//API
+						//var ram = Number(Number(players[i].amount)-Number(players[i].amount));
+////////////////////// *** POST *** //////////////////////
+						var crypto = require('crypto');
+						//var domd5 = game_id+":"+players[i].user_id+":"+players[i].room_id+":"+players[i].battle_id+":"+timestamp+":"+secret;
+						var domd5 = game_id+":"+player.user_id+":"+player.room_id+":"+player.battle_id+":"+timestamp+":"+secret;
+						var hash3 = crypto.createHash('md5').update(domd5).digest('hex'); 
+							
+						const https = require('https')
+						const data = JSON.stringify({
+						  game_id: game_id,
+						  room_id: player.room_id,
+						  battle_id: player.battle_id,
+						  timestamp: timestamp,
+						  timestamp: timestamp,
+						  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
+						  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
+						  hash: hash3,
+						  user_id: player.user_id,
+						  data: datax[players[i].user_id],
+						  result_amount: ram,
+						})
+
+						const options = {
+						  hostname: 'mindplays.com',
+						  port: 443,
+						  path: '/api/v1/result_game',
+						  method: 'POST',
+						  headers: {
+							'Content-Type': 'application/json',
+							'Content-Length': data.length
+						  }
+						}
+
+						const req = https.request(options, res => {
+						  console.log(`statusCode: ${res.statusCode}`)
+
+						  res.on('data', d => {
+							process.stdout.write(d)
+						  })
+						})
+
+						req.on('error', error => {
+						  console.error(error)
+						})
+
+						req.write(data)
+						req.end()
+////////////////////// *** POST *** //////////////////////
+			//API
+			*/
+							}
+							
+
+							
+
 			
-			datax[players[i].user_id] = []; // очищаем
+			datax[player.user_id] = []; // очищаем
 			//удаляем игрока из списка	
-			console.log(`(-) Игрок ${players[i].user_id} Кикнут общим таймингом`);
-			players.splice(players.indexOf(players[i]), 1);
+			console.log(`(-) Игрок ${player.username} Кикнут общим таймингом`);
+			players.splice(players.indexOf(player), 1);
 			//console.log(`AFTER?players = ${players}`);
-			}
 }
 
 function start_time( room_id , user_id) {
