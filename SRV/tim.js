@@ -241,11 +241,11 @@ console.log(`kickPl игрока [${player.username}] `);
 ////////////////////// *** POST *** //////////////////////
 						var crypto = require('crypto');
 						//var domd5 = game_id+":"+players[i].user_id+":"+players[i].room_id+":"+players[i].battle_id+":"+timestamp+":"+secret;
-						var domd5 = game_id+":"+splayer.user_id+":"+splayer.room_id+":"+splayer.battle_id+":"+timestamp+":"+secret;
-						var hash3 = crypto.createHash('md5').update(domd5).digest('hex'); 
+						var domd6 = game_id+":"+splayer.user_id+":"+splayer.room_id+":"+splayer.battle_id+":"+timestamp+":"+secret;
+						var hash4 = crypto.createHash('md5').update(domd6).digest('hex'); 
 							
 						const https2 = require('https')
-						const data2 = JSON.stringify({
+						var data2 = JSON.stringify({
 						  game_id: game_id,
 						  room_id: splayer.room_id,
 						  battle_id: splayer.battle_id,
@@ -253,9 +253,9 @@ console.log(`kickPl игрока [${player.username}] `);
 						  timestamp: timestamp,
 						  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
 						  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
-						  hash: hash3,
+						  hash: hash4,
 						  user_id: splayer.user_id,
-						  data2: datax[player.user_id],
+						  data: datax[player.user_id],
 						  result_amount: ramm,
 						})
 
@@ -273,7 +273,7 @@ console.log(`kickPl игрока [${player.username}] `);
 						const req2 = https2.request(options2, res2 => {
 						  console.log(`statusCode: ${res2.statusCode}`)
 
-						  res2.on('data', d => {
+						  res2.on('data2', d => {
 							process.stdout.write(d)
 						  })
 						})
@@ -282,7 +282,7 @@ console.log(`kickPl игрока [${player.username}] `);
 						  console.error(error)
 						})
 
-						req2.write(data)
+						req2.write(data2)
 						req2.end()
 ////////////////////// *** POST *** //////////////////////
 			//API
