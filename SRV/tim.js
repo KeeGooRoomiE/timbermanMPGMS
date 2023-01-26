@@ -566,15 +566,14 @@ function re_find_rm( room_id, user_id ) {
 					  res.on('data', d => {
 					//process.stdout.write(d)
 					var dataxjqx = JSON.parse(d);
-					//console.log(d);
 					
 					var aa = dataxjqx["data"];
 					var bb = aa["user"];
 					var cc = bb["name"];
 					
-					var dd = aa["amount"];
+					global.dd = aa["amount"];
 					console.log(`amount: ${dd}`)
-					player.amount = dd;
+					player.amount = Number(dd); // ERROR ???? TODO !
 					
 					console.log(`name: ${cc}`)
 					player.username = cc;
