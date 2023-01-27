@@ -163,7 +163,6 @@ function start_time( room_id , user_id) {
 
 				  ////////////////////////
 				var cenok = 2;
-				
 				for (i = 0; i < players.length; i++)
 				  {
 					  if (players[i].room_id == room_id)
@@ -174,16 +173,37 @@ function start_time( room_id , user_id) {
 					  }
 				  }
 				  	if (cenok == 0)
-						  {
-							for (i = 0; i < rooms.length; i++)
+						{
+						for (i = 0; i < rooms.length; i++)
 								{
 									if (rooms[i].rm_id == room_id)
 									{
-										rooms.splice(rooms.indexOf(rooms[i]), 1);
+										//////////////////////// сравнение очков , у кого больше , тот выйграл.
+										for (let i in players)
+										{
+											if (players[i].room_id == room_id)
+											{
+												var fir_pl = players[0];
+												var sec_pl = players[1];
+											}
+										}
+										if (players[0].score == players[1].score) // ничья
+												{
+													console.log(`ничья`);
+													rooms.splice(rooms.indexOf(rooms[i]), 1);
+												}
+												if (fir_pl.score > sec_pl.score) //выйграл игрок 0 (первый)
+												{
+													console.log(`выйграл игрок 0 (первый) ${fir_pl.username}}`);
+													rooms.splice(rooms.indexOf(rooms[i]), 1);
+												}
+												if (fir_pl.score < sec_pl.score){ //выйграл игрок 1 (второй)
+													console.log(`//выйграл игрок 1 (второй) ${sec_pl.username}`);
+													rooms.splice(rooms.indexOf(rooms[i]), 1);
+												}
 									}
 								}
-						  }	
-				  ////////////////////////
+						}	
 				}
 			}
 		}
