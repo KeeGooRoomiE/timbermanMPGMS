@@ -850,95 +850,176 @@ function re_find_rm( room_id, user_id ) {
 					hp: player.hp
 				});
 				client.broadcast.emit('datax_set', xdatax.toString());	
-				
-				if (player.score > 50)
+				console.log(`(:: :: ::) player.score: [${player.score}]`);	
+				if (player.score > 497)
 				{
-					//setTimeout(kickPl,10,player) // TODO перенести сюда апи
-					console.log(`* 1* * * player.score > 499: ${player.username}`);	
-				
-				  	//datax[player.user_id] = []; // очищаем
-					//datax[players.user_id] = []; // очищаем
-					//удаляем игрока из списка	
-					players.splice(players.indexOf(player), 1);
-					console.log(`AFTER?players = ${players}`);
-				  /*
-					datax[players[i].user_id].push( // дополняем игроку-победителю выйгрышный тип данных в массив (A)
-						{
-							operation_type: 1,
-							amount: Number(players[i].amount),
-							opponent_id: Number(splayer.user_id),
-							comment: "winner_exit",
-						},
-					);
-					*/
-					/*
-						var ram = Number(Number(players[i].amount)-Number(players[i].amount));
-////////////////////// *** POST *** //////////////////////
-						var crypto = require('crypto');
-						//var domd5 = game_id+":"+players[i].user_id+":"+players[i].room_id+":"+players[i].battle_id+":"+timestamp+":"+secret;
-						var domd5 = game_id+":"+player.user_id+":"+player.room_id+":"+player.battle_id+":"+timestamp+":"+secret;
-						var hash3 = crypto.createHash('md5').update(domd5).digest('hex'); 
 
-						const https = require('https')
-						const data = JSON.stringify({
-						  game_id: game_id,
-						  room_id: player.room_id,
-						  battle_id: player.battle_id,
-						  timestamp: timestamp,
-						  timestamp: timestamp,
-						  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
-						  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
-						  hash: hash3,
-						  user_id: player.user_id,
-						  data: datax[players[i].user_id],
-						  result_amount: ram,
-						})
-
-						const options = {
-						  hostname: 'mindplays.com',
-						  port: 443,
-						  path: '/api/v1/result_game',
-						  method: 'POST',
-						  headers: {
-							'Content-Type': 'application/json',
-							'Content-Length': data.length
-						  }
-						}
-
-						const req = https.request(options, res => {
-						  console.log(`statusCode: ${res.statusCode}`)
-
-						  res.on('data', d => {
-							process.stdout.write(d)
-						  })
-						})
-
-						req.on('error', error => {
-						  console.error(error)
-						})
-
-						req.write(data)
-						req.end()
-////////////////////// *** POST *** //////////////////////
-			//API
-			datax[players[i].user_id] = []; // очищаем
-			*/
-			
-			
-					for (let i in rooms)
+/////////////////////////////////////////////////*
+					for (i = 0; i < players.length; i++)
 					{
-						if (rooms[i].rm_id == player.room_id)
+						if (players[i].user_id !== player.user_id && players[i].room_id == player.room_id)
 						{
-							//rooms[i].rm_time = 0;
-							rooms.splice(rooms.indexOf(rooms[i]), 1);
+							global.splayer = players[i]; // массив врага 
+							console.log(`(:: :: ::) массив игрока: ${player.username} [${player.hp}] / массив врага: ${splayer.username} [${splayer.hp}] `);	
+							  
+
+
+											
+											if (player.hp==0)
+											{
+												console.log(`:!: :!: :!: :!: :!: :!: [CRITICAL ERROR] :!: :!: :!: :!: :!: :!:`);	
+											}else{
+												console.log(`(** *+) Игрок ${player.username} Winner_exit ==> ${splayer.username}`);	
+												
+												var ramp = Number(Number(player.amount)+Number(player.amount));
+												datax[player.user_id].push(
+													{
+														operation_type: 2,
+														amount: Number(player.amount),
+														opponent_id: Number(player.user_id),
+														comment: "winner_exit",
+													},
+												);	
+												/*
+												1 - plus operation
+												2 - minus
+												3 - draw operation
+												*/
+												var ramm = Number(Number(player.amount)-Number(player.amount));
+												datax[splayer.user_id].push(
+													{
+														operation_type: 1,
+														amount: Number(splayer.amount),
+														opponent_id: Number(splayer.user_id),
+														comment: "loser_exit",
+													},
+												);	
+
+				
+							//API
+										//var ram = Number(Number(players[i].amount)-Number(players[i].amount));
+				////////////////////// *** POST *** //////////////////////
+										var crypto = require('crypto');
+										//var domd5 = game_id+":"+players[i].user_id+":"+players[i].room_id+":"+players[i].battle_id+":"+timestamp+":"+secret;
+										var domd5 = game_id+":"+player.user_id+":"+player.room_id+":"+player.battle_id+":"+timestamp+":"+secret;
+										var hash3 = crypto.createHash('md5').update(domd5).digest('hex'); 
+											
+										const https = require('https')
+										const data = JSON.stringify({
+										  game_id: game_id,
+										  room_id: player.room_id,
+										  battle_id: player.battle_id,
+										  timestamp: timestamp,
+										  timestamp: timestamp,
+										  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
+										  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
+										  hash: hash3,
+										  user_id: player.user_id,
+										  data: datax[splayer.user_id],
+										  result_amount: ramp,
+										})
+
+										const options = {
+										  hostname: 'mindplays.com',
+										  port: 443,
+										  path: '/api/v1/result_game',
+										  method: 'POST',
+										  headers: {
+											'Content-Type': 'application/json',
+											'Content-Length': data.length
+										  }
+										}
+
+										const req = https.request(options, res => {
+										  console.log(`statusCode: ${res.statusCode}`)
+
+										  res.on('data', d => {
+											process.stdout.write(d)
+										  })
+										})
+
+										req.on('error', error => {
+										  console.error(error)
+										})
+
+										req.write(data)
+										req.end()
+				////////////////////// *** POST *** //////////////////////
+							//API
+							
+							
+							//API
+										//var ram = Number(Number(players[i].amount)-Number(players[i].amount));
+				////////////////////// *** POST *** //////////////////////
+										var crypto = require('crypto');
+										//var domd5 = game_id+":"+players[i].user_id+":"+players[i].room_id+":"+players[i].battle_id+":"+timestamp+":"+secret;
+										var domd6 = game_id+":"+splayer.user_id+":"+splayer.room_id+":"+splayer.battle_id+":"+timestamp+":"+secret;
+										var hash4 = crypto.createHash('md5').update(domd6).digest('hex'); 
+											
+										const https2 = require('https')
+										var data2 = JSON.stringify({
+										  game_id: game_id,
+										  room_id: splayer.room_id,
+										  battle_id: splayer.battle_id,
+										  timestamp: timestamp,
+										  timestamp: timestamp,
+										  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
+										  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
+										  hash: hash4,
+										  user_id: splayer.user_id,
+										  data: datax[player.user_id],
+										  result_amount: ramm,
+										})
+
+										const options2 = {
+										  hostname: 'mindplays.com',
+										  port: 443,
+										  path: '/api/v1/result_game',
+										  method: 'POST',
+										  headers: {
+											'Content-Type': 'application/json',
+											'Content-Length': data2.length
+										  }
+										}
+
+										const req2 = https2.request(options2, res2 => {
+										  console.log(`statusCode: ${res2.statusCode}`)
+
+										  res2.on('data2', d => {
+											process.stdout.write(d)
+										  })
+										})
+
+										req2.on('error', error => {
+										  console.error(error)
+										})
+
+										req2.write(data2)
+										req2.end()
+				////////////////////// *** POST *** //////////////////////
+							//API
+											
+											
+											
+
+							for (let i in rooms)
+								{
+									if (rooms[i].rm_id == player.room_id)
+									{
+										rooms.splice(rooms.indexOf(rooms[i]), 1);
+									}
+								}
+							datax[player.user_id] = []; // очищаем
+							datax[players.user_id] = []; // очищаем
+							players.splice(players.indexOf(player), 1);
+							players.splice(players.indexOf(splayer), 1);
+							break;
 						}
+					}	
+				////////////////////////////////////////////////*
 					}
-					
 				}
-			
-
-
-			});
+	});
 	//// Вещаем позицию игрока всем игрокам
     client.on('position_update', (data) => {
         data = JSON.parse(data);
