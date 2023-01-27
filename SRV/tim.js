@@ -192,12 +192,266 @@ function start_time( room_id , user_id) {
 													console.log(`ничья`);
 													rooms.splice(rooms.indexOf(rooms[i]), 1);
 												}
-												if (fir_pl.score > sec_pl.score) //выйграл игрок 0 (первый)
+												
+												if (fir_pl.score > sec_pl.score) //выйграл игрок 0 (первый)//выйграл игрок 0 (первый)//выйграл игрок 0 (первый)//выйграл игрок 0 (первый)//выйграл игрок 0 (первый)//выйграл игрок 0 (первый)
 												{
+													var ramp = Number(Number(fir_pl.amount)+Number(fir_pl.amount));
+													datax[fir_pl.user_id].push(
+														{
+															operation_type: 2,
+															amount: Number(fir_pl.amount),
+															opponent_id: Number(fir_pl.user_id),
+															comment: "winner_exit",
+														},
+													);	
+													/*
+													1 - plus operation
+													2 - minus
+													3 - draw operation
+													*/
+													var ramm = Number(Number(fir_pl.amount)-Number(fir_pl.amount));
+													datax[sec_pl.user_id].push(
+														{
+															operation_type: 1,
+															amount: Number(sec_pl.amount),
+															opponent_id: Number(sec_pl.user_id),
+															comment: "loser_exit",
+														},
+													);	
+													//API
+													//var ram = Number(Number(players[i].amount)-Number(players[i].amount));
+							////////////////////// *** POST *** //////////////////////
+													var crypto = require('crypto');
+													//var domd5 = game_id+":"+players[i].user_id+":"+players[i].room_id+":"+players[i].battle_id+":"+timestamp+":"+secret;
+													var domd5 = game_id+":"+fir_pl.user_id+":"+fir_pl.room_id+":"+fir_pl.battle_id+":"+timestamp+":"+secret;
+													var hash3 = crypto.createHash('md5').update(domd5).digest('hex'); 
+														
+													const https = require('https')
+													const data = JSON.stringify({
+													  game_id: game_id,
+													  room_id: fir_pl.room_id,
+													  battle_id: fir_pl.battle_id,
+													  timestamp: timestamp,
+													  timestamp: timestamp,
+													  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
+													  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
+													  hash: hash3,
+													  user_id: fir_pl.user_id,
+													  data: datax[sec_pl.user_id],
+													  result_amount: ramp,
+													})
+
+													const options = {
+													  hostname: 'mindplays.com',
+													  port: 443,
+													  path: '/api/v1/result_game',
+													  method: 'POST',
+													  headers: {
+														'Content-Type': 'application/json',
+														'Content-Length': data.length
+													  }
+													}
+
+													const req = https.request(options, res => {
+													  console.log(`statusCode: ${res.statusCode}`)
+
+													  res.on('data', d => {
+														process.stdout.write(d)
+													  })
+													})
+
+													req.on('error', error => {
+													  console.error(error)
+													})
+
+													req.write(data)
+													req.end()
+							////////////////////// *** POST *** //////////////////////
+										//API
+										
+										
+										//API
+													//var ram = Number(Number(players[i].amount)-Number(players[i].amount));
+							////////////////////// *** POST *** //////////////////////
+													var crypto = require('crypto');
+													//var domd5 = game_id+":"+players[i].user_id+":"+players[i].room_id+":"+players[i].battle_id+":"+timestamp+":"+secret;
+													var domd6 = game_id+":"+sec_pl.user_id+":"+sec_pl.room_id+":"+sec_pl.battle_id+":"+timestamp+":"+secret;
+													var hash4 = crypto.createHash('md5').update(domd6).digest('hex'); 
+														
+													const https2 = require('https')
+													var data2 = JSON.stringify({
+													  game_id: game_id,
+													  room_id: sec_pl.room_id,
+													  battle_id: sec_pl.battle_id,
+													  timestamp: timestamp,
+													  timestamp: timestamp,
+													  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
+													  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
+													  hash: hash4,
+													  user_id: sec_pl.user_id,
+													  data: datax[fir_pl.user_id],
+													  result_amount: ramm,
+													})
+
+													const options2 = {
+													  hostname: 'mindplays.com',
+													  port: 443,
+													  path: '/api/v1/result_game',
+													  method: 'POST',
+													  headers: {
+														'Content-Type': 'application/json',
+														'Content-Length': data2.length
+													  }
+													}
+
+													const req2 = https2.request(options2, res2 => {
+													  console.log(`statusCode: ${res2.statusCode}`)
+
+													  res2.on('data2', d => {
+														process.stdout.write(d)
+													  })
+													})
+
+													req2.on('error', error => {
+													  console.error(error)
+													})
+
+													req2.write(data2)
+													req2.end()
+							////////////////////// *** POST *** //////////////////////
+										//API
 													console.log(`выйграл игрок 0 (первый) ${fir_pl.username}}`);
 													rooms.splice(rooms.indexOf(rooms[i]), 1);
 												}
-												if (fir_pl.score < sec_pl.score){ //выйграл игрок 1 (второй)
+												
+												if (fir_pl.score < sec_pl.score){ //выйграл игрок 1 (второй)//выйграл игрок 1 (второй)//выйграл игрок 1 (второй)//выйграл игрок 1 (второй)//выйграл игрок 1 (второй)//выйграл игрок 1 (второй)
+													
+														var ramp = Number(Number(fir_pl.amount)-Number(fir_pl.amount));
+													datax[fir_pl.user_id].push(
+														{
+															operation_type: 1,
+															amount: Number(fir_pl.amount),
+															opponent_id: Number(fir_pl.user_id),
+															comment: "winner_exit",
+														},
+													);	
+													/*
+													1 - plus operation
+													2 - minus
+													3 - draw operation
+													*/
+													var ramm = Number(Number(fir_pl.amount)+Number(fir_pl.amount));
+													datax[sec_pl.user_id].push(
+														{
+															operation_type: 2,
+															amount: Number(sec_pl.amount),
+															opponent_id: Number(sec_pl.user_id),
+															comment: "loser_exit",
+														},
+													);	
+													//API
+													//var ram = Number(Number(players[i].amount)-Number(players[i].amount));
+							////////////////////// *** POST *** //////////////////////
+													var crypto = require('crypto');
+													//var domd5 = game_id+":"+players[i].user_id+":"+players[i].room_id+":"+players[i].battle_id+":"+timestamp+":"+secret;
+													var domd5 = game_id+":"+fir_pl.user_id+":"+fir_pl.room_id+":"+fir_pl.battle_id+":"+timestamp+":"+secret;
+													var hash3 = crypto.createHash('md5').update(domd5).digest('hex'); 
+														
+													const https = require('https')
+													const data = JSON.stringify({
+													  game_id: game_id,
+													  room_id: fir_pl.room_id,
+													  battle_id: fir_pl.battle_id,
+													  timestamp: timestamp,
+													  timestamp: timestamp,
+													  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
+													  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
+													  hash: hash3,
+													  user_id: fir_pl.user_id,
+													  data: datax[sec_pl.user_id],
+													  result_amount: ramp,
+													})
+
+													const options = {
+													  hostname: 'mindplays.com',
+													  port: 443,
+													  path: '/api/v1/result_game',
+													  method: 'POST',
+													  headers: {
+														'Content-Type': 'application/json',
+														'Content-Length': data.length
+													  }
+													}
+
+													const req = https.request(options, res => {
+													  console.log(`statusCode: ${res.statusCode}`)
+
+													  res.on('data', d => {
+														process.stdout.write(d)
+													  })
+													})
+
+													req.on('error', error => {
+													  console.error(error)
+													})
+
+													req.write(data)
+													req.end()
+							////////////////////// *** POST *** //////////////////////
+										//API
+										
+										
+										//API
+													//var ram = Number(Number(players[i].amount)-Number(players[i].amount));
+							////////////////////// *** POST *** //////////////////////
+													var crypto = require('crypto');
+													//var domd5 = game_id+":"+players[i].user_id+":"+players[i].room_id+":"+players[i].battle_id+":"+timestamp+":"+secret;
+													var domd6 = game_id+":"+sec_pl.user_id+":"+sec_pl.room_id+":"+sec_pl.battle_id+":"+timestamp+":"+secret;
+													var hash4 = crypto.createHash('md5').update(domd6).digest('hex'); 
+														
+													const https2 = require('https')
+													var data2 = JSON.stringify({
+													  game_id: game_id,
+													  room_id: sec_pl.room_id,
+													  battle_id: sec_pl.battle_id,
+													  timestamp: timestamp,
+													  timestamp: timestamp,
+													  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
+													  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
+													  hash: hash4,
+													  user_id: sec_pl.user_id,
+													  data: datax[fir_pl.user_id],
+													  result_amount: ramm,
+													})
+
+													const options2 = {
+													  hostname: 'mindplays.com',
+													  port: 443,
+													  path: '/api/v1/result_game',
+													  method: 'POST',
+													  headers: {
+														'Content-Type': 'application/json',
+														'Content-Length': data2.length
+													  }
+													}
+
+													const req2 = https2.request(options2, res2 => {
+													  console.log(`statusCode: ${res2.statusCode}`)
+
+													  res2.on('data2', d => {
+														process.stdout.write(d)
+													  })
+													})
+
+													req2.on('error', error => {
+													  console.error(error)
+													})
+
+													req2.write(data2)
+													req2.end()
+							////////////////////// *** POST *** //////////////////////
+										//API
+													
 													console.log(`//выйграл игрок 1 (второй) ${sec_pl.username}`);
 													rooms.splice(rooms.indexOf(rooms[i]), 1);
 												}
