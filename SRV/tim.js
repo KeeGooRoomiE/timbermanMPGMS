@@ -568,12 +568,15 @@ function re_find_rm( room_id, user_id ) {
 					var dataxjqx = JSON.parse(d);
 					
 					var aa = dataxjqx["data"];
+					console.log(`data: ${aa}`)
+					
 					var bb = aa["user"];
+					console.log(`user: ${bb}`)
 					var cc = bb["name"];
 					
-					global.dd = aa["amount"];
+					var dd = Number(aa["amount"]);
 					console.log(`amount: ${dd}`)
-					player.amount = Number(dd); // ERROR ???? TODO !
+					player.amount = dd; // ERROR ???? TODO !
 					
 					console.log(`name: ${cc}`)
 					player.username = cc;
@@ -840,23 +843,24 @@ function re_find_rm( room_id, user_id ) {
  
      client.on('datax_get', (data) => {
         data = JSON.parse(data);
-
-		for (let i in players)
-		{
-			if (players[i].room_id == player.room_id && players[i].user_id == player.user_id)
-			{		
-						
-				if (players[i].score == 499)
-				{
+		
+				xdatax = new Datax({
+					room_id: player.room_id,
+					score: player.score,
+					hp: player.hp
+				});
+				client.broadcast.emit('datax_set', xdatax.toString());	
 				
-				for (i = 0; i < players.length; i++)
-				  {
-					  if (players[i].user_id !== player.user_id && players[i].room_id == player.room_id)
-					  {
-					  var splayer = players[i]; // массив врага 
-					  break;
-					  }
-				  }
+				if (player.score > 50)
+				{
+					//setTimeout(kickPl,10,player) // TODO перенести сюда апи
+					console.log(`* 1* * * player.score > 499: ${player.username}`);	
+				
+				  	//datax[player.user_id] = []; // очищаем
+					//datax[players.user_id] = []; // очищаем
+					//удаляем игрока из списка	
+					players.splice(players.indexOf(player), 1);
+					console.log(`AFTER?players = ${players}`);
 				  /*
 					datax[players[i].user_id].push( // дополняем игроку-победителю выйгрышный тип данных в массив (A)
 						{
@@ -919,26 +923,22 @@ function re_find_rm( room_id, user_id ) {
 			//API
 			datax[players[i].user_id] = []; // очищаем
 			*/
+			
+			
 					for (let i in rooms)
 					{
-						if (rooms[i].rm_id == players[i].room_id)
+						if (rooms[i].rm_id == player.room_id)
 						{
-							rooms[i].rm_time = 0;
+							//rooms[i].rm_time = 0;
+							rooms.splice(rooms.indexOf(rooms[i]), 1);
 						}
 					}
+					
 				}
 			
-				xdatax = new Datax({
-					room_id: players[i].room_id,
-					score: players[i].score,
-					hp: players[i].hp
-				});
-				client.broadcast.emit('datax_set', xdatax.toString());	
 
-				break;
-			}
-		}
-	});
+
+			});
 	//// Вещаем позицию игрока всем игрокам
     client.on('position_update', (data) => {
         data = JSON.parse(data);
