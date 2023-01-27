@@ -319,8 +319,18 @@ function start_time( room_id , user_id) {
 													req2.write(data2)
 													req2.end()
 							////////////////////// *** POST *** //////////////////////
-										//API
+										//API		
+										
 													console.log(`выйграл игрок 0 (первый) ${fir_pl.username}}`);
+													
+													datax[fir_pl.user_id] = []; // очищаем
+													datax[sec_pl.user_id] = []; // очищаем
+													//удаляем игрока из списка	
+													console.log(`(-) Игрок ${fir_pl.username} Кикнут общим таймингом`);
+													console.log(`(-) Игрок ${sec_pl.username} Кикнут общим таймингом`);
+													players.splice(players.indexOf(fir_pl), 1);
+													players.splice(players.indexOf(sec_pl), 1);
+													
 													rooms.splice(rooms.indexOf(rooms[i]), 1);
 												}
 												
@@ -451,8 +461,15 @@ function start_time( room_id , user_id) {
 													req2.end()
 							////////////////////// *** POST *** //////////////////////
 										//API
-													
-													console.log(`//выйграл игрок 1 (второй) ${sec_pl.username}`);
+													console.log(`выйграл игрок 1 (второй) ${sec_pl.username}}`);
+													datax[fir_pl.user_id] = []; // очищаем
+													datax[sec_pl.user_id] = []; // очищаем
+													//удаляем игрока из списка	
+													console.log(`(-) Игрок ${fir_pl.username} Кикнут общим таймингом`);
+													console.log(`(-) Игрок ${sec_pl.username} Кикнут общим таймингом`);
+													players.splice(players.indexOf(fir_pl), 1);
+													players.splice(players.indexOf(sec_pl), 1);
+
 													rooms.splice(rooms.indexOf(rooms[i]), 1);
 												}
 									}
@@ -560,7 +577,7 @@ function re_find_rm( room_id, user_id ) {
 					rooms.push( 
 						{
 							rm_id: player.room_id,
-							rm_time: 10000, //180000
+							rm_time: 180000, //180000
 							user1: {"pl_id":player.user_id,"pl_hp":3,"pl_score":0},
 							user2: null,
 						},
@@ -717,7 +734,13 @@ function re_find_rm( room_id, user_id ) {
 						req2.end()
 ////////////////////// *** POST *** //////////////////////
 			//API
-								
+						datax[player.user_id] = []; // очищаем
+						datax[splayer.user_id] = []; // очищаем
+						//удаляем игрока из списка	
+						console.log(`(-) Игрок ${player.username} Кикнут общим таймингом`);
+						console.log(`(-) Игрок ${splayer.username} Кикнут общим таймингом`);
+						players.splice(players.indexOf(player), 1);
+						players.splice(players.indexOf(splayer), 1);
 					}else{
 						console.log(`splayer.hp == 0 НИЧЬЯ`); // НИЧЬЯ
 					}
@@ -1135,7 +1158,7 @@ function re_find_rm( room_id, user_id ) {
 					user_id: data.user_id,
 					room_id: data.room_id,
 					battle_id: data.battle_id,	// GOOD
-					hp: 3000,
+					hp: 3,
 					score: 0,
 					tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
 			});
@@ -1164,7 +1187,7 @@ function re_find_rm( room_id, user_id ) {
 				rooms.push( 
 					{
 						rm_id: data.room_id,
-						rm_time: 10000, //180000
+						rm_time: 180000, //180000
 						user1: {"pl_id":data.user_id,"pl_hp":3,"pl_score":0},
 						user2: null,
 					},
