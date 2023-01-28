@@ -636,7 +636,7 @@ function re_find_rm( room_id, user_id ) {
 							room_id: room_id,
 							hp: 3,
 							score: 0,
-							tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]" // ???? 2 TODO GET OTHER TREE AFTER CERONNECT
+							tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
 						});
 						xdatarrtree = new Dataarrtree({
 						room_id: room_id,
@@ -692,7 +692,7 @@ function re_find_rm( room_id, user_id ) {
 						room_id: room_id,
 						hp: 3,
 						score: 0,
-						tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]" // ????
+						tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
 					});
 					xdatarrtree = new Dataarrtree({
 					room_id: room_id,
@@ -715,7 +715,7 @@ function re_find_rm( room_id, user_id ) {
 					rooms.push( 
 						{
 							rm_id: player.room_id,
-							rm_time: 8000, //180000
+							rm_time: 180000, //180000
 							user1: {"pl_id":player.user_id,"pl_hp":3,"pl_score":0},
 							user2: null,
 						},
@@ -881,7 +881,7 @@ function re_find_rm( room_id, user_id ) {
 						players.splice(players.indexOf(splayer), 1);
 						rooms.splice(rooms.indexOf(player.room_id), 1);
 					}else{
-						console.log(`splayer.hp == 0 НИЧЬЯ`); // НИЧЬЯ
+						console.log(`splayer.hp == 0 НИЧЬЯ`); // НИЧЬЯ TODO ???
 					}
 				}
 			}
@@ -1326,7 +1326,7 @@ function re_find_rm( room_id, user_id ) {
 				rooms.push( 
 					{
 						rm_id: data.room_id,
-						rm_time: 8000, //180000
+						rm_time: 180000, //180000
 						user1: {"pl_id":data.user_id,"pl_hp":3,"pl_score":0},
 						user2: null,
 					},
