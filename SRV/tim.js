@@ -189,14 +189,14 @@ function start_time( room_id , user_id) {
 												var sec_pl = players[1];
 											}
 										}
-										if (players[0].score == players[1].score) // ничья// ничья// ничья// ничья// ничья// ничья// ничья// ничья// ничья// ничья// ничья// ничья TODO
+										if (players[0].score == players[1].score) // ничья// ничья// ничья// ничья// ничья// ничья// ничья// ничья// ничья// ничья// ничья// ничья 
 												{
 													console.log(`ничья`);
 														var ramp = Number(Number(fir_pl.amount));
 													datax[fir_pl.user_id].push(
 														{
 															operation_type: 3,
-															amount: Number(fir_pl.amount),
+															amount: 0,
 															opponent_id: Number(fir_pl.user_id),
 															comment: "draw_o_exit",
 														},
@@ -210,7 +210,7 @@ function start_time( room_id , user_id) {
 													datax[sec_pl.user_id].push(
 														{
 															operation_type: 3,
-															amount: Number(sec_pl.amount),
+															amount: 0,
 															opponent_id: Number(sec_pl.user_id),
 															comment: "draw_o_exit",
 														},
@@ -230,7 +230,7 @@ function start_time( room_id , user_id) {
 													  battle_id: fir_pl.battle_id,
 													  timestamp: timestamp,
 													  timestamp: timestamp,
-													  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
+													  start_timestamp:  fir_pl.start_timestamp,
 													  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
 													  hash: hash3,
 													  user_id: fir_pl.user_id,
@@ -282,7 +282,7 @@ function start_time( room_id , user_id) {
 													  battle_id: sec_pl.battle_id,
 													  timestamp: timestamp,
 													  timestamp: timestamp,
-													  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
+													  start_timestamp:  sec_pl.start_timestamp,
 													  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
 													  hash: hash4,
 													  user_id: sec_pl.user_id,
@@ -371,7 +371,7 @@ function start_time( room_id , user_id) {
 													  battle_id: fir_pl.battle_id,
 													  timestamp: timestamp,
 													  timestamp: timestamp,
-													  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
+													  start_timestamp:  fir_pl.start_timestamp,
 													  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
 													  hash: hash3,
 													  user_id: fir_pl.user_id,
@@ -423,7 +423,7 @@ function start_time( room_id , user_id) {
 													  battle_id: sec_pl.battle_id,
 													  timestamp: timestamp,
 													  timestamp: timestamp,
-													  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
+													  start_timestamp:  sec_pl.start_timestamp,
 													  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
 													  hash: hash4,
 													  user_id: sec_pl.user_id,
@@ -512,7 +512,7 @@ function start_time( room_id , user_id) {
 													  battle_id: fir_pl.battle_id,
 													  timestamp: timestamp,
 													  timestamp: timestamp,
-													  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
+													  start_timestamp:  fir_pl.start_timestamp,
 													  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
 													  hash: hash3,
 													  user_id: fir_pl.user_id,
@@ -564,7 +564,7 @@ function start_time( room_id , user_id) {
 													  battle_id: sec_pl.battle_id,
 													  timestamp: timestamp,
 													  timestamp: timestamp,
-													  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
+													  start_timestamp:  sec_pl.start_timestamp,
 													  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
 													  hash: hash4,
 													  user_id: sec_pl.user_id,
@@ -785,7 +785,7 @@ function re_find_rm( room_id, user_id ) {
 						  battle_id: player.battle_id,
 						  timestamp: timestamp,
 						  timestamp: timestamp,
-						  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
+						  start_timestamp:  player.start_timestamp,
 						  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
 						  hash: hash3,
 						  user_id: player.user_id,
@@ -837,7 +837,7 @@ function re_find_rm( room_id, user_id ) {
 						  battle_id: splayer.battle_id,
 						  timestamp: timestamp,
 						  timestamp: timestamp,
-						  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
+						  start_timestamp:  splayer.start_timestamp,
 						  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
 						  hash: hash4,
 						  user_id: splayer.user_id,
@@ -957,7 +957,7 @@ function re_find_rm( room_id, user_id ) {
 										  battle_id: player.battle_id,
 										  timestamp: timestamp,
 										  timestamp: timestamp,
-										  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
+										  start_timestamp:  player.start_timestamp,
 										  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
 										  hash: hash3,
 										  user_id: player.user_id,
@@ -1009,7 +1009,7 @@ function re_find_rm( room_id, user_id ) {
 										  battle_id: splayer.battle_id,
 										  timestamp: timestamp,
 										  timestamp: timestamp,
-										  start_timestamp:  Number(Math.round(Date.now()/(1000))-5),
+										  start_timestamp:  splayer.start_timestamp,
 										  finish_timestamp: Number(Math.round(Date.now()/(1000))), 
 										  hash: hash4,
 										  user_id: splayer.user_id,
@@ -1125,6 +1125,7 @@ function re_find_rm( room_id, user_id ) {
 					
 					console.log(`name: ${cc}`)
 					player.username = cc;
+					player.start_timestamp = Number(Math.round(Date.now()/(1000)));
 					/*
 					console.log(dataxjqx);
 					var clientxqqw = new Clientxqqw({
@@ -1193,6 +1194,7 @@ function re_find_rm( room_id, user_id ) {
 							user_id: data.user_id,
 							room_id: data.room_id,
 							battle_id: data.battle_id,	// GOOD
+							start_timestamp: Number(Math.round(Date.now()/(1000))),
 							hp: 3,
 							score: 0,
 							tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
@@ -1258,6 +1260,7 @@ function re_find_rm( room_id, user_id ) {
 								user_id: data.user_id,
 								room_id: data.room_id,
 								battle_id: data.battle_id,
+								start_timestamp: Number(Math.round(Date.now()/(1000))),
 								hp: global.myhpp,
 								score: global.myscore,
 								tree: global.tree
@@ -1297,6 +1300,7 @@ function re_find_rm( room_id, user_id ) {
 					user_id: data.user_id,
 					room_id: data.room_id,
 					battle_id: data.battle_id,	// GOOD
+					start_timestamp: Number(Math.round(Date.now()/(1000))),
 					hp: 3,
 					score: 0,
 					tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
@@ -1331,7 +1335,7 @@ function re_find_rm( room_id, user_id ) {
 						user2: null,
 					},
 				);
-				//console.log(`++Игрок ${data.user_id} +СОЗДАН и ДОБАВЛЕН в КОМНАТУ+`);
+				//console.log(`++Игрок ${data.user_id} +СОЗДАН и ДОБАВЛЕН в КОМНАТУ+`); 
 				//console.log(rooms);
 		}
 		
