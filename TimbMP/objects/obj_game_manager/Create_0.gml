@@ -1,6 +1,5 @@
 /// @description Scene setups
 
-
 #region -- Set skin species
 
 switch (global.sceneSkin)

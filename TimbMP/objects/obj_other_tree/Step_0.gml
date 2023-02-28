@@ -1,5 +1,6 @@
 /// @description Live reactions to triggers
-
+x=browser_width/2-222
+y=272
 #region -- check player living
 
 if (isPlayerLive)

@@ -1,4 +1,5 @@
-
+x=browser_width/2-222
+y=272
 /*
 /// @description Init
 casetree0 =  0;

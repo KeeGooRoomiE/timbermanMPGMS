@@ -1,6 +1,7 @@
 /// @description Live reactions to triggers
 //treearr[0]
-
+x=browser_width/2-410
+y=304
 	//show_debug_message(treearr);
 #region -- check player living
 

@@ -1,3 +1,5 @@
+x=browser_width/2-410
+y=304
 /// @description Initcasetree0 = global.gcasetree0;
 casetree0 =  global.gcasetree0;
 casetree1 =  global.gcasetree1;
