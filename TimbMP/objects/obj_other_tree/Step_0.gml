@@ -1,6 +1,9 @@
 /// @description Live reactions to triggers
-x=browser_width/2-222
-y=272
+if (browser_width > browser_height )
+    {
+	x= camera_get_view_width(view_camera[0]) / 2 +200;
+	y=272
+	}
 #region -- check player living
 
 if (isPlayerLive)

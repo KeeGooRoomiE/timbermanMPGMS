@@ -1,7 +1,10 @@
 /// @description Live reactions to triggers
 //treearr[0]
-x=browser_width/2-410
-y=304
+if (browser_width > browser_height )
+    {
+	x = camera_get_view_width(view_camera[0]) / 2;
+	y=304
+	}
 	//show_debug_message(treearr);
 #region -- check player living
 

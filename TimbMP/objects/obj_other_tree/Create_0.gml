@@ -1,5 +1,9 @@
-x=browser_width/2-222
-y=272
+if (browser_width > browser_height )
+    {
+	x= camera_get_view_width(view_camera[0]) / 2 +200;
+	y=272
+	}
+	
 /*
 /// @description Init
 casetree0 =  0;
@@ -127,7 +131,6 @@ for (i=0; i<treeLength; i++)
 }
 
 #endregion
-
 //treeLength=0;
 #region -- init player vars
 
@@ -136,11 +139,17 @@ canChomp = true;			//trigger for action availability
 isChompingLeft = false;		//trigger for left movement
 isChompingRight = false;	//trigger for right movement
 
-playerXpos=x-36 * xsc;		//player X position vlaue
+
 playerSpr = global.playerTwoSprite;		//player current sprite
 playerGraveSpr = global.playerGrave;
-
-player = instance_create_depth(playerXpos, y-6,depth-1,obj_player);
+if (browser_width > browser_height )
+    {
+	playerXpos=x+320 * xsc;		//player X position vlaue
+	player = instance_create_depth(playerXpos, y-6,depth-1,obj_player);	
+	}else{
+	playerXpos=x-36 * xsc;		//player X position vlaue
+	player = instance_create_depth(playerXpos, y-6,depth-1,obj_player);	
+	}
 side = 1;
 
 leftTrigger = false;
