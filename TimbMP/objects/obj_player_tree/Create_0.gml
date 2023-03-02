@@ -159,9 +159,11 @@ playerSpr = global.playerOneSprite;		//player current sprite
 playerGraveSpr = global.playerGrave;
 if (browser_width > browser_height )
     {
+		// WEB
 	playerXpos=x+200 * xsc;		//player X position vlaue
 	player = instance_create_depth(playerXpos, y-6,depth-1,obj_player);
 	}else{
+		// MOB
 	playerXpos=x-36 * xsc;		//player X position vlaue
 	player = instance_create_depth(playerXpos, y-6,depth-1,obj_player);
 	}

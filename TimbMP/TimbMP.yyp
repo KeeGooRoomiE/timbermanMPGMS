@@ -82,6 +82,7 @@
     {"id":{"name":"bkg05_2","path":"sprites/bkg05_2/bkg05_2.yy",},"order":4,},
     {"id":{"name":"boba","path":"sprites/boba/boba.yy",},"order":2,},
     {"id":{"name":"obj_effect_particle","path":"objects/obj_effect_particle/obj_effect_particle.yy",},"order":5,},
+    {"id":{"name":"bkg_water","path":"sprites/bkg_water/bkg_water.yy",},"order":6,},
     {"id":{"name":"obj_p2skin3","path":"objects/obj_p2skin3/obj_p2skin3.yy",},"order":7,},
     {"id":{"name":"spr_button","path":"sprites/spr_button/spr_button.yy",},"order":0,},
     {"id":{"name":"bkg05_0","path":"sprites/bkg05_0/bkg05_0.yy",},"order":4,},
