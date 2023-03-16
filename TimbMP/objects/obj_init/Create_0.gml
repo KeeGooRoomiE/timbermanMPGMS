@@ -4,8 +4,8 @@ global.seed = battle_id;
 
 random_set_seed(global.seed);
 
-global.playerOneName = "PLAYER1";
-global.playerTwoName = "PLAYER2";
+global.playerOneName = "YOU";
+global.playerTwoName = "WAITING...";
 
 global.playersMaxScore = 500;
 

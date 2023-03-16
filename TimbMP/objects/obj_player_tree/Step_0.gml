@@ -59,7 +59,6 @@ if (leftTrigger)
 			{
 				playerLives -= 1;
 				sio_emit_hp_send(playerLives)
-				//TODO
 				event_user(3);
 				
 				with (player)

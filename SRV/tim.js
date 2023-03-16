@@ -636,7 +636,8 @@ function re_find_rm( room_id, user_id ) {
 							room_id: room_id,
 							hp: 3,
 							score: 0,
-							tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
+							tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",
+							username: username
 						});
 						xdatarrtree = new Dataarrtree({
 						room_id: room_id,
@@ -692,7 +693,8 @@ function re_find_rm( room_id, user_id ) {
 						room_id: room_id,
 						hp: 3,
 						score: 0,
-						tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
+						tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",
+						username: username
 					});
 					xdatarrtree = new Dataarrtree({
 					room_id: room_id,
@@ -890,13 +892,8 @@ function re_find_rm( room_id, user_id ) {
 	
 	client.on('score_send', (data) => {
         data = JSON.parse(data);
-		for (let i in players)
-		{
-			if (players[i].user_id == player.user_id)
-				{
-					players[i].score = data.score;
-				}
-		}
+		player.score = data.score;
+		
 						
 				//console.log(`(:: :: ::) player.score: [${player.score}]`);
 				//console.log(`(:: :: ::) data.score: [${data.score}]`);	
@@ -1106,22 +1103,23 @@ function re_find_rm( room_id, user_id ) {
 					}
 
 					const req = https.request(options, res => {
-					  console.log(`statusCode: ${res.statusCode}`)
+					  //console.log(`statusCode: ${res.statusCode}`)
 
 					  res.on('data', d => {
 					//process.stdout.write(d)
 					var dataxjqx = JSON.parse(d);
 					
 					var aa = dataxjqx["data"];
-					console.log(`data: ${aa}`)
+					//console.log(`data: ${aa}`)
 					
 					var bb = aa["user"];
-					console.log(`user: ${bb}`)
+					
 					var cc = bb["name"];
+					//console.log(`userN: ${bb}`)
 					
 					var dd = Number(aa["amount"]);
-					console.log(`amount: ${dd}`)
-					player.amount = dd; // ERROR ???? TODO !
+					//console.log(`amount: ${dd}`)
+					player.amount = dd; // ERROR ???? TODO !?
 					
 					console.log(`name: ${cc}`)
 					player.username = cc;
@@ -1156,6 +1154,7 @@ function re_find_rm( room_id, user_id ) {
 			  {
 				global.myhpp  = players[i].hp;
 				global.myscore = players[i].score;
+				global.username = players[i].username;
 				
 				//global.tree = "[0, 0, 2, 0, 1, 0, 0, 1, 1, 1]"
 				global.tree = "["+players[i].tree[1]+", "+players[i].tree[4]+", "+players[i].tree[7]+", "+players[i].tree[10]+", "+players[i].tree[13]+", "+players[i].tree[16]+", "+players[i].tree[19]+", "+players[i].tree[22]+", "+players[i].tree[25]+", "+players[i].tree[28]+"]";
@@ -1197,7 +1196,8 @@ function re_find_rm( room_id, user_id ) {
 							start_timestamp: Number(Math.round(Date.now()/(1000))),
 							hp: 3,
 							score: 0,
-							tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
+							tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",
+							username: data.username
 						});
 						
 						xdatarrtree = new Dataarrtree({
@@ -1263,7 +1263,8 @@ function re_find_rm( room_id, user_id ) {
 								start_timestamp: Number(Math.round(Date.now()/(1000))),
 								hp: global.myhpp,
 								score: global.myscore,
-								tree: global.tree
+								tree: global.tree,
+								username: global.username
 						});
 						xdatarrtree = new Dataarrtree({
 						room_id: data.room_id,
@@ -1289,7 +1290,7 @@ function re_find_rm( room_id, user_id ) {
 										client.emit('create_player_other', players[i].toString());
 									}
 								}
-						client.emit('start', "start".toString());
+						//client.emit('start', "start".toString()); // TODO START ?
 						
 				}
 		}else{
@@ -1303,7 +1304,8 @@ function re_find_rm( room_id, user_id ) {
 					start_timestamp: Number(Math.round(Date.now()/(1000))),
 					hp: 3,
 					score: 0,
-					tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
+					tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",
+					username: data.username
 			});
 			
 			xdatarrtree = new Dataarrtree({

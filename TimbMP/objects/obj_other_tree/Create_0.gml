@@ -1,4 +1,4 @@
-if (browser_width > browser_height )
+	if (browser_width > browser_height )
     {
 	x= camera_get_view_width(view_camera[0]) / 2 +200;
 	y=272

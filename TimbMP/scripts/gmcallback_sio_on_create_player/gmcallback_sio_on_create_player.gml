@@ -7,6 +7,7 @@ function gmcallback_sio_on_create_player()
 		var data = json_decode(argument[0]);	
 		var dat_rmid = real(data[? "room_id"]);
 		var dat_plid = real(data[? "user_id"]);
+		var dat_usern = string(data[? "username"]);
 		var dat_plhp = real(data[? "hp"]);
 		var dat_plsc = real(data[? "score"]);
 		global.curPlayerScore = real(dat_plsc);
@@ -41,7 +42,7 @@ function gmcallback_sio_on_create_player()
 		var dat_rmid = real(data[? "room_id"]);
 		global.room_id = dat_rmid
 		//global.p1Skin = data; //0 1 2 3
-		global.playerOneName = dat_plid;
+		global.playerOneName = string(dat_usern);
 		//global.curPlayerScore = dat_plsc;
 	}
 }
