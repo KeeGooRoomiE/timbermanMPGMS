@@ -4,6 +4,10 @@ global.room_id = "$room_id"; //  id MP
 global.battle_id = "$battle_id"; //  id MP
 
 global.start = 0
+global.WinPlayerScore = 0;
+
+global.playerOneScore = 0
+global.playerTwoScore = 0
 
 global.gcasetree0 = 0;
 global.gcasetree1 = 0;

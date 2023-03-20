@@ -25,8 +25,39 @@ draw_sprite(spr_panel, 0, cx+cw/2, cy+18);
 draw_text_ext_transformed_color(cx+cw/2, cy+24, time, 24, 128, 1, 1, 0, c_white, c_white, c_white, c_white, 1);
 #endregion
 
+/*
+if (drawWinOne)
+{
+	draw_sprite(spr_plank, 0, cx+cw/2, cy+80);
+	draw_text_ext_transformed(cx+cw/2, cy+96,string(global.playerOneName)+" WINS",14,64,1.2,1.2,0);
+	draw_text(cx+cw/2, cy+128,"Score");
+	draw_text(cx+cw/2, cy+140, string(global.WinPlayerScore));
+}
+
+if (drawWinTwo)
+{
+	draw_sprite(spr_plank, 0, cx+cw/2, cy+80);
+	draw_text_ext_transformed(cx+cw/2, cy+96,string(global.playerTwoName)+" WINS",14,64,1.2,1.2,0);
+	draw_text(cx+cw/2, cy+128,"Score");
+	draw_text(cx+cw/2, cy+140, string(global.WinPlayerScore));
+}
+
+
+if (isTie)
+{
+draw_sprite(spr_plank, 0, cx+cw/2, cy+80);
+	draw_text_ext_transformed(cx+cw/2, cy+96,"TIE",14,64,1.2,1.2,0);
+	draw_text(cx+cw/2, cy+128,"Score");
+	draw_text(cx+cw/2, cy+140, string(global.WinPlayerScore));
+}
+
+*/
+
+////////////////
+
 if ( isPlayerReachedNest or isPlayerOneWins or isPlayerTwoWins or isTie )
 {
+	
 	draw_sprite(spr_plank, 0, cx+cw/2, cy+80);
 	
 	if ( isPlayerReachedNest )
@@ -35,14 +66,14 @@ if ( isPlayerReachedNest or isPlayerOneWins or isPlayerTwoWins or isTie )
 		{
 			draw_text_ext_transformed(cx+cw/2, cy+96,string(global.playerOneName)+" WINS",14,64,1.2,1.2,0);
 			draw_text(cx+cw/2, cy+128,"Score");
-			draw_text(cw+cw/2, cy+136, string(global.curPlayerScore));
+			draw_text(cx+cw/2, cy+140, string(real(global.playerOneScore)));
 		}
 		
 		if (isPlayerTwoWins)
 		{
 			draw_text_ext_transformed(cx+cw/2, cy+96,string(global.playerTwoName)+" WINS",14,64,1.2,1.2,0);
 			draw_text(cx+cw/2, cy+128,"Score");
-			draw_text(cw+cw/2, cy+136, string(global.curPlayerScore));
+			draw_text(cx+cw/2, cy+140, string(real(global.playerTwoScore)));
 		}
 	} 
 	else
@@ -51,14 +82,14 @@ if ( isPlayerReachedNest or isPlayerOneWins or isPlayerTwoWins or isTie )
 		{
 			draw_text_ext_transformed(cx+cw/2, cy+96,string(global.playerOneName)+" WINS",14,64,1.2,1.2,0);
 			draw_text(cx+cw/2, cy+128,"Score");
-			draw_text(cw+cw/2, cy+136, string(global.curPlayerScore));
+			draw_text(cx+cw/2, cy+140, string(real(global.playerOneScore)));
 		}
 		
 		if (isPlayerTwoWins)
 		{
 			draw_text_ext_transformed(cx+cw/2, cy+96,string(global.playerTwoName)+" WINS",14,64,1.2,1.2,0);
 			draw_text(cx+cw/2, cy+128,"Score");
-			draw_text(cw+cw/2, cy+136, string(global.curPlayerScore));
+			draw_text(cx+cw/2, cy+140, string(real(global.playerTwoScore)));
 		}
 	}
 	
@@ -66,6 +97,7 @@ if ( isPlayerReachedNest or isPlayerOneWins or isPlayerTwoWins or isTie )
 	{
 			draw_text_ext_transformed(cx+cw/2, cy+96,"TIE",14,64,1.2,1.2,0);
 			draw_text(cx+cw/2, cy+128,"Score");
-			draw_text(cw+cw/2, cy+136, string(global.curPlayerScore));
+			draw_text(cx+cw/2, cy+140, string(real(global.playerOneScore)));
 	}
+	
 }

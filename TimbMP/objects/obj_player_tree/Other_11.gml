@@ -11,7 +11,7 @@ treeLength++;
 playerScore++;
 sio_emit_score_send(playerScore)
 global.curPlayerScore++;
-
+global.playerOneScore++;
 //random tree cell image
 treeCellImg = irandom_range(0,4);
 

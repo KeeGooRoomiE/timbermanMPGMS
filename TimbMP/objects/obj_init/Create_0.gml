@@ -1,11 +1,11 @@
+global.playerOneName = "YOU";
+global.playerTwoName = "WAITING...";
+
 init();
 var battle_id = 1214498;	//only number!
 global.seed = battle_id;
 
 random_set_seed(global.seed);
-
-global.playerOneName = "YOU";
-global.playerTwoName = "WAITING...";
 
 global.playersMaxScore = 500;
 
@@ -19,3 +19,5 @@ room_goto_next();
 //debug
 //global.p1Skin = irandom_range(0,3);
 //global.p2Skin = irandom_range(0,3);
+
+

@@ -7,10 +7,13 @@ function gmcallback_sio_on_create_player()
 		var data = json_decode(argument[0]);	
 		var dat_rmid = real(data[? "room_id"]);
 		var dat_plid = real(data[? "user_id"]);
-		var dat_usern = string(data[? "username"]);
 		var dat_plhp = real(data[? "hp"]);
 		var dat_plsc = real(data[? "score"]);
+		var dat_usern = string(data[? "username"]);
+		
+		global.playerOneName = string(dat_usern);
 		global.curPlayerScore = real(dat_plsc);
+		global.playerOneScore = real(dat_plsc);
 		global.playersMaxScore = 500 - global.curPlayerScore;
 		/*
 		var dat_treearr = string(data[? "tree"]);
@@ -42,7 +45,6 @@ function gmcallback_sio_on_create_player()
 		var dat_rmid = real(data[? "room_id"]);
 		global.room_id = dat_rmid
 		//global.p1Skin = data; //0 1 2 3
-		global.playerOneName = string(dat_usern);
 		//global.curPlayerScore = dat_plsc;
 	}
 }

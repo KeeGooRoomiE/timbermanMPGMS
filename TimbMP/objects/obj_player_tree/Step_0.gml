@@ -99,7 +99,7 @@ if (rightTrigger)
 		
 		if ( treearr[1] = 2 )//or treearr[0] = 2 )
 		{
-			if (playerLives > 1)
+			if (playerLives > 0)
 			{
 				playerLives -= 1;
 				sio_emit_hp_send(playerLives)

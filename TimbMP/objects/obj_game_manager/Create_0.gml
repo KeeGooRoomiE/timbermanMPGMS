@@ -1,5 +1,9 @@
 /// @description Scene setups
+playerOneIsWin = 0
+playerTwoIsWin = 0
 
+drawWinOne = 0
+drawWinTwo = 0
 #region -- Set skin species
 
 switch (global.sceneSkin)
