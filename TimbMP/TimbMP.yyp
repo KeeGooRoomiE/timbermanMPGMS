@@ -88,6 +88,7 @@
     {"id":{"name":"bkg05_0","path":"sprites/bkg05_0/bkg05_0.yy",},"order":4,},
     {"id":{"name":"obj_other_tree1","path":"objects/obj_other_tree1/obj_other_tree1.yy",},"order":3,},
     {"id":{"name":"obj_auto_room_mover","path":"objects/obj_auto_room_mover/obj_auto_room_mover.yy",},"order":7,},
+    {"id":{"name":"o_start_game","path":"objects/o_start_game/o_start_game.yy",},"order":12,},
     {"id":{"name":"obj_player","path":"objects/obj_player/obj_player.yy",},"order":2,},
     {"id":{"name":"obj_p1skin0","path":"objects/obj_p1skin0/obj_p1skin0.yy",},"order":0,},
     {"id":{"name":"obj_scskin2","path":"objects/obj_scskin2/obj_scskin2.yy",},"order":10,},

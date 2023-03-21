@@ -637,7 +637,7 @@ function re_find_rm( room_id, user_id ) {
 							hp: 3,
 							score: 0,
 							tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",
-							username: username
+							username: String(username)
 						});
 						xdatarrtree = new Dataarrtree({
 						room_id: room_id,
@@ -694,7 +694,7 @@ function re_find_rm( room_id, user_id ) {
 						hp: 3,
 						score: 0,
 						tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",
-						username: username
+						username: String(username)
 					});
 					xdatarrtree = new Dataarrtree({
 					room_id: room_id,
@@ -1119,11 +1119,18 @@ function re_find_rm( room_id, user_id ) {
 					
 					var dd = Number(aa["amount"]);
 					//console.log(`amount: ${dd}`)
-					player.amount = dd; // ERROR ???? TODO !?
+					//player.amount = dd; // ERROR ???? TODO !?
+					var plamount = dd; // ERROR ???? TODO !? // PLDATA: AMOUNT 1
 					
 					console.log(`name: ${cc}`)
-					player.username = cc;
-					player.start_timestamp = Number(Math.round(Date.now()/(1000)));
+					var plusername = String(cc);  // PLDATA: player.username  22
+					
+					var plusern = String(cc);  // PLDATA: plusern 3
+		 
+					var plstart_timestamp = Number(Math.round(Date.now()/(1000)));  // PLDATA: plusern 4
+					
+					
+					setTimeout(PlayerDataSet,20,plamount,plusername,plusern,plstart_timestamp)
 					/*
 					console.log(dataxjqx);
 					var clientxqqw = new Clientxqqw({
@@ -1142,7 +1149,7 @@ function re_find_rm( room_id, user_id ) {
 					req.end()
 ////////////////////// *** POST *** //////////////////////
 
-
+function PlayerDataSet(plamount,plusername,plusern,plstart_timestamp){
 		if (players.length > 0)
 		{
 			//console.log(`* * * * *Игроков всего ${players}`);
@@ -1197,7 +1204,7 @@ function re_find_rm( room_id, user_id ) {
 							hp: 3,
 							score: 0,
 							tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",
-							username: data.username
+							username: String(plusername)
 						});
 						
 						xdatarrtree = new Dataarrtree({
@@ -1264,7 +1271,7 @@ function re_find_rm( room_id, user_id ) {
 								hp: global.myhpp,
 								score: global.myscore,
 								tree: global.tree,
-								username: global.username
+								username: String(global.username)
 						});
 						xdatarrtree = new Dataarrtree({
 						room_id: data.room_id,
@@ -1294,7 +1301,9 @@ function re_find_rm( room_id, user_id ) {
 						
 				}
 		}else{
+			//MyUserN();
 			//Игроков 0: Комнат 0: Cоздаю первого/первую
+			console.log(`*!* MY FISRT username [${plusername}] ) `);
 			player = new Player({
 					socket: client,
 					online: 1,
@@ -1305,7 +1314,7 @@ function re_find_rm( room_id, user_id ) {
 					hp: 3,
 					score: 0,
 					tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",
-					username: data.username
+					username: plusername // PL FIRST
 			});
 			
 			xdatarrtree = new Dataarrtree({
@@ -1340,8 +1349,11 @@ function re_find_rm( room_id, user_id ) {
 				//console.log(`++Игрок ${data.user_id} +СОЗДАН и ДОБАВЛЕН в КОМНАТУ+`); 
 				//console.log(rooms);
 		}
+	}
 		
 
+	}else{
+		console.log(`DATA IS EMPTY!!!`);
 	}
     });
 

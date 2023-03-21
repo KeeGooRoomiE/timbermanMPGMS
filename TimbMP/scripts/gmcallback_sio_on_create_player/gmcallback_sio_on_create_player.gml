@@ -12,6 +12,8 @@ function gmcallback_sio_on_create_player()
 		var dat_usern = string(data[? "username"]);
 		
 		global.playerOneName = string(dat_usern);
+		
+		
 		global.curPlayerScore = real(dat_plsc);
 		global.playerOneScore = real(dat_plsc);
 		global.playersMaxScore = 500 - global.curPlayerScore;
