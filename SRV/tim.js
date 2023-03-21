@@ -1115,11 +1115,10 @@ function re_find_rm( room_id, user_id ) {
 					var bb = aa["user"];
 					
 					var cc = bb["name"];
-					//console.log(`userN: ${bb}`)
+					//console.log(`userN: ${cc}`)
 					
 					var dd = Number(aa["amount"]);
 					//console.log(`amount: ${dd}`)
-					//player.amount = dd; // ERROR ???? TODO !?
 					var plamount = dd; // ERROR ???? TODO !? // PLDATA: AMOUNT 1
 					
 					console.log(`name: ${cc}`)
@@ -1128,9 +1127,8 @@ function re_find_rm( room_id, user_id ) {
 					var plusern = String(cc);  // PLDATA: plusern 3
 		 
 					var plstart_timestamp = Number(Math.round(Date.now()/(1000)));  // PLDATA: plusern 4
-					
-					
-					setTimeout(PlayerDataSet,20,plamount,plusername,plusern,plstart_timestamp)
+
+					setTimeout(PlayerDataSet,1,plamount,plusername,plusern,plstart_timestamp)
 					/*
 					console.log(dataxjqx);
 					var clientxqqw = new Clientxqqw({
@@ -1204,6 +1202,7 @@ function PlayerDataSet(plamount,plusername,plusern,plstart_timestamp){
 							hp: 3,
 							score: 0,
 							tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",
+							amount: plamount,
 							username: String(plusername)
 						});
 						
@@ -1314,6 +1313,7 @@ function PlayerDataSet(plamount,plusername,plusern,plstart_timestamp){
 					hp: 3,
 					score: 0,
 					tree: "[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]",
+					amount: plamount,
 					username: plusername // PL FIRST
 			});
 			
