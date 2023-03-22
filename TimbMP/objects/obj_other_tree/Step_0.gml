@@ -53,7 +53,7 @@ if (leftTrigger)
 		
 		if ( treearr[1] = 1 )//or treearr[0] = 1 )
 		{
-			if (playerLives > 0)
+			if (playerLives > 1)
 			{
 				//playerLives -= 1;
 				event_user(3);
@@ -65,6 +65,7 @@ if (leftTrigger)
 			}
 			else
 			{
+				playerLives = 0;
 				isPlayerLive=false;
 				canChomp=false;
 				
@@ -96,7 +97,7 @@ if (rightTrigger)
 		
 		if ( treearr[1] = 2 )//or treearr[0] = 2 )
 		{
-			if (playerLives > 0)
+			if (playerLives > 1)
 			{
 				//playerLives -= 1;
 				event_user(3);
@@ -111,7 +112,7 @@ if (rightTrigger)
 			{
 				isPlayerLive = false;
 				canChomp = false;
-				//playerLives -= 1;
+				playerLives = 0;
 				
 				with (player)
 				{

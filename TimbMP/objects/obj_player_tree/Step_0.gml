@@ -55,7 +55,7 @@ if (leftTrigger)
 		
 		if ( treearr[1] = 1 )//or treearr[0] = 1 )
 		{
-			if (playerLives > 0)
+			if (playerLives > 1)
 			{
 				playerLives -= 1;
 				sio_emit_hp_send(playerLives)
@@ -68,6 +68,8 @@ if (leftTrigger)
 			}
 			else
 			{
+				playerLives -= 1;
+				sio_emit_hp_send(playerLives)
 				isPlayerLive=false;
 				canChomp=false;
 				
@@ -99,7 +101,7 @@ if (rightTrigger)
 		
 		if ( treearr[1] = 2 )//or treearr[0] = 2 )
 		{
-			if (playerLives > 0)
+			if (playerLives > 1)
 			{
 				playerLives -= 1;
 				sio_emit_hp_send(playerLives)
@@ -112,10 +114,10 @@ if (rightTrigger)
 			}
 			else
 			{
-				isPlayerLive = false;
-				canChomp = false;
 				playerLives -= 1;
 				sio_emit_hp_send(playerLives)
+				isPlayerLive = false;
+				canChomp = false;
 				
 				with (player)
 				{
