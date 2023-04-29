@@ -3,10 +3,8 @@ function sio_init() {
 	gml_pragma("global", "sio_init()");
 
 #region macros
-	//#macro URL "188.165.226.110:3003" // MP
-	
-	//#macro URL "95.163.242.141:3004"
 	#macro URL "timberman.mindplays.games"
+	
 	//timberman.mindplays.games
 	
 	//#macro URL "127.0.0.1:3004"

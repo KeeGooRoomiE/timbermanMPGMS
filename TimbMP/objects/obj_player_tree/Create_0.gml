@@ -177,5 +177,5 @@ playerReachedNest = false;
 playerLives = 1;
 
 #endregion
-
+alarm[1]=5
 //

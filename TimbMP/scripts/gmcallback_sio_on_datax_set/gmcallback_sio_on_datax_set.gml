@@ -13,6 +13,7 @@ function gmcallback_sio_on_datax_set(argument0) {
 				playerScore = real(dat_plsc);
 				playerLives = real(dat_plhp);
 			}
+			global.playerTwoScore = real(dat_plsc);
 
 		}
 	}
